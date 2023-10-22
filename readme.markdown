@@ -21,13 +21,19 @@ $ phraze -s ' '
 marrow responded beauty syndrome compromise cognitive prompted
 ```
 
-Use `-t` to make all word in passphrase Title Case
+Use `-t` to make all the words in passphrase Title Case
 ```
 $ phraze -s '' -t
 ReinforcedMetalProphecyHeavyArtilleryEnoughStaying
 ```
 
-Use `-l` to specify which word list to use. `-l l` uses the Orchard Street Long list.
+If you need to have a symbol, a number and an uppercase character in your passphrase, you can try
+```
+$ phraze -t -s _b
+Segments6Lining{Cubs,Elementary8Exchanges0Fourteen7Slide
+```
+
+Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list.
 ```
 $ phraze -l l
 prices-leisurely-monument-shame-taller-troupe-compulsory
