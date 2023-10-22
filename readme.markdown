@@ -101,14 +101,17 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 ## Word lists used
 
-Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists. All of the Orchard Street Wordlists lists are uniquely decodable, so they are safe to use without a separator between words.
+<!-- Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists. All of the Orchard Street Wordlists lists are uniquely decodable, so they are safe to use without a separator between words. -->
 
-By default, Phraze uses the Orchard Street Medium list, which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
+By default, Phraze uses the "Medium" list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
 However you can use other word lists with the `-l`/`--list` option.
 
 ### Orchard Street Long list
 Passing `l` to the list flag causes Phraze to use the Orchard Street Long List. This list has 17,576 words on it. This means that each word adds 14.1 bits of entropy to a passphrase. Thus, a 7-word passphrase has 98.7 bits of entropy.
+
+### EFF long list
+Passing `e` to the list flag causes Phraze to use [the EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases), which has 7,776 words.
 
 ### Orchard Street QWERTY list
 Passing `q` to the list flag causes Phraze to use the Orchard Street QWERTY list that is optimized for QWERTY keyboard layouts. This list only has 1,296 words on it. This means that each word adds 10.3 bits of entropy to a passphrase.

@@ -27,11 +27,12 @@ struct Args {
     ///
     /// l: Orchard Street Long List (17,576 words)
     ///
+    /// e: EFF long list (7,776 words)
+    ///
     /// q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel
     /// distance on QWERTY keyboard layouts.
     ///
     /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel
-    /// distance on alphabetical keyboard layouts.
     #[clap(short = 'l', long = "list")]
     list_choice: Option<char>,
 
@@ -61,6 +62,7 @@ fn parse_list(list_choice: Option<char>) -> List {
             'l' => List::Long,
             'q' => List::Qwerty,
             'a' => List::Alpha,
+            'e' => List::Eff,
             'm' => List::Medium,
             _ => panic!("Unknown list"),
         },

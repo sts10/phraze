@@ -7,6 +7,7 @@ pub enum List {
     Medium,
     Qwerty,
     Alpha,
+    Eff,
 }
 
 /// Actually generate the passphrase, give a couple neccessary parameters.
@@ -59,6 +60,9 @@ fn make_list(list_to_use: List) -> Vec<&'static str> {
             .split('\n')
             .collect(),
         List::Alpha => include_str!("../word-lists/orchard-street-alpha.txt")
+            .split('\n')
+            .collect(),
+        List::Eff => include_str!("../word-lists/eff-long.txt")
             .split('\n')
             .collect(),
     }
