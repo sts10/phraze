@@ -1,6 +1,9 @@
 use clap::Parser;
 use phraze::*;
 
+// https://doc.rust-lang.org/cargo/reference/build-scripts.html#case-study-code-generation
+include!(concat!(env!("OUT_DIR"), "/wordlists.rs"));
+
 /// Generate random passphrases
 #[derive(Parser, Debug)]
 #[clap(version, name = "phraze")]
@@ -46,16 +49,19 @@ fn main() {
     );
 }
 
-// convert list_choice character into List enum
-fn parse_list(list_choice: Option<char>) -> List {
+/// Parse which word list to use. Thanks to build script file (build.rs),
+/// we have access to the word lists as environmental variables.
+/// See: https://doc.rust-lang.org/cargo/reference/build-scripts.html
+fn parse_list(list_choice: Option<char>) -> &'static [&'static str] {
     match list_choice {
         Some(c) => match c.to_ascii_lowercase() {
-            'l' => List::Long,
-            'q' => List::Qwerty,
-            'a' => List::Alpha,
-            'm' => List::Medium,
+            'l' => WL_LONG,
+            'm' => WL_MEDIUM,
+            'q' => WL_QWERTY,
+            'a' => WL_ALPHA,
             _ => panic!("Unknown list"),
         },
-        None => List::Medium,
+        // If none given, default to the Medium list
+        None => WL_MEDIUM,
     }
 }

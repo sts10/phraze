@@ -1,22 +1,12 @@
 use rand::seq::SliceRandom;
 
-/// The four possible word lists that Fraze can use.
-pub enum List {
-    Long,
-    Medium,
-    Qwerty,
-    Alpha,
-}
-
 /// Actually generate the passphrase, give a couple neccessary parameters.
 pub fn generate_passphrase(
     number_of_words: u8,
     separator: &str,
     title_case: bool,
-    list_to_use: List,
+    list: &[&str],
 ) -> String {
-    let list = make_list(list_to_use);
-
     let mut passphrase = String::new();
     for i in 0..number_of_words {
         // Check if we're doing title_case
@@ -33,24 +23,6 @@ pub fn generate_passphrase(
         }
     }
     passphrase.to_string()
-}
-
-/// Read in the appropriate word list, give the desired list enum
-fn make_list(list_to_use: List) -> Vec<&'static str> {
-    match list_to_use {
-        List::Medium => include_str!("../word-lists/orchard-street-medium.txt")
-            .split('\n')
-            .collect(),
-        List::Long => include_str!("../word-lists/orchard-street-long.txt")
-            .split('\n')
-            .collect(),
-        List::Qwerty => include_str!("../word-lists/orchard-street-qwerty.txt")
-            .split('\n')
-            .collect(),
-        List::Alpha => include_str!("../word-lists/orchard-street-alpha.txt")
-            .split('\n')
-            .collect(),
-    }
 }
 
 /// Give an array of words, pick a random element and make it a String for
