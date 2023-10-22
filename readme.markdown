@@ -81,6 +81,9 @@ Options:
 
 Uninstall Phraze by running `cargo uninstall phraze`.
 
+### Releases on GitHub
+You can also check for [recent releases on GitHub](https://github.com/sts10/phraze/releases).
+
 ## Word lists used
 
 Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists.
