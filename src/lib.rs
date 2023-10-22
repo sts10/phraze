@@ -17,28 +17,21 @@ pub fn generate_passphrase(
     title_case: bool,
     list_to_use: List,
 ) -> String {
-    let mut rng = thread_rng();
+    // Make our word list based on user choice
     let list = make_list(list_to_use);
 
+    let mut rng = thread_rng();
+    // Create a blank String for our passphrase
     let mut passphrase = String::new();
     for i in 0..number_of_words {
-        loop {
-            // Check if we're doing title_case
-            let random_word = if title_case {
-                make_title_case(&get_random_element(&mut rng, &list))
-            } else {
-                get_random_element(&mut rng, &list)
-            };
-            // Weirdly, sometimes we get a blank word. I'm investigating
-            // but for now this little loop and check will
-            // have to do.
-            if random_word.trim() != "" {
-                // add this word to our passphrase
-                passphrase += &random_word;
-                // break out of `loop`
-                break;
-            }
-        }
+        // Check if we're doing title_case
+        let random_word = if title_case {
+            make_title_case(&get_random_element(&mut rng, &list))
+        } else {
+            get_random_element(&mut rng, &list)
+        };
+        // Add random_word to our passphrase
+        passphrase += &random_word;
         // Add a separator
         if i != number_of_words - 1 {
             passphrase += &make_separator(&mut rng, separator);
@@ -58,7 +51,7 @@ fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
 
 /// Read in the appropriate word list, give the desired list enum
 fn make_list(list_to_use: List) -> Vec<&'static str> {
-    match list_to_use {
+    let mut list: Vec<&'static str> = match list_to_use {
         List::Medium => include_str!("../word-lists/orchard-street-medium.txt")
             .split('\n')
             .collect(),
@@ -74,7 +67,14 @@ fn make_list(list_to_use: List) -> Vec<&'static str> {
         List::Eff => include_str!("../word-lists/eff-long.txt")
             .split('\n')
             .collect(),
-    }
+    };
+    // Due to the way we split and collect words from the word list file,
+    // We need to remove the very last element, which is a blank string ('')
+    // (the last line of the file)
+    list.truncate(list.len() - 1);
+
+    // Return list
+    list
 }
 
 fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
