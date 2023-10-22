@@ -15,7 +15,7 @@ pub fn generate_passphrase(
         } else {
             get_random_element(&list)
         };
-        // add this word to our passphrase
+        // Add this word to our passphrase
         passphrase += &random_word;
         // Add a separator
         if i != number_of_words - 1 {
@@ -34,7 +34,7 @@ fn get_random_element(word_list: &[&str]) -> String {
     }
 }
 
-/// Make first character of a &str uppercase
+/// Make first character of a given &str uppercase
 fn make_title_case(s: &str) -> String {
     let mut c = s.chars();
     match c.next() {
