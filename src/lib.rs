@@ -74,7 +74,7 @@ fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
 }
 
 fn get_random_symbol(rng: &mut impl Rng) -> String {
-    const CHARSET: &[u8] = b"~`!@#$%^&*(){}|[]\\:;'<>?,./_-+=";
+    const CHARSET: &[u8] = b"!@#$%^&*(){}[]\\:;'<>?,./_-+=";
     let idx = rng.gen_range(0..CHARSET.len());
     (CHARSET[idx] as char).to_string()
 }
