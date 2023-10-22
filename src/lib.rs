@@ -1,7 +1,7 @@
 use rand::distributions::{Distribution, Uniform};
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
-/// The four possible word lists that Phraze can use.
+/// The possible word lists that Phraze can use.
 pub enum List {
     Long,
     Medium,
