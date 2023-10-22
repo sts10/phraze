@@ -107,7 +107,7 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 By default, Phraze uses the "Medium" list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
-However you can use other word lists with the `-l`/`--list` option.
+However you can use other word lists with the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
 ### Orchard Street Long list
 Passing `l` to the list flag causes Phraze to use the Orchard Street Long List. This list has 17,576 words on it. This means that each word adds 14.1 bits of entropy to a passphrase. Thus, a 7-word passphrase has 98.7 bits of entropy.
