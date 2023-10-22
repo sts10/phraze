@@ -51,30 +51,21 @@ fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
 
 /// Read in the appropriate word list, give the desired list enum
 fn make_list(list_to_use: List) -> Vec<&'static str> {
-    let mut list: Vec<&'static str> = match list_to_use {
+    match list_to_use {
         List::Medium => include_str!("../word-lists/orchard-street-medium.txt")
-            .split('\n')
+            .lines()
             .collect(),
         List::Long => include_str!("../word-lists/orchard-street-long.txt")
-            .split('\n')
+            .lines()
             .collect(),
         List::Qwerty => include_str!("../word-lists/orchard-street-qwerty.txt")
-            .split('\n')
+            .lines()
             .collect(),
         List::Alpha => include_str!("../word-lists/orchard-street-alpha.txt")
-            .split('\n')
+            .lines()
             .collect(),
-        List::Eff => include_str!("../word-lists/eff-long.txt")
-            .split('\n')
-            .collect(),
-    };
-    // Due to the way we split and collect words from the word list file,
-    // We need to remove the very last element, which is a blank string ('')
-    // (the last line of the file)
-    list.truncate(list.len() - 1);
-
-    // Return list
-    list
+        List::Eff => include_str!("../word-lists/eff-long.txt").lines().collect(),
+    }
 }
 
 fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
