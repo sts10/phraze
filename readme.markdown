@@ -39,7 +39,7 @@ $ phraze | xclip -selection clipboard
 ```
 
 ## Usage
-```
+```text
 Usage: phraze [OPTIONS]
 
 Options:
@@ -64,13 +64,13 @@ Options:
   -l, --list <LIST_CHOICE>
           Choose a word list to use. Options:
           
-          m -> Orchard Street Medium List (7,776 words)
+          m: Orchard Street Medium List (7,776 words)
           
-          l -> Orchard Street Long List (17,576 words)
+          l: Orchard Street Long List (17,576 words)
           
-          q -> Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance on QWERTY keyboard layouts.
+          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance on QWERTY keyboard layouts.
           
-          a -> Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on alphabetical keyboard layouts.
+          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on alphabetical keyboard layouts.
 
   -t, --title-case
           Use Title Case for words in generated usernames
