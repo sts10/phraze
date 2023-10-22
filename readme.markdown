@@ -21,13 +21,19 @@ $ phraze -s ' '
 marrow responded beauty syndrome compromise cognitive prompted
 ```
 
-Use `-t` to make all word in passphrase Title Case
+Use `-t` to make all the words in passphrase Title Case
 ```
 $ phraze -s '' -t
 ReinforcedMetalProphecyHeavyArtilleryEnoughStaying
 ```
 
-Use `-l` to specify which word list to use. `-l l` uses the Orchard Street Long list.
+If you need to have a symbol, a number and an uppercase character in your passphrase, you can try
+```
+$ phraze -t -s _b
+Segments6Lining{Cubs,Elementary8Exchanges0Fourteen7Slide
+```
+
+Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list.
 ```
 $ phraze -l l
 prices-leisurely-monument-shame-taller-troupe-compulsory
@@ -68,9 +74,11 @@ Options:
           
           l: Orchard Street Long List (17,576 words)
           
+          e: EFF long list (7,776 words)
+          
           q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance on QWERTY keyboard layouts.
           
-          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on alphabetical keyboard layouts.
+          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel
 
   -t, --title-case
           Use Title Case for words in generated usernames
@@ -95,14 +103,17 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 ## Word lists used
 
-Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists. All of the Orchard Street Wordlists lists are uniquely decodable, so they are safe to use without a separator between words.
+<!-- Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists. All of the Orchard Street Wordlists lists are uniquely decodable, so they are safe to use without a separator between words. -->
 
-By default, Phraze uses the Orchard Street Medium list, which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
+By default, Phraze uses the "Medium" list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
-However you can use other word lists with the `-l`/`--list` option.
+However you can use other word lists with the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
 ### Orchard Street Long list
 Passing `l` to the list flag causes Phraze to use the Orchard Street Long List. This list has 17,576 words on it. This means that each word adds 14.1 bits of entropy to a passphrase. Thus, a 7-word passphrase has 98.7 bits of entropy.
+
+### EFF long list
+Passing `e` to the list flag causes Phraze to use [the EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases), which has 7,776 words.
 
 ### Orchard Street QWERTY list
 Passing `q` to the list flag causes Phraze to use the Orchard Street QWERTY list that is optimized for QWERTY keyboard layouts. This list only has 1,296 words on it. This means that each word adds 10.3 bits of entropy to a passphrase.
