@@ -48,4 +48,5 @@ fn main() {
         1296,
     );
     words(&f, "WL_ALPHA", "word-lists/orchard-street-alpha.txt", 1296);
+    words(&f, "WL_EFF", "word-lists/eff-long.txt", 7776);
 }
