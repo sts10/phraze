@@ -86,7 +86,7 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 ## Word lists used
 
-Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists.
+Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists. All of the Orchard Street Wordlists lists are uniquely decodable, so they are safe to use without a separator between words.
 
 By default, Phraze uses the Orchard Street Medium list, which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
