@@ -1,0 +1,12 @@
+[package]
+name = "phraze"
+description = "Passphrase generator"
+version = "0.1.2"
+edition = "2021"
+license = "MPL-2.0"
+readme = "readme.markdown"
+authors = ["sts10 <sschlinkert@gmail.com>"]
+
+[dependencies]
+rand = "0.8.5"
+clap = { version = "4.4.6", features = ["derive"] }
