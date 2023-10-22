@@ -92,11 +92,32 @@ By default, Phraze uses the Orchard Street Medium list, which has 7,776 words. T
 
 However you can use other word lists with the `-l`/`--list` option.
 
+### Orchard Street Long list
 Passing `l` to the list flag causes Phraze to use the Orchard Street Long List. This list has 17,576 words on it. This means that each word adds 14.1 bits of entropy to a passphrase. Thus, a 7-word passphrase has 98.7 bits of entropy.
 
+### Orchard Street QWERTY list
 Passing `q` to the list flag causes Phraze to use the Orchard Street QWERTY list that is optimized for QWERTY keyboard layouts. This list only has 1,296 words on it. This means that each word adds 10.3 bits of entropy to a passphrase.
 
+Use this option if you're going to input this passphrase into a TV or video game console with a keyboard layout that looks like this:
+
+```txt
+qwertyuiop
+asdfghjkl
+zxcvbnm
+```
+
+### Orchard Street Alpha list
 Passing `a` to the list flag causes Phraze to use the Orchard Street Alpha list that is optimized for alphabetical keyboard layouts. This list only has 1,296 words on it. This means that each word adds 10.3 bits of entropy to a passphrase.
+
+Use this option if you're going to input this passphrase into a TV or video game console with a keyboard layout that looks like this:
+
+```txt
+abcdef
+ghijkl
+mnopqr
+stuvwx
+yz
+```
 
 ## Source of randomness
 
