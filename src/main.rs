@@ -13,6 +13,14 @@ struct Args {
     number_of_words: u8,
 
     /// Word separator. Can accept single quotes around the separator.
+    ///
+    /// There are special values that will trigger generated separators:
+    ///
+    /// _n: separators will be random numbers
+    ///
+    /// _s: separators will be random symbols
+    ///
+    /// _b: separators will be both random numbers and symbols
     #[clap(short = 's', long = "sep", default_value = "-")]
     separator: String,
 

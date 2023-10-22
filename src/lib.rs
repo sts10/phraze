@@ -1,4 +1,5 @@
-use rand::seq::SliceRandom;
+use rand::distributions::{Distribution, Uniform};
+use rand::{seq::SliceRandom, thread_rng, Rng};
 
 /// Actually generate the passphrase, give a couple neccessary parameters.
 pub fn generate_passphrase(
@@ -7,28 +8,57 @@ pub fn generate_passphrase(
     title_case: bool,
     list: &[&str],
 ) -> String {
+    let mut rng = thread_rng();
     let mut passphrase = String::new();
     for i in 0..number_of_words {
         // Check if we're doing title_case
         let random_word = if title_case {
-            make_title_case(&get_random_element(&list))
+            make_title_case(&get_random_element(&mut rng, &list))
         } else {
-            get_random_element(&list)
+            get_random_element(&mut rng, &list)
         };
         // Add this word to our passphrase
         passphrase += &random_word;
         // Add a separator
         if i != number_of_words - 1 {
-            passphrase += separator;
+            passphrase += &make_separator(&mut rng, separator);
         }
     }
     passphrase.to_string()
 }
 
+fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
+    match sep {
+        "_n" => get_random_number(rng),
+        "_s" => get_random_symbol(rng),
+        "_b" => get_random_number_or_symbol(rng),
+        _ => sep.to_string(),
+    }
+}
+
+fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
+    let x: f64 = rng.gen();
+    if x > 0.5 {
+        get_random_symbol(rng)
+    } else {
+        get_random_number(rng)
+    }
+}
+
+fn get_random_symbol(rng: &mut impl Rng) -> String {
+    const CHARSET: &[u8] = b"~`!@#$%^&*(){}|[]\\:;'<>?,./_-+=";
+    let idx = rng.gen_range(0..CHARSET.len());
+    (CHARSET[idx] as char).to_string()
+}
+
+fn get_random_number(rng: &mut impl Rng) -> String {
+    Uniform::from(0..9).sample(rng).to_string()
+}
+
 /// Give an array of words, pick a random element and make it a String for
 /// simplicity's sake.
-fn get_random_element(word_list: &[&str]) -> String {
-    match word_list.choose(&mut rand::thread_rng()) {
+fn get_random_element(rng: &mut impl Rng, word_list: &[&str]) -> String {
+    match word_list.choose(rng) {
         Some(word) => word.to_string(),
         None => panic!("Couldn't pick a random word"),
     }
