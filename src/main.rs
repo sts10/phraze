@@ -43,29 +43,32 @@ struct Args {
 
 fn main() {
     let opt = Args::parse();
-    let list_to_use = parse_list(opt.list_choice);
-    println!(
-        "{}",
-        generate_passphrase(
-            opt.number_of_words,
-            &opt.separator,
-            opt.title_case,
-            list_to_use
-        )
-    );
+    // Attempt to parse chosen word list
+    match parse_list(opt.list_choice) {
+        Ok(list_to_use) => println!(
+            "{}",
+            generate_passphrase(
+                opt.number_of_words,
+                &opt.separator,
+                opt.title_case,
+                list_to_use
+            )
+        ),
+        Err(e) => eprintln!("Error: {}", e),
+    }
 }
 
-// convert list_choice character into List enum
-fn parse_list(list_choice: Option<char>) -> List {
+// Convert list_choice character into List enum
+fn parse_list(list_choice: Option<char>) -> Result<List, String> {
     match list_choice {
         Some(c) => match c.to_ascii_lowercase() {
-            'l' => List::Long,
-            'q' => List::Qwerty,
-            'a' => List::Alpha,
-            'e' => List::Eff,
-            'm' => List::Medium,
-            _ => panic!("Unknown list"),
+            'l' => Ok(List::Long),
+            'q' => Ok(List::Qwerty),
+            'a' => Ok(List::Alpha),
+            'e' => Ok(List::Eff),
+            'm' => Ok(List::Medium),
+            _ => Err(format!("Unable to parse word list choice '{}'", c)),
         },
-        None => List::Medium,
+        None => Ok(List::Medium),
     }
 }

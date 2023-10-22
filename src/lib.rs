@@ -22,14 +22,23 @@ pub fn generate_passphrase(
 
     let mut passphrase = String::new();
     for i in 0..number_of_words {
-        // Check if we're doing title_case
-        let random_word = if title_case {
-            make_title_case(&get_random_element(&mut rng, &list))
-        } else {
-            get_random_element(&mut rng, &list)
-        };
-        // add this word to our passphrase
-        passphrase += &random_word;
+        loop {
+            // Check if we're doing title_case
+            let random_word = if title_case {
+                make_title_case(&get_random_element(&mut rng, &list))
+            } else {
+                get_random_element(&mut rng, &list)
+            };
+            // Weirdly, sometimes we get a blank word. I'm investigating
+            // but for now this little loop and check will
+            // have to do.
+            if random_word.trim() != "" {
+                // add this word to our passphrase
+                passphrase += &random_word;
+                // break out of `loop`
+                break;
+            }
+        }
         // Add a separator
         if i != number_of_words - 1 {
             passphrase += &make_separator(&mut rng, separator);
@@ -84,7 +93,7 @@ fn get_random_symbol(rng: &mut impl Rng) -> String {
 }
 
 fn get_random_number(rng: &mut impl Rng) -> String {
-    Uniform::from(0..9).sample(rng).to_string()
+    Uniform::from(0..10).sample(rng).to_string()
 }
 
 /// Give an array of words, pick a random element and make it a String for
