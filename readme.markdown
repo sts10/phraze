@@ -38,6 +38,7 @@ Copy generated passphrase to xclip (Linux clipboard) (Passphrase won't be printe
 $ phraze | xclip -selection clipboard
 ```
 
+## Usage
 ```
 Usage: phraze [OPTIONS]
 
@@ -48,7 +49,15 @@ Options:
           [default: 7]
 
   -s, --sep <SEPARATOR>
-          Word separator. Can accept single quotes around the separator
+          Word separator. Can accept single quotes around the separator.
+          
+          There are special values that will trigger generated separators:
+          
+          _n: separators will be random numbers
+          
+          _s: separators will be random symbols
+          
+          _b: separators will be both random numbers and symbols
           
           [default: -]
 
