@@ -1,4 +1,3 @@
-use rand::distributions::{Distribution, Uniform};
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
 /// The possible word lists that Phraze can use.
@@ -84,7 +83,7 @@ fn get_random_symbol(rng: &mut impl Rng) -> String {
 }
 
 fn get_random_number(rng: &mut impl Rng) -> String {
-    Uniform::from(0..10).sample(rng).to_string()
+    rng.gen_range(0..=9).to_string()
 }
 
 /// Give an array of words, pick a random element and make it a String for
