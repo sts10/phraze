@@ -29,7 +29,8 @@ struct Args {
     ///
     /// e: EFF long list (7,776 words)
     ///
-    /// n: Mnemonicode list (1,633 words). Good for speaking out loud.
+    /// n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
+    /// passphrases out loud.
     ///
     /// s: EFF short list (1,296 words)
     ///
