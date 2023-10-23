@@ -21,7 +21,9 @@ struct Args {
     #[clap(short = 's', long = "sep", default_value = "-")]
     separator: String,
 
-    /// Choose a word list to use. Options:
+    /// Choose a word list to use.
+    ///
+    /// Options:
     ///
     /// m: Orchard Street Medium List (7,776 words) [DEFAULT]
     ///
