@@ -76,9 +76,13 @@ Options:
           
           e: EFF long list (7,776 words)
           
+          k: KeePassXC's word list (7,776 words). Similar to the EFF long list.
+          
+          s: EFF short list (1,296 words)
+          
           q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance on QWERTY keyboard layouts.
           
-          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel
+          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an alphabetical keyboard layout
 
   -t, --title-case
           Use Title Case for words in generated usernames
@@ -109,16 +113,18 @@ By default, Phraze uses the "Medium" list from the [Orchard Street Wordlists](ht
 
 However you can use other word lists with the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
-### Orchard Street Long list
-Passing `l` to the list flag causes Phraze to use the Orchard Street Long List. This list has 17,576 words on it. This means that each word adds 14.1 bits of entropy to a passphrase. Thus, a 7-word passphrase has 98.7 bits of entropy.
+* Orchard Street Medium list: 7,776 words; 12.93 bits of entropy per word. This is the **DEFAULT** list.
+* [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
+* KeePassXC list: 7,776 words; 12.93 bits of entropy per word. Use `k`.
+* Orchard Street Long list: 17,576 words; 14.1 bits of entropy per word. Use `l`.
+* EFF short list 1: 1,296 words; 10.3 bits of entropy per word. Use `s`.
+* Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`.
+* Orchard Street Alpha list: 1,296 words; 10.3 bits of entropy per word. Use `a`.
 
-### EFF long list
-Passing `e` to the list flag causes Phraze to use [the EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases), which has 7,776 words.
+### Notes on the Orchard Street QWERTY and Alpha lists
+These two lists are optimized to minimize travel distance when inputting passphrases into TVs or video game consoles. They both have 1,296 words (10.3 bits per word).
 
-### Orchard Street QWERTY list
-Passing `q` to the list flag causes Phraze to use the Orchard Street QWERTY list that is optimized for QWERTY keyboard layouts. This list only has 1,296 words on it. This means that each word adds 10.3 bits of entropy to a passphrase.
-
-Use this option if you're going to input this passphrase into a TV or video game console with a keyboard layout that looks like this:
+The Orchard Street QWERTY list that is optimized for QWERTY keyboard layouts. Use this list if your keyboard layout looks like this:
 
 ```txt
 qwertyuiop
@@ -126,10 +132,7 @@ asdfghjkl
 zxcvbnm
 ```
 
-### Orchard Street Alpha list
-Passing `a` to the list flag causes Phraze to use the Orchard Street Alpha list that is optimized for alphabetical keyboard layouts. This list only has 1,296 words on it. This means that each word adds 10.3 bits of entropy to a passphrase.
-
-Use this option if you're going to input this passphrase into a TV or video game console with a keyboard layout that looks like this:
+The Orchard Street Alpha list that is optimized for alphabetical keyboard layouts. Use this list if your keyboard layout looks like this:
 
 ```txt
 abcdef
