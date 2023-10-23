@@ -4,9 +4,11 @@ use rand::{seq::SliceRandom, thread_rng, Rng};
 pub enum List {
     Long,
     Medium,
+    Eff,
+    Effshort,
+    Keepassxc,
     Qwerty,
     Alpha,
-    Eff,
 }
 
 /// Actually generate the passphrase, give a couple neccessary parameters.
@@ -64,6 +66,12 @@ fn make_list(list_to_use: List) -> Vec<&'static str> {
             .lines()
             .collect(),
         List::Eff => include_str!("../word-lists/eff-long.txt").lines().collect(),
+        List::Effshort => include_str!("../word-lists/eff-short-1.txt")
+            .lines()
+            .collect(),
+        List::Keepassxc => include_str!("../word-lists/keepassxc.txt")
+            .lines()
+            .collect(),
     }
 }
 

@@ -29,10 +29,15 @@ struct Args {
     ///
     /// e: EFF long list (7,776 words)
     ///
+    /// k: KeePassXC's word list (7,776 words). Similar to the EFF long list.
+    ///
+    /// s: EFF short list (1,296 words)
+    ///
     /// q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel
     /// distance on QWERTY keyboard layouts.
     ///
-    /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel
+    /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an
+    /// alphabetical keyboard layout
     #[clap(short = 'l', long = "list")]
     list_choice: Option<char>,
 
@@ -63,10 +68,12 @@ fn parse_list(list_choice: Option<char>) -> Result<List, String> {
     match list_choice {
         Some(c) => match c.to_ascii_lowercase() {
             'l' => Ok(List::Long),
+            'm' => Ok(List::Medium),
+            'e' => Ok(List::Eff),
+            's' => Ok(List::Effshort),
+            'k' => Ok(List::Keepassxc),
             'q' => Ok(List::Qwerty),
             'a' => Ok(List::Alpha),
-            'e' => Ok(List::Eff),
-            'm' => Ok(List::Medium),
             _ => Err(format!("Unable to parse word list choice '{}'", c)),
         },
         None => Ok(List::Medium),
