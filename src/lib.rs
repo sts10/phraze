@@ -11,15 +11,41 @@ pub enum List {
     Alpha,
 }
 
+fn calculate_number_words_needed(
+    number_of_words: Option<u8>,
+    minimum_entropy: Option<usize>,
+    list_length: usize,
+) -> usize {
+    // If they specified an exact number of words, give them that.
+    if let Some(number_of_words) = number_of_words {
+        return number_of_words.into();
+    }
+    // Check if they gave a minimum_entropy instead
+    let minimum_entropy = match minimum_entropy {
+        Some(minimum_entropy) => minimum_entropy,
+        None => {
+            // Neither specified
+            // Use a default minimum_entropy
+            80
+        }
+    };
+    let entropy_per_word_from_this_list = (list_length as f64).log2();
+    (minimum_entropy as f64 / entropy_per_word_from_this_list).ceil() as usize
+}
+
 /// Actually generate the passphrase, give a couple neccessary parameters.
 pub fn generate_passphrase(
-    number_of_words: u8,
+    number_of_words: Option<u8>,
+    minimum_entropy: Option<usize>,
     separator: &str,
     title_case: bool,
     list_to_use: List,
 ) -> String {
     // Make our word list based on user choice
     let list = make_list(list_to_use);
+
+    let number_of_words =
+        calculate_number_words_needed(number_of_words, minimum_entropy, list.len());
 
     let mut rng = thread_rng();
     // Create a blank String for our passphrase

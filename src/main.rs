@@ -6,8 +6,12 @@ use phraze::*;
 #[clap(version, name = "phraze")]
 struct Args {
     /// Set how many words in generated passphrase
-    #[clap(short = 'w', long = "words", default_value = "7")]
-    number_of_words: u8,
+    #[clap(short = 'w', long = "words", conflicts_with = "minimum_entropy")]
+    number_of_words: Option<u8>,
+
+    /// Set minimum amount of entropy for generated passprase
+    #[clap(short = 'e', long = "entropy", conflicts_with = "number_of_words")]
+    minimum_entropy: Option<usize>,
 
     /// Word separator. Can accept single quotes around the separator.
     ///
@@ -57,6 +61,7 @@ fn main() {
             "{}",
             generate_passphrase(
                 opt.number_of_words,
+                opt.minimum_entropy,
                 &opt.separator,
                 opt.title_case,
                 list_to_use
