@@ -142,6 +142,193 @@ stuvwx
 yz
 ```
 
+## Details about each word list
+
+This list information was generated using [Word List Auditor](https://github.com/sts10/wla).
+
+### Orchard Street Medium
+```txt
+Lines found               : 7776
+Free of exact duplicates  : true
+Free of fuzzy duplicates  : true
+Free of blank lines       : true
+Unique words found        : 7776
+No start/end whitespace   : true
+No non-ASCII characters   : true
+Unicode normalized        : true
+Free of prefix words      : false
+Free of suffix words      : false
+Uniquely decodable        : true
+Above brute force line    : true
+Length of shortest word   : 3 characters (add)
+Length of longest word    : 10 characters (worthwhile)
+Mean word length          : 7.05 characters
+Entropy per word          : 12.925 bits
+Efficiency per character  : 1.832 bits
+Assumed entropy per char  : 4.308 bits
+Shortest edit distance    : 1
+Mean edit distance        : 6.954
+Longest shared prefix     : 9
+Unique character prefix   : 10
+```
+
+### Orchard Street Long list
+```txt
+Lines found               : 17576
+Free of exact duplicates  : true
+Free of fuzzy duplicates  : true
+Free of blank lines       : true
+Unique words found        : 17576
+No start/end whitespace   : true
+No non-ASCII characters   : true
+Unicode normalized        : true
+Free of prefix words      : false
+Free of suffix words      : false
+Uniquely decodable        : true
+Above brute force line    : true
+Length of shortest word   : 3 characters (add)
+Length of longest word    : 15 characters (troubleshooting)
+Mean word length          : 7.98 characters
+Entropy per word          : 14.101 bits
+Efficiency per character  : 1.767 bits
+Assumed entropy per char  : 4.700 bits
+Shortest edit distance    : 1
+Mean edit distance        : 7.915
+Longest shared prefix     : 14
+Unique character prefix   : 15
+```
+
+### EFF long list
+```txt
+Lines found               : 7776
+Free of exact duplicates  : true
+Free of fuzzy duplicates  : true
+Free of blank lines       : true
+Unique words found        : 7776
+No start/end whitespace   : true
+No non-ASCII characters   : true
+Unicode normalized        : true
+Free of prefix words      : true
+Free of suffix words      : false
+Uniquely decodable        : true
+Above brute force line    : true
+Length of shortest word   : 3 characters (aim)
+Length of longest word    : 9 characters (zoologist)
+Mean word length          : 6.99 characters
+Entropy per word          : 12.925 bits
+Efficiency per character  : 1.849 bits
+Assumed entropy per char  : 4.308 bits
+Shortest edit distance    : 1
+Mean edit distance        : 6.858
+Longest shared prefix     : 8
+Unique character prefix   : 9
+```
+
+### Mnemonicode list
+```txt
+Lines found               : 1633
+Free of exact duplicates  : true
+Free of fuzzy duplicates  : true
+Free of blank lines       : true
+Unique words found        : 1633
+No start/end whitespace   : true
+No non-ASCII characters   : true
+Unicode normalized        : true
+Free of prefix words      : true
+Free of suffix words      : false
+Uniquely decodable        : true
+Above brute force line    : true
+Length of shortest word   : 3 characters (ego)
+Length of longest word    : 7 characters (william)
+Mean word length          : 5.75 characters
+Entropy per word          : 10.673 bits
+Efficiency per character  : 1.857 bits
+Assumed entropy per char  : 3.558 bits
+Shortest edit distance    : 1
+Mean edit distance        : 5.552
+Longest shared prefix     : 6
+Unique character prefix   : 7
+```
+
+### EFF short list 
+```txt
+Lines found               : 1296
+Free of exact duplicates  : true
+Free of fuzzy duplicates  : true
+Free of blank lines       : true
+Unique words found        : 1296
+No start/end whitespace   : true
+No non-ASCII characters   : true
+Unicode normalized        : true
+Free of prefix words      : true
+Free of suffix words      : false
+Uniquely decodable        : true
+Above brute force line    : true
+Length of shortest word   : 3 characters (aim)
+Length of longest word    : 5 characters (zippy)
+Mean word length          : 4.54 characters
+Entropy per word          : 10.340 bits
+Efficiency per character  : 2.277 bits
+Assumed entropy per char  : 3.447 bits
+Shortest edit distance    : 1
+Mean edit distance        : 4.367
+Longest shared prefix     : 4
+Unique character prefix   : 5
+```
+
+### Orchard Street QWERTY list
+```txt
+Lines found               : 1296
+Free of exact duplicates  : true
+Free of fuzzy duplicates  : true
+Free of blank lines       : true
+Unique words found        : 1296
+No start/end whitespace   : true
+No non-ASCII characters   : true
+Unicode normalized        : true
+Free of prefix words      : false
+Free of suffix words      : false
+Uniquely decodable        : true
+Above brute force line    : true
+Length of shortest word   : 3 characters (add)
+Length of longest word    : 8 characters (referred)
+Mean word length          : 4.24 characters
+Entropy per word          : 10.340 bits
+Efficiency per character  : 2.441 bits
+Assumed entropy per char  : 3.447 bits
+Shortest edit distance    : 1
+Mean edit distance        : 4.170
+Longest shared prefix     : 6
+Unique character prefix   : 7
+```
+
+### Orchard Street Alpha list
+```txt
+Lines found               : 1296
+Free of exact duplicates  : true
+Free of fuzzy duplicates  : true
+Free of blank lines       : true
+Unique words found        : 1296
+No start/end whitespace   : true
+No non-ASCII characters   : true
+Unicode normalized        : true
+Free of prefix words      : false
+Free of suffix words      : false
+Uniquely decodable        : true
+Above brute force line    : true
+Length of shortest word   : 3 characters (add)
+Length of longest word    : 7 characters (stopped)
+Mean word length          : 4.12 characters
+Entropy per word          : 10.340 bits
+Efficiency per character  : 2.509 bits
+Assumed entropy per char  : 3.447 bits
+Shortest edit distance    : 1
+Mean edit distance        : 4.043
+Longest shared prefix     : 6
+Unique character prefix   : 7
+```
+
+
 ## Source of randomness
 
 Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose).
