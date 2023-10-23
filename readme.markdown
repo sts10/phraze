@@ -70,11 +70,13 @@ Options:
   -l, --list <LIST_CHOICE>
           Choose a word list to use. Options:
           
-          m: Orchard Street Medium List (7,776 words)
+          m: Orchard Street Medium List (7,776 words) [DEFAULT]
           
           l: Orchard Street Long List (17,576 words)
           
           e: EFF long list (7,776 words)
+          
+          n: Mnemonicode list (1,633 words). Good for speaking out loud.
           
           s: EFF short list (1,296 words)
           
@@ -105,17 +107,16 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 ## Word lists used
 
-<!-- Phraze uses the [Orchard Street Lists](https://github.com/sts10/orchard-street-wordlists). These word lists are licensed separately. See that project's repository for licensing information concerning the word lists. All of the Orchard Street Wordlists lists are uniquely decodable, so they are safe to use without a separator between words. -->
+By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the 
+["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
-By default, Phraze uses the "Medium" list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
-
-However, other lists are available for use. you can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
+However, other lists are available to Phraze users. You can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
 * Orchard Street Medium list: 7,776 words; 12.93 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is selected.
 
 * Orchard Street Long list: 17,576 words; 14.1 bits of entropy per word. Use `l`.
 * [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
-* [Mnemonicode](https://github.com/schollz/mnemonicode) list: 1,633 words; 10.67 bits of entropy per word. Words are easy to pronounce out loud. Use `n`.
+* [Mnemonicode](https://github.com/singpolyma/mnemonicode) list: 1,633 words; 10.67 bits of entropy per word. Words are easy to pronounce out loud. Use `n`.
 * [EFF short list 1](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 1,296 words; 10.3 bits of entropy per word. Use `s`.
 * Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`. 
 * Orchard Street Alpha list: 1,296 words; 10.3 bits of entropy per word. Use `a`.
@@ -150,3 +151,11 @@ Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically 
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [pgen](https://github.com/ctsrc/Pgen). 
 
 Admittedly, I created Phraze in part to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists). However I also wanted a Rust option that was simple and easy to read.
+
+## Word list Licensing
+
+The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
+
+The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
+
+The Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
