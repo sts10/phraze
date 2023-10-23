@@ -76,8 +76,6 @@ Options:
           
           e: EFF long list (7,776 words)
           
-          k: KeePassXC's word list (7,776 words). Similar to the EFF long list.
-          
           s: EFF short list (1,296 words)
           
           q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance on QWERTY keyboard layouts.
@@ -111,14 +109,15 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 By default, Phraze uses the "Medium" list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
-However you can use other word lists with the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
+However, other lists are available for use. you can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
-* Orchard Street Medium list: 7,776 words; 12.93 bits of entropy per word. This is the **DEFAULT** list.
-* [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
-* KeePassXC list: 7,776 words; 12.93 bits of entropy per word. Use `k`.
+* Orchard Street Medium list: 7,776 words; 12.93 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is selected.
+
 * Orchard Street Long list: 17,576 words; 14.1 bits of entropy per word. Use `l`.
-* EFF short list 1: 1,296 words; 10.3 bits of entropy per word. Use `s`.
-* Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`.
+* [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
+* [Mnemonicode](https://github.com/schollz/mnemonicode) list: 1,633 words; 10.67 bits of entropy per word. Words are easy to pronounce out loud. Use `n`.
+* [EFF short list 1](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 1,296 words; 10.3 bits of entropy per word. Use `s`.
+* Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`. 
 * Orchard Street Alpha list: 1,296 words; 10.3 bits of entropy per word. Use `a`.
 
 ### Notes on the Orchard Street QWERTY and Alpha lists

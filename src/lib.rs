@@ -5,8 +5,8 @@ pub enum List {
     Long,
     Medium,
     Eff,
+    Mnemonicode,
     Effshort,
-    Keepassxc,
     Qwerty,
     Alpha,
 }
@@ -69,7 +69,7 @@ fn make_list(list_to_use: List) -> Vec<&'static str> {
         List::Effshort => include_str!("../word-lists/eff-short-1.txt")
             .lines()
             .collect(),
-        List::Keepassxc => include_str!("../word-lists/keepassxc.txt")
+        List::Mnemonicode => include_str!("../word-lists/mnemonicode.txt")
             .lines()
             .collect(),
     }

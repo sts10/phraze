@@ -23,13 +23,13 @@ struct Args {
 
     /// Choose a word list to use. Options:
     ///
-    /// m: Orchard Street Medium List (7,776 words)
+    /// m: Orchard Street Medium List (7,776 words) [DEFAULT]
     ///
     /// l: Orchard Street Long List (17,576 words)
     ///
     /// e: EFF long list (7,776 words)
     ///
-    /// k: KeePassXC's word list (7,776 words). Similar to the EFF long list.
+    /// n: Mnemonicode list (1,633 words). Good for speaking out loud.
     ///
     /// s: EFF short list (1,296 words)
     ///
@@ -70,8 +70,8 @@ fn parse_list(list_choice: Option<char>) -> Result<List, String> {
             'l' => Ok(List::Long),
             'm' => Ok(List::Medium),
             'e' => Ok(List::Eff),
+            'n' => Ok(List::Mnemonicode),
             's' => Ok(List::Effshort),
-            'k' => Ok(List::Keepassxc),
             'q' => Ok(List::Qwerty),
             'a' => Ok(List::Alpha),
             _ => Err(format!("Unable to parse word list choice '{}'", c)),
