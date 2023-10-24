@@ -1,7 +1,7 @@
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
 /// The possible word lists that Phraze can use.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Copy)]
 pub enum List {
     Long,
     Medium,

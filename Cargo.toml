@@ -15,5 +15,5 @@ clap = { version = "4.4.6", features = ["derive"] }
 criterion = { version = "0.4", features = ["html_reports"] }
 
 [[bench]]
-name = "my_benchmark"
+name = "generate_passphrase"
 harness = false

@@ -344,6 +344,10 @@ Unique character prefix   : 7
 
 Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose).
 
+## Benchmarking Phraze
+
+Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarking. You can run the benchmarks for yourself with `cargo bench`.
+
 ## Why another random passphrase generator?
 
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [pgen](https://github.com/ctsrc/Pgen).
