@@ -14,7 +14,7 @@ pub enum List {
 /// Given user's inputs, figure out how many words the generated passphrase will need. If user
 /// specified an exact number_of_words, just return that number_of_words. If user specified a
 /// minimum_entropy, we need to do some math to figure out how many words will clear that minimum.
-pub fn calculate_number_words_needed(
+fn calculate_number_words_needed(
     number_of_words: Option<usize>,
     minimum_entropy: Option<usize>,
     list_length: usize,
@@ -43,8 +43,12 @@ pub fn calculate_number_words_needed(
     }
 }
 
-/// A little helper function
-fn convert_minimum_entropy_to_number_of_words(minimum_entropy: usize, list_length: usize) -> usize {
+/// A little helper function to actually calculate the number of words needed to meet a desired
+/// minimum entropy, given the length of the word list we're using.
+pub fn convert_minimum_entropy_to_number_of_words(
+    minimum_entropy: usize,
+    list_length: usize,
+) -> usize {
     let entropy_per_word_from_this_list = (list_length as f64).log2();
     (minimum_entropy as f64 / entropy_per_word_from_this_list).ceil() as usize
 }

@@ -8,12 +8,12 @@ mod minimum_entropy_tests {
         let list_length = 8192;
         // So a 4-word passphrase gives 52 bits of entropy (13*4)
         // Thus, if user asks for a minimum of 51 bits of entropy
-        let desired_minimum_entropy = Some(51);
+        let desired_minimum_entropy = 51;
 
         // Phrase should calculate that user needs 4 words from
         // this hypothetical list
         assert_eq!(
-            calculate_number_words_needed(None, desired_minimum_entropy, list_length),
+            convert_minimum_entropy_to_number_of_words(desired_minimum_entropy, list_length),
             4
         );
     }
