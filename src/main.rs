@@ -5,11 +5,6 @@ use phraze::*;
 #[derive(Parser, Debug)]
 #[clap(version, name = "phraze")]
 struct Args {
-    /// Set how many words in generated passphrase. If neither number_of_words or
-    /// minimum_entropy is specified, Phraze will default to an 80-bit minimum.
-    #[clap(short = 'w', long = "words", conflicts_with = "minimum_entropy")]
-    number_of_words: Option<usize>,
-
     /// Set minimum amount of entropy for generated passphrase. If neither minimum_entropy or
     /// number_of_words is specified, Phraze will default to an 80-bit minimum.
     #[clap(
@@ -18,6 +13,11 @@ struct Args {
         conflicts_with = "number_of_words"
     )]
     minimum_entropy: Option<usize>,
+
+    /// Set how many words in generated passphrase. If neither number_of_words or
+    /// minimum_entropy is specified, Phraze will default to an 80-bit minimum.
+    #[clap(short = 'w', long = "words", conflicts_with = "minimum_entropy")]
+    number_of_words: Option<usize>,
 
     /// Word separator. Can accept single quotes around the separator.
     ///

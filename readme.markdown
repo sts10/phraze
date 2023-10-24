@@ -3,6 +3,7 @@
 Generate random passphrases. 
 
 ## How to use Phraze, with examples
+
 Run without arguments, Phraze will generate a 7-word passphrase that has 90.4 bits of entropy.
 ```
 $ phraze
@@ -21,7 +22,7 @@ $ phraze -w 5
 routines-factory-threats-exact-destroyer
 ```
 
-By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs "\_n" (random numbers), "\_s" (random symbol), and "\_b" (mix of both).
+By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs "\_n" (random numbers), "\_s" (random symbols), and "\_b" (mix of both).
 ```
 $ phraze -s ' '
 marrow responded beauty syndrome compromise cognitive prompted
@@ -55,11 +56,11 @@ $ phraze | xclip -selection clipboard
 Usage: phraze [OPTIONS]
 
 Options:
-  -w, --words <NUMBER_OF_WORDS>
-          Set how many words in generated passphrase. If neither number_of_words or minimum_entropy is specified, Phraze will default to an 80-bit minimum
-
   -e, --minimum_entropy <MINIMUM_ENTROPY>
           Set minimum amount of entropy for generated passphrase. If neither minimum_entropy or number_of_words is specified, Phraze will default to an 80-bit minimum
+
+  -w, --words <NUMBER_OF_WORDS>
+          Set how many words in generated passphrase. If neither number_of_words or minimum_entropy is specified, Phraze will default to an 80-bit minimum
 
   -s, --sep <SEPARATOR>
           Word separator. Can accept single quotes around the separator.
@@ -70,7 +71,7 @@ Options:
           
           _s: separators will be random symbols
           
-          _b: separators will be both random numbers and symbols
+          _b: separators will be a mix of random numbers and symbols
           
           [default: -]
 
@@ -92,6 +93,8 @@ Options:
           q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance on QWERTY keyboard layouts.
           
           a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an alphabetical keyboard layout
+          
+          [default: m]
 
   -t, --title-case
           Use Title Case for words in generated usernames
