@@ -124,10 +124,9 @@ Uninstall Phraze by running `cargo uninstall phraze`.
 ### Releases on GitHub
 You can also check for [recent releases on GitHub](https://github.com/sts10/phraze/releases).
 
-## Word lists used
+## Available word lists
 
-By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the
-["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
+By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the ["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
 However, other lists are available to Phraze users. You can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
