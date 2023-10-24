@@ -19,20 +19,32 @@ pub fn calculate_number_words_needed(
     minimum_entropy: Option<usize>,
     list_length: usize,
 ) -> usize {
-    // If they specified an exact number of words, give them that.
-    if let Some(number_of_words) = number_of_words {
-        return number_of_words.into();
-    }
-    // Check if they gave a minimum_entropy instead
-    let minimum_entropy = match minimum_entropy {
-        Some(minimum_entropy) => minimum_entropy,
-        None => {
-            // Neither specified
-            // Use a default minimum_entropy
-            80
+    // There are 4 situations to cover here.
+    match (number_of_words, minimum_entropy) {
+        // Thanks to clap's `conflicts_with` option, we should NEVER get both
+        // a number_of_words and minimum_entropy specified.
+        (Some(_number_of_words), Some(_minimum_entropy)) => {
+            panic!("Can't specifiy both number_of_words and minimum_entropy!")
         }
-    };
-    // Do the actual math
+        // If user specifed a number_of_words, we trust them! Use that number
+        // of words
+        (Some(number_of_words), None) => number_of_words,
+        // If user specified a minimum_entropy, do a little math to calculate
+        // the number of words to use
+        (None, Some(minimum_entropy)) => {
+            convert_minimum_entropy_to_number_of_words(minimum_entropy, list_length)
+        }
+        // And if user specified NEITHER number_of_words NOR minimum_entropy,
+        // Default to a minimum_entropy of 80 bits.
+        (None, None) => {
+            let minimum_entropy = 80;
+            convert_minimum_entropy_to_number_of_words(minimum_entropy, list_length)
+        }
+    }
+}
+
+/// A little helper function
+fn convert_minimum_entropy_to_number_of_words(minimum_entropy: usize, list_length: usize) -> usize {
     let entropy_per_word_from_this_list = (list_length as f64).log2();
     (minimum_entropy as f64 / entropy_per_word_from_this_list).ceil() as usize
 }
