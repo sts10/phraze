@@ -9,7 +9,13 @@ $ phraze
 listeners-strikeouts-duchess-shrine-platform-advise-fellowship
 ```
 
-Use `-w` to specify the number of words for Phraze to use.
+Use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. Defaults to 80 bits.
+```
+$ phraze -e 85
+rugby-legally-sweeping-economist-thirty-achieving-sliding
+```
+
+Use `-w` to specify the number of words for Phraze to use. Cannot be used with `-e`/minimum entropy option.
 ```
 $ phraze -w 5
 routines-factory-threats-exact-destroyer
@@ -50,9 +56,10 @@ Usage: phraze [OPTIONS]
 
 Options:
   -w, --words <NUMBER_OF_WORDS>
-          Set how many words in generated passphrase
-          
-          [default: 7]
+          Set how many words in generated passphrase. If neither number_of_words or minimum_entropy is specified, Phraze will default to an 80-bit minimum
+
+  -e, --minimum_entropy <MINIMUM_ENTROPY>
+          Set minimum amount of entropy for generated passphrase. If neither minimum_entropy or number_of_words is specified, Phraze will default to an 80-bit minimum
 
   -s, --sep <SEPARATOR>
           Word separator. Can accept single quotes around the separator.
@@ -68,7 +75,9 @@ Options:
           [default: -]
 
   -l, --list <LIST_CHOICE>
-          Choose a word list to use. Options:
+          Choose a word list to use.
+          
+          Options:
           
           m: Orchard Street Medium List (7,776 words) [DEFAULT]
           
@@ -76,7 +85,7 @@ Options:
           
           e: EFF long list (7,776 words)
           
-          n: Mnemonicode list (1,633 words). Good for speaking out loud.
+          n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking passphrases out loud.
           
           s: EFF short list (1,296 words)
           
