@@ -51,8 +51,8 @@ struct Args {
     ///
     /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an
     /// alphabetical keyboard layout
-    #[clap(short = 'l', long = "list")]
-    list_choice: Option<char>,
+    #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
+    list_choice: List,
 
     /// Use Title Case for words in generated usernames
     #[clap(short = 't', long = "title-case")]
@@ -61,35 +61,32 @@ struct Args {
 
 fn main() {
     let opt = Args::parse();
-    // Attempt to parse chosen word list
-    match parse_list(opt.list_choice) {
-        Ok(list_to_use) => println!(
-            "{}",
-            generate_passphrase(
-                opt.number_of_words,
-                opt.minimum_entropy,
-                &opt.separator,
-                opt.title_case,
-                list_to_use
-            )
-        ),
-        Err(e) => eprintln!("Error: {}", e),
-    }
+
+    println!(
+        "{}",
+        generate_passphrase(
+            opt.number_of_words,
+            opt.minimum_entropy,
+            &opt.separator,
+            opt.title_case,
+            opt.list_choice, // Clap has used parse_list function to turn this into a List enum for us
+        )
+    );
 }
 
-// Convert list_choice character into List enum
-fn parse_list(list_choice: Option<char>) -> Result<List, String> {
-    match list_choice {
-        Some(c) => match c.to_ascii_lowercase() {
-            'l' => Ok(List::Long),
-            'm' => Ok(List::Medium),
-            'e' => Ok(List::Eff),
-            'n' => Ok(List::Mnemonicode),
-            's' => Ok(List::Effshort),
-            'q' => Ok(List::Qwerty),
-            'a' => Ok(List::Alpha),
-            _ => Err(format!("Unable to parse word list choice '{}'", c)),
-        },
-        None => Ok(List::Medium),
+/// Convert list_choice string slice into a List enum. Clap calls this function.
+fn parse_list_choice(list_choice: &str) -> Result<List, String> {
+    match list_choice.to_lowercase().as_ref() {
+        "l" => Ok(List::Long),
+        "m" => Ok(List::Medium),
+        "e" => Ok(List::Eff),
+        "n" => Ok(List::Mnemonicode),
+        "s" => Ok(List::Effshort),
+        "q" => Ok(List::Qwerty),
+        "a" => Ok(List::Alpha),
+        _ => Err(format!(
+            "Inputted list choice '{}' doesn't correspond to an available word list",
+            list_choice
+        )),
     }
 }
