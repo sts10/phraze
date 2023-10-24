@@ -360,12 +360,12 @@ Admittedly, I created Phraze in part to highlight my [Orchard Street Wordlists](
 
 ### Some nice features of Phraze
 
-✅ Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
-✅ Fast: Takes less than 2 milliseconds to generate a passphrase
-✅ Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates are accurate, even if no separator is used
-✅ Word lists are (hopefully) free of profane words
-✅ Numbers, symbols, and capital letters can be used if a service requires that in a password (`-s _b -t` flags)
-✅ Written in [Rust](https://www.rust-lang.org/)
+* ✅ Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
+* ✅ Fast: Takes less than 2 milliseconds to generate a passphrase
+* ✅ Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates are accurate, even if no separator is used
+* ✅ Word lists are (hopefully) free of profane words
+* ✅ Numbers, symbols, and capital letters can be used if a service requires that in a password (`-s _b -t` flags)
+* ✅ Written in [Rust](https://www.rust-lang.org/)
 
 ## Word list Licensing
 

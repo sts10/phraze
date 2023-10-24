@@ -54,7 +54,7 @@ pub fn convert_minimum_entropy_to_number_of_words(
     (minimum_entropy as f64 / entropy_per_word_from_this_list).ceil() as usize
 }
 
-/// Actually generate the passphrase, give a couple neccessary parameters.
+/// Actually generate the passphrase, given a couple neccessary parameters.
 pub fn generate_passphrase(
     number_of_words: Option<usize>,
     minimum_entropy: Option<usize>,
@@ -97,7 +97,7 @@ fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
     }
 }
 
-/// Read in the appropriate word list, give the desired list enum
+/// Read in the appropriate word list, given the enum of the desired list
 fn make_list(list_to_use: List) -> Vec<&'static str> {
     match list_to_use {
         List::Medium => include_str!("../word-lists/orchard-street-medium.txt")
