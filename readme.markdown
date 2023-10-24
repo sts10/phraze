@@ -22,10 +22,12 @@ $ phraze -w 5
 routines-factory-threats-exact-destroyer
 ```
 
-By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs "\_n" (random numbers), "\_s" (random symbols), and "\_b" (mix of both).
+By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
 ```
 $ phraze -s ' '
 marrow responded beauty syndrome compromise cognitive prompted
+$ phrase -s _s
+marble]outward{party_shuttle*killing\softball}spider
 ```
 
 You can make all the word Title Case by using `-t`:
