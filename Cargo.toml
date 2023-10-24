@@ -10,3 +10,10 @@ authors = ["sts10 <sschlinkert@gmail.com>"]
 [dependencies]
 rand = "0.8.5"
 clap = { version = "4.4.6", features = ["derive"] }
+
+[dev-dependencies]
+criterion = { version = "0.4", features = ["html_reports"] }
+
+[[bench]]
+name = "my_benchmark"
+harness = false
