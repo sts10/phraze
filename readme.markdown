@@ -9,7 +9,7 @@ $ phraze
 listeners-strikeouts-duchess-shrine-platform-advise-fellowship
 ```
 
-Use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. Defaults to 80 bits.
+Use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. Phraze **defaults to 80 bits** of entropy.
 ```
 $ phraze -e 85
 rugby-legally-sweeping-economist-thirty-achieving-sliding
@@ -39,10 +39,10 @@ $ phraze -t -s _b
 Segments6Lining{Cubs,Elementary8Exchanges0Fourteen7Slide
 ```
 
-Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list.
+Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list. (Note that we need only 6 words from this list to meet the default minimum entropy of 80 bits.)
 ```
 $ phraze -l l
-prices-leisurely-monument-shame-taller-troupe-compulsory
+bundles-gross-whatsoever-precepts-standardized-household
 ```
 
 Copy generated passphrase to xclip (Linux clipboard) (Passphrase won't be printed to terminal):
@@ -121,7 +121,7 @@ By default, Phraze uses a word list from the [Orchard Street Wordlists](https://
 
 However, other lists are available to Phraze users. You can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
-* Orchard Street Medium list: 7,776 words; 12.93 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is selected.
+* Orchard Street Medium list: 7,776 words; 12.93 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is specified by the user.
 
 * Orchard Street Long list: 17,576 words; 14.1 bits of entropy per word. Use `l`.
 * [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
@@ -344,9 +344,18 @@ Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically 
 
 ## Why another random passphrase generator?
 
-There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [pgen](https://github.com/ctsrc/Pgen). 
+There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [pgen](https://github.com/ctsrc/Pgen).
 
 Admittedly, I created Phraze in part to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists). However I also wanted a Rust option that was simple and easy to read.
+
+### Some nice features of Phraze
+
+✅ Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
+✅ Fast: Takes less than 2 milliseconds to generate a passphrase
+✅ Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates are accurate, even if no separator is used
+✅ Word lists are (hopefully) free of profane words
+✅ Numbers, symbols, and capital letters can be used if a service requires that in a password (`-s _b -t` flags)
+✅ Written in [Rust](https://www.rust-lang.org/)
 
 ## Word list Licensing
 
