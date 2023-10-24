@@ -49,4 +49,6 @@ fn main() {
     );
     words(&f, "WL_ALPHA", "word-lists/orchard-street-alpha.txt", 1296);
     words(&f, "WL_EFF", "word-lists/eff-long.txt", 7776);
+    words(&f, "WL_EFFSHORT", "word-lists/eff-short-1.txt", 1296);
+    words(&f, "WL_MNEMONICODE", "word-lists/mnemonicode.txt", 1633);
 }

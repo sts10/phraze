@@ -1,16 +1,23 @@
 use clap::Parser;
 use phraze::*;
 
-// https://doc.rust-lang.org/cargo/reference/build-scripts.html#case-study-code-generation
-include!(concat!(env!("OUT_DIR"), "/wordlists.rs"));
-
 /// Generate random passphrases
 #[derive(Parser, Debug)]
 #[clap(version, name = "phraze")]
 struct Args {
-    /// Set how many words in generated passphrase
-    #[clap(short = 'w', long = "words", default_value = "7")]
-    number_of_words: u8,
+    /// Set minimum amount of entropy for generated passphrase. If neither minimum_entropy or
+    /// number_of_words is specified, Phraze will default to an 80-bit minimum.
+    #[clap(
+        short = 'e',
+        long = "minimum_entropy",
+        conflicts_with = "number_of_words"
+    )]
+    minimum_entropy: Option<usize>,
+
+    /// Set how many words in generated passphrase. If neither number_of_words or
+    /// minimum_entropy is specified, Phraze will default to an 80-bit minimum.
+    #[clap(short = 'w', long = "words", conflicts_with = "minimum_entropy")]
+    number_of_words: Option<usize>,
 
     /// Word separator. Can accept single quotes around the separator.
     ///
@@ -20,24 +27,32 @@ struct Args {
     ///
     /// _s: separators will be random symbols
     ///
-    /// _b: separators will be both random numbers and symbols
+    /// _b: separators will be a mix of random numbers and symbols
     #[clap(short = 's', long = "sep", default_value = "-")]
     separator: String,
 
-    /// Choose a word list to use. Options:
+    /// Choose a word list to use.
     ///
-    /// m: Orchard Street Medium List (7,776 words)
+    /// Options:
+    ///
+    /// m: Orchard Street Medium List (7,776 words) [DEFAULT]
     ///
     /// l: Orchard Street Long List (17,576 words)
     ///
     /// e: EFF long list (7,776 words)
     ///
+    /// n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
+    /// passphrases out loud.
+    ///
+    /// s: EFF short list (1,296 words)
+    ///
     /// q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel
     /// distance on QWERTY keyboard layouts.
     ///
-    /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel
-    #[clap(short = 'l', long = "list")]
-    list_choice: Option<char>,
+    /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an
+    /// alphabetical keyboard layout
+    #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
+    list_choice: List,
 
     /// Use Title Case for words in generated usernames
     #[clap(short = 't', long = "title-case")]
@@ -46,32 +61,32 @@ struct Args {
 
 fn main() {
     let opt = Args::parse();
-    let list_to_use = parse_list(opt.list_choice);
+
     println!(
         "{}",
         generate_passphrase(
             opt.number_of_words,
+            opt.minimum_entropy,
             &opt.separator,
             opt.title_case,
-            list_to_use
+            opt.list_choice,
         )
     );
 }
 
-/// Parse which word list to use. Thanks to build script file (build.rs),
-/// we have access to the word lists as environmental variables.
-/// See: https://doc.rust-lang.org/cargo/reference/build-scripts.html
-fn parse_list(list_choice: Option<char>) -> &'static [&'static str] {
-    match list_choice {
-        Some(c) => match c.to_ascii_lowercase() {
-            'l' => WL_LONG,
-            'm' => WL_MEDIUM,
-            'q' => WL_QWERTY,
-            'a' => WL_ALPHA,
-            'e' => WL_EFF,
-            _ => panic!("Unknown list"),
-        },
-        // If none given, default to the Medium list
-        None => WL_MEDIUM,
+/// Convert list_choice string slice into a List enum. Clap calls this function.
+fn parse_list_choice(list_choice: &str) -> Result<List, String> {
+    match list_choice.to_lowercase().as_ref() {
+        "l" => Ok(List::Long),
+        "m" => Ok(List::Medium),
+        "e" => Ok(List::Eff),
+        "n" => Ok(List::Mnemonicode),
+        "s" => Ok(List::Effshort),
+        "q" => Ok(List::Qwerty),
+        "a" => Ok(List::Alpha),
+        _ => Err(format!(
+            "Inputted list choice '{}' doesn't correspond to an available word list",
+            list_choice
+        )),
     }
 }
