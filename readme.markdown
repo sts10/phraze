@@ -2,38 +2,38 @@
 
 Generate random passphrases. 
 
-## Examples
-
+## How to use Phraze, with examples
+Run without arguments, Phraze will generate a 7-word passphrase that has 90.4 bits of entropy.
 ```
 $ phraze
 listeners-strikeouts-duchess-shrine-platform-advise-fellowship
 ```
 
-Use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. Phraze **defaults to 80 bits** of entropy.
+If you want to change the strength of the passphrase, I recommend that you use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. If not specified, Phraze will give 80 bits or more of entropy.
 ```
 $ phraze -e 85
 rugby-legally-sweeping-economist-thirty-achieving-sliding
 ```
 
-Use `-w` to specify the number of words for Phraze to use. Cannot be used with `-e`/minimum entropy option.
+If you want to specify the number words INSTEAD of minimum entropy, you can use `-w` to specify the number of words for Phraze to use. Cannot be used with `-e`/minimum entropy option.
 ```
 $ phraze -w 5
 routines-factory-threats-exact-destroyer
 ```
 
-Specify a separator between words with `-s`:
+By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs "\_n" (random numbers), "\_s" (random symbol), and "\_b" (mix of both).
 ```
 $ phraze -s ' '
 marrow responded beauty syndrome compromise cognitive prompted
 ```
 
-Use `-t` to make all the words in passphrase Title Case
+You can make all the word Title Case by using `-t`:
 ```
 $ phraze -s '' -t
 ReinforcedMetalProphecyHeavyArtilleryEnoughStaying
 ```
 
-If you need to have a symbol, a number and an uppercase character in your passphrase, you can try
+If you need to have a symbol, a number and an uppercase character in your passphrase, you can try:
 ```
 $ phraze -t -s _b
 Segments6Lining{Cubs,Elementary8Exchanges0Fourteen7Slide
@@ -45,7 +45,7 @@ $ phraze -l l
 bundles-gross-whatsoever-precepts-standardized-household
 ```
 
-Copy generated passphrase to xclip (Linux clipboard) (Passphrase won't be printed to terminal):
+You can pipe Phraze's outputted passphrase to other tools For example, you can copy generated passphrase to xclip (Linux clipboard):
 ```
 $ phraze | xclip -selection clipboard
 ```
