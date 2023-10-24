@@ -1,5 +1,7 @@
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
+// Pull in the wordlists as constants for us to use later.
+// This is thanks to the build.rs build script. Learn more:
 // https://doc.rust-lang.org/cargo/reference/build-scripts.html#case-study-code-generation
 include!(concat!(env!("OUT_DIR"), "/wordlists.rs"));
 
@@ -58,7 +60,7 @@ pub fn convert_minimum_entropy_to_number_of_words(
 }
 
 /// Take enum of list_choice and find the constant that is the corresponding word list (with the
-/// actual words)
+/// actual words). These are defined in the build script (build.rs)
 pub fn fetch_list(list_choice: List) -> &'static [&'static str] {
     match list_choice {
         List::Long => WL_LONG,
@@ -79,31 +81,36 @@ pub fn generate_passphrase(
     title_case: bool,
     list_choice: List,
 ) -> String {
+    // Go get the actual words (see fetch_list function comment for more info)
     let list = fetch_list(list_choice);
 
-    let number_of_words =
+    // Since user can define a minimum entropy, we might have to do a little math to
+    // figure out how many words we need to include in this passphrase.
+    let number_of_words_to_put_in_passphrase =
         calculate_number_words_needed(number_of_words, minimum_entropy, list.len());
 
     let mut rng = thread_rng();
-    // Create a blank String for our passphrase
+    // Create a blank String to put words into to create our passphrase
     let mut passphrase = String::new();
-    for i in 0..number_of_words {
+    for i in 0..number_of_words_to_put_in_passphrase {
         // Check if we're doing title_case
         let random_word = if title_case {
-            make_title_case(&get_random_element(&mut rng, &list))
+            make_title_case(&get_random_element(&mut rng, list))
         } else {
-            get_random_element(&mut rng, &list)
+            get_random_element(&mut rng, list)
         };
         // Add this word to our passphrase
         passphrase += &random_word;
         // Add a separator
-        if i != number_of_words - 1 {
+        if i != number_of_words_to_put_in_passphrase - 1 {
             passphrase += &make_separator(&mut rng, separator);
         }
     }
     passphrase.to_string()
 }
 
+/// Parse user's separator choice. The only reason we need this as its own function is to check if
+/// they chose a "special" separator
 fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
     match sep {
         "_n" => get_random_number(rng),
@@ -113,6 +120,7 @@ fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
     }
 }
 
+/// Get either a random number or symbol. 50/50 chance!
 fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
     let x: f64 = rng.gen();
     if x > 0.5 {
@@ -122,12 +130,14 @@ fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
     }
 }
 
+/// Pick a random symbol for a separator between words.
 fn get_random_symbol(rng: &mut impl Rng) -> String {
     const CHARSET: &[u8] = b"!@#$%&*(){}[]\\:;'<>?,./_-+=";
     let idx = rng.gen_range(0..CHARSET.len());
     (CHARSET[idx] as char).to_string()
 }
 
+/// Pick a random digit (0 to 9) for a separator between words.
 fn get_random_number(rng: &mut impl Rng) -> String {
     rng.gen_range(0..=9).to_string()
 }
