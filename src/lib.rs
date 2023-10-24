@@ -98,7 +98,7 @@ fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
 }
 
 /// Read in the appropriate word list, given the enum of the desired list
-fn make_list(list_to_use: List) -> Vec<&'static str> {
+pub fn make_list(list_to_use: List) -> Vec<&'static str> {
     match list_to_use {
         List::Medium => include_str!("../word-lists/orchard-street-medium.txt")
             .lines()
