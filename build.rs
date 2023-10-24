@@ -7,13 +7,9 @@ use std::path::Path;
 
 fn words(mut f_dest: &File, const_name: &str, fname_src: &str, list_size: usize) {
     // Declare a new Rust constant
-    f_dest.write_all(b"const ").unwrap();
-    f_dest.write_all(const_name.as_bytes()).unwrap();
     // make it an array of slices of the exact size of this word list
     // to maximize effiency.
-    f_dest.write_all(b": &[&str; ").unwrap();
-    f_dest.write_all(list_size.to_string().as_bytes()).unwrap();
-    f_dest.write_all(b"] = &[").unwrap();
+    write!(f_dest, "const {const_name}: &[&str; {list_size}] = &[").unwrap();
 
     // Read words in and add them to this array
     let f_src = BufReader::new(File::open(fname_src).unwrap());
