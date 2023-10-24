@@ -27,7 +27,7 @@ struct Args {
     ///
     /// _s: separators will be random symbols
     ///
-    /// _b: separators will be both random numbers and symbols
+    /// _b: separators will be a mix of random numbers and symbols
     #[clap(short = 's', long = "sep", default_value = "-")]
     separator: String,
 
