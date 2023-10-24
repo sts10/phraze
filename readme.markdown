@@ -1,6 +1,6 @@
 # Phraze
 
-Generate random passphrases. 
+Generate random passphrases.
 
 ## How to use Phraze, with examples
 
@@ -59,43 +59,48 @@ Usage: phraze [OPTIONS]
 
 Options:
   -e, --minimum_entropy <MINIMUM_ENTROPY>
-          Set minimum amount of entropy for generated passphrase. If neither minimum_entropy or number_of_words is specified, Phraze will default to an 80-bit minimum
+          Set minimum amount of entropy for generated passphrase. If neither minimum_entropy
+          or number_of_words is specified, Phraze will default to an 80-bit minimum
 
   -w, --words <NUMBER_OF_WORDS>
-          Set how many words in generated passphrase. If neither number_of_words or minimum_entropy is specified, Phraze will default to an 80-bit minimum
+          Set how many words in generated passphrase. If neither number_of_words or
+          minimum_entropy is specified, Phraze will default to an 80-bit minimum
 
   -s, --sep <SEPARATOR>
           Word separator. Can accept single quotes around the separator.
-          
+
           There are special values that will trigger generated separators:
-          
+
           _n: separators will be random numbers
-          
+
           _s: separators will be random symbols
-          
+
           _b: separators will be a mix of random numbers and symbols
-          
+
           [default: -]
 
   -l, --list <LIST_CHOICE>
           Choose a word list to use.
-          
+
           Options:
-          
+
           m: Orchard Street Medium List (7,776 words) [DEFAULT]
-          
+
           l: Orchard Street Long List (17,576 words)
-          
+
           e: EFF long list (7,776 words)
-          
-          n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking passphrases out loud.
-          
+
+          n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
+             passphrases out loud.
+
           s: EFF short list (1,296 words)
-          
-          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance on QWERTY keyboard layouts.
-          
-          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an alphabetical keyboard layout
-          
+
+          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance
+             on QWERTY keyboard layouts.
+
+          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on
+             an alphabetical keyboard layout
+
           [default: m]
 
   -t, --title-case
@@ -121,7 +126,7 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 ## Word lists used
 
-By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the 
+By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the
 ["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
 
 However, other lists are available to Phraze users. You can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
@@ -132,7 +137,7 @@ However, other lists are available to Phraze users. You can select a different w
 * [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
 * [Mnemonicode](https://github.com/singpolyma/mnemonicode) list: 1,633 words; 10.67 bits of entropy per word. Words are easy to pronounce out loud. Use `n`.
 * [EFF short list 1](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 1,296 words; 10.3 bits of entropy per word. Use `s`.
-* Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`. 
+* Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`.
 * Orchard Street Alpha list: 1,296 words; 10.3 bits of entropy per word. Use `a`.
 
 ### Notes on the Orchard Street QWERTY and Alpha lists
@@ -264,7 +269,7 @@ Longest shared prefix     : 6
 Unique character prefix   : 7
 ```
 
-### EFF short list 
+### EFF short list
 ```txt
 Lines found               : 1296
 Free of exact duplicates  : true
