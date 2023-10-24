@@ -10,3 +10,10 @@ authors = ["sts10 <sschlinkert@gmail.com>"]
 [dependencies]
 rand = "0.8.5"
 clap = { version = "4.4.6", features = ["derive"] }
+
+[dev-dependencies]
+divan = "0.1.0"
+
+[[bench]]
+name = "generate_passphrase"
+harness = false
