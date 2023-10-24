@@ -11,6 +11,9 @@ pub enum List {
     Alpha,
 }
 
+/// Given user's inputs, figure out how many words the generated passphrase will need. If user
+/// specified an exact number_of_words, just return that number_of_words. If user specified a
+/// minimum_entropy, we need to do some math to figure out how many words will clear that minimum.
 fn calculate_number_words_needed(
     number_of_words: Option<usize>,
     minimum_entropy: Option<usize>,
