@@ -409,7 +409,7 @@ checksum = "e2355d85b9a3786f481747ced0e0ff2ba35213a1f9bd406ed906554d7af805a1"
 
 [[package]]
 name = "phraze"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "clap 4.4.6",
  "criterion",
