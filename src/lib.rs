@@ -38,8 +38,8 @@ fn calculate_number_words_needed(
         // And if user specified NEITHER number_of_words NOR minimum_entropy,
         // Default to a minimum_entropy of 80 bits.
         (None, None) => {
-            let minimum_entropy = 80;
-            convert_minimum_entropy_to_number_of_words(minimum_entropy, list_length)
+            const MINIMUM_ENTROPY: usize = 80;
+            convert_minimum_entropy_to_number_of_words(MINIMUM_ENTROPY, list_length)
         }
     }
 }
