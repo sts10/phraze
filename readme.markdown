@@ -176,7 +176,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : false
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (add)
@@ -202,7 +201,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : false
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (add)
@@ -228,7 +226,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : true
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (aim)
@@ -254,7 +251,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : true
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (ego)
@@ -280,7 +276,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : true
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (aim)
@@ -306,7 +301,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : false
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (add)
@@ -332,7 +326,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : false
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (add)
