@@ -2,7 +2,7 @@
 
 Generate random passphrases.
 
-## How to use Phraze, with examples
+## How to use
 
 Run without arguments, Phraze will generate a 7-word passphrase that has 91 bits of entropy.
 ```
@@ -46,7 +46,7 @@ $ phraze -t -s _b
 Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ```
 
-### Changing the word list that Phraze use
+### Changing the word list that Phraze uses
 Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list. (Note that we need only 6 words from this list to meet the default minimum entropy of 80 bits.)
 ```
 $ phraze -l l
