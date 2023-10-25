@@ -23,7 +23,7 @@ By default, Phraze will generate a passphrase with at least 80 bits of entropy (
 
 You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, a few different ways.
 
-**1. Enable Strong mode.** Use `--strong` to increase minimum entropy from 80 to 105 bits.
+**1. Enable Strong mode.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum).
 
 **2. Set different minimum entropy.** Use `--minimum-entropy` to specify your own minimum amount of entropy, in bits, that your passphrase must have.
 ```bash
