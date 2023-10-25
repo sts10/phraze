@@ -9,7 +9,7 @@ struct Args {
     /// number_of_words is specified, Phraze will default to an 80-bit minimum.
     #[clap(
         short = 'e',
-        long = "minimum_entropy",
+        long = "minimum-entropy",
         conflicts_with = "number_of_words"
     )]
     minimum_entropy: Option<usize>,
@@ -35,7 +35,7 @@ struct Args {
     ///
     /// Options:
     ///
-    /// m: Orchard Street Medium List (7,776 words) [DEFAULT]
+    /// m: Orchard Street Medium List (8,192 words) [DEFAULT]
     ///
     /// l: Orchard Street Long List (17,576 words)
     ///
