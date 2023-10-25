@@ -10,12 +10,14 @@ $ phraze
 curse-argues-valves-unfair-punk-ritual-inlet
 ```
 
+### Changing the strength of the passphrase
+By default, Phraze will generate a passphrase with at least 80 bits of entropy. But you can change that.
+
 If you want to change the strength of the passphrase, I recommend that you use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. 
 ```
 $ phraze -e 105
 filmmakers-sands-accounts-spokesman-things-police-victims-winters-griffin
 ```
-(If a minimum entropy amount is not specified, Phraze will generate a passphrase with _at least_ 80 bits of entropy.)
 
 If you want to specify the number words INSTEAD of minimum entropy, you can use `-w` to specify the number of words for Phraze to use. Cannot be used with `-e`/minimum entropy option.
 ```
@@ -23,6 +25,7 @@ $ phraze -w 5
 determines-generated-frozen-excluded-sleeping
 ```
 
+### Changing the separator between words
 By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
 ```
 $ phraze -s ' '
@@ -43,12 +46,14 @@ $ phraze -t -s _b
 Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ```
 
+### Changing the word list that Phraze use
 Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list. (Note that we need only 6 words from this list to meet the default minimum entropy of 80 bits.)
 ```
 $ phraze -l l
 bundles-gross-whatsoever-precepts-standardized-household
 ```
 
+### Copying passphrase to clipboard
 You can pipe Phraze's outputted passphrase to other tools For example, you can copy generated passphrase to xclip (Linux clipboard):
 ```
 $ phraze | xclip -selection clipboard
