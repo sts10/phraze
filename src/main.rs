@@ -9,7 +9,7 @@ struct Args {
     /// number_of_words is specified, Phraze will default to an 80-bit minimum.
     #[clap(
         short = 'e',
-        long = "minimum_entropy",
+        long = "minimum-entropy",
         conflicts_with = "number_of_words"
     )]
     minimum_entropy: Option<usize>,
