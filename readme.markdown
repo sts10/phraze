@@ -31,7 +31,7 @@ filmmakers-sands-accounts-spokesman-things-police-victims-winters-griffin
 
 **2. Set number words.** The cruder method. Use `--words` to specify the number of words for Phraze to use. Cannot be used with `--minimum-entropy` option.
 ```bash
-$ phraze ---words 5 # passphrase will have 5 words, regardless of minimum entropy settings
+$ phraze ---words 5 # passphrase will have 5 words, overriding the default minimum entropy setting of 80 bits
 determines-generated-frozen-excluded-sleeping
 ```
 
