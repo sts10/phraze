@@ -11,7 +11,7 @@ pub enum List {
     Long,
     Medium,
     Eff,
-    Mnemonicode,
+    Phonetic,
     Effshort,
     Qwerty,
     Alpha,
@@ -69,7 +69,7 @@ pub fn fetch_list(list_choice: List) -> &'static [&'static str] {
         List::Alpha => WL_ALPHA,
         List::Eff => WL_EFF,
         List::Effshort => WL_EFFSHORT,
-        List::Mnemonicode => WL_MNEMONICODE,
+        List::Phonetic => WL_PHONETIC,
     }
 }
 

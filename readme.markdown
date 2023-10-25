@@ -113,7 +113,7 @@ Options:
 
           e: EFF long list (7,776 words)
 
-          n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
+          p: phonetic list (1,633 words). Good if you know you're going to be speaking
              passphrases out loud.
 
           s: EFF short list (1,296 words)
@@ -157,7 +157,7 @@ However, other lists are available to Phraze users. You can select a different w
 
 * Orchard Street Long list: 17,576 words; 14.1 bits of entropy per word. Use `l`.
 * [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
-* [Mnemonicode](https://github.com/singpolyma/mnemonicode) list: 1,633 words; 10.67 bits of entropy per word. Words are easy to pronounce out loud. Use `n`.
+* Phonetic list: 1,633 words; 10.67 bits of entropy per word. Based closely on [Mnemonicode](https://github.com/singpolyma/mnemonicode) list. Words are easy to pronounce out loud. Use `n`.
 * [EFF short list 1](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 1,296 words; 10.3 bits of entropy per word. Use `s`.
 * Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`.
 * Orchard Street Alpha list: 1,296 words; 10.3 bits of entropy per word. Use `a`.
@@ -262,7 +262,7 @@ Longest shared prefix     : 8
 Unique character prefix   : 9
 ```
 
-### Mnemonicode list
+### Phonetic list
 ```txt
 Lines found               : 1633
 Free of exact duplicates  : true
@@ -380,7 +380,7 @@ Admittedly, I created Phraze in part to highlight my [Orchard Street Wordlists](
 
 ## Word list Licensing
 
-The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
+The Mnemonicode word list, which my phonetic list is based off of, is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
 
 The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
 

@@ -21,7 +21,7 @@ mod minimum_entropy_tests {
         let list = fetch_list(List::Effshort);
         assert!(list.len() == 1296);
 
-        let list = fetch_list(List::Mnemonicode);
+        let list = fetch_list(List::Phonetic);
         assert!(list.len() == 1633);
     }
 
@@ -52,7 +52,7 @@ mod minimum_entropy_tests {
         assert!(!list.contains(&"\n"));
         assert!(!list.contains(&""));
 
-        let list = fetch_list(List::Mnemonicode);
+        let list = fetch_list(List::Phonetic);
         assert!(!list.contains(&"\n"));
         assert!(!list.contains(&""));
     }

@@ -41,7 +41,7 @@ struct Args {
     ///
     /// e: EFF long list (7,776 words)
     ///
-    /// n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
+    /// p: Phonetic list (1,633 words). Good if you know you're going to be speaking
     /// passphrases out loud.
     ///
     /// s: EFF short list (1,296 words)
@@ -80,7 +80,7 @@ fn parse_list_choice(list_choice: &str) -> Result<List, String> {
         "l" => Ok(List::Long),
         "m" => Ok(List::Medium),
         "e" => Ok(List::Eff),
-        "n" => Ok(List::Mnemonicode),
+        "p" => Ok(List::Phonetic),
         "s" => Ok(List::Effshort),
         "q" => Ok(List::Qwerty),
         "a" => Ok(List::Alpha),
