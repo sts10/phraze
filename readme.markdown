@@ -59,6 +59,15 @@ You can pipe Phraze's outputted passphrase to other tools For example, you can c
 $ phraze | xclip -selection clipboard
 ```
 
+## Features
+
+* 🖩 Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
+* 🎯 Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates are accurate, even if no separator is used
+* 🚀 Fast: Takes less than 2 milliseconds to generate a passphrase
+* 🛁 Word lists are (hopefully) free of profane words
+* 🔣 Numbers, symbols, and capital letters can be used if a service requires that in a password (`-s _b -t` flags)
+* 🛠️  Written in [Rust](https://www.rust-lang.org/)
+
 ## Usage
 ```text
 Usage: phraze [OPTIONS]
@@ -360,15 +369,6 @@ Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarki
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [Pgen](https://github.com/ctsrc/Pgen).
 
 Admittedly, I created Phraze in part to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists). However I also wanted a Rust option that was simple and easy to read.
-
-### Some nice features of Phraze
-
-* ✅ Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
-* ✅ Fast: Takes less than 2 milliseconds to generate a passphrase
-* ✅ Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates are accurate, even if no separator is used
-* ✅ Word lists are (hopefully) free of profane words
-* ✅ Numbers, symbols, and capital letters can be used if a service requires that in a password (`-s _b -t` flags)
-* ✅ Written in [Rust](https://www.rust-lang.org/)
 
 ## Word list Licensing
 
