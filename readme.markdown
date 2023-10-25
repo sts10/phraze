@@ -21,21 +21,27 @@ curse-argues-valves-unfair-punk-ritual-inlet
 ### Changing the strength of the passphrase
 By default, Phraze will generate a passphrase with at least 80 bits of entropy (minimum entropy). Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
 
-You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, a few different ways.
+You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
 
-**1. Enable Strong mode.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum).
+**1. Enter a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
+```bash
+$ phraze -SS
+determined-pervasive-entirety-incumbent-trophy-emergence-spatial-wondering-destroyed-gamma
+```
 
-**2. Set different minimum entropy.** Use `--minimum-entropy` to specify your own minimum amount of entropy, in bits, that your passphrase must have.
+**2. Set a specific minimum entropy.** Use `--minimum-entropy` to specify your own minimum amount of entropy, in bits, that your passphrase must have.
 ```bash
 $ phraze --minimum-entropy 100
 toured-warrior-skeleton-shear-hosts-injuries-relied-sadness
 ```
 
-**3. Set number words.** The cruder method. Use `--words` to specify the number of words for Phraze to use. Cannot be used with `--minimum-entropy` option.
+**3. Set number words.** Use `--words` to specify the exact number of words for Phraze to use.
 ```bash
 $ phraze ---words 5 # passphrase will have 5 words, overriding the default minimum entropy setting of 80 bits
 determines-generated-frozen-excluded-sleeping
 ```
+
+Note that you can only use one of these methods at a time.
 
 ### Changing the separator between words
 By default, Phraze separates words with a hyphen ("-"). You can change that with the `--sep` (or `-s`) option.
