@@ -19,34 +19,38 @@ curse-argues-valves-unfair-punk-ritual-inlet
 ## How to use
 
 ### Changing the strength of the passphrase
-By default, Phraze will generate a passphrase with at least 80 bits of entropy. But you can change that a few different ways.
+By default, Phraze will generate a passphrase with at least 80 bits of entropy (minimum entropy). Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
 
-**1. Enable Strong mode.** Use `--strong` to increase minimum entropy from 80 up to 105 bits.
+You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, a few different ways.
 
-**2. Set different minimum entropy.** Use `--minimum-entropy` to specify the minimum amount of entropy, in bits, that your passphrase must have.
+**1. Enable Strong mode.** Use `--strong` to increase minimum entropy from 80 to 105 bits.
+
+**2. Set different minimum entropy.** Use `--minimum-entropy` to specify your own minimum amount of entropy, in bits, that your passphrase must have.
 ```bash
-$ phraze --minimum-entropy 105
-filmmakers-sands-accounts-spokesman-things-police-victims-winters-griffin
+$ phraze --minimum-entropy 100
+toured-warrior-skeleton-shear-hosts-injuries-relied-sadness
 ```
 
-**3. Set number words.** Use `--words` to specify the number of words for Phraze to use. Cannot be used with `--minimum-entropy` option.
+**3. Set number words.** The cruder method. Use `--words` to specify the number of words for Phraze to use. Cannot be used with `--minimum-entropy` option.
 ```bash
 $ phraze --words 5
 determines-generated-frozen-excluded-sleeping
 ```
 
 ### Changing the separator between words
-By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
+By default, Phraze separates words with a hyphen ("-"). You can change that with the `--sep` (or `-s`) option. 
+
+`--sep` accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
 ```bash
-$ phraze -s ' '
+$ phraze --sep ' '
 optimism daughters figures grim processors became decreasing
-$ phrase -s _s
-fax/household>validation_replied-upgrade]remind?reasoning
+$ phrase --sep _s
+fax/household>validation_replied-upgrade,remind?reasoning
 ```
 
 You can make all the word Title Case by using `-t`:
 ```bash
-$ phraze -s '' -t
+$ phraze --sep '' --title-case
 GoverningDominateAnswersReceptorsAllocatedClientModify
 ```
 
@@ -57,9 +61,11 @@ Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ```
 
 ### Changing the word list that Phraze uses
-Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list. (Note that we need only 6 words from this list to meet the default minimum entropy of 80 bits.)
+By default, Phraze uses a 8192-word list called the Orchard Street Medium List.
+
+You can change this with `--list`/`-l` to specify which word list to use. For example, `--list l` uses the Orchard Street Long list. (Note that we need only 6 words from this list to meet the default minimum entropy of 80 bits.)
 ```bash
-$ phraze -l l
+$ phraze --list l
 bundles-gross-whatsoever-precepts-standardized-household
 ```
 
@@ -74,7 +80,7 @@ $ phraze | xclip -selection clipboard
 Usage: phraze [OPTIONS]
 
 Options:
-  -e, --minimum_entropy <MINIMUM_ENTROPY>
+  -e, --minimum-entropy <MINIMUM_ENTROPY>
           Set minimum amount of entropy for generated passphrase. If neither minimum_entropy
           or number_of_words is specified, Phraze will default to an 80-bit minimum
 
