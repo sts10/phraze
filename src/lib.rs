@@ -18,34 +18,38 @@ pub enum List {
 }
 
 /// Given user's inputs, figure out how many words the generated passphrase will need. If user
-/// specified an exact number_of_words, just return that number_of_words. If user specified a
-/// minimum_entropy, we need to do some math to figure out how many words will clear that minimum.
-fn calculate_number_words_needed(
+/// specified an exact number_of_words, just return that number_of_words. If user is using a
+/// strength_count, do the necessary math. If user specified a minimum_entropy, we need to do
+/// some math to figure out how many words will clear that minimum.
+pub fn calculate_number_words_needed(
     number_of_words: Option<usize>,
     minimum_entropy: Option<usize>,
+    strength_count: u8,
     list_length: usize,
 ) -> usize {
-    // There are 4 situations to cover here.
-    match (number_of_words, minimum_entropy) {
-        // Thanks to clap's `conflicts_with` option, we should NEVER get both
-        // a number_of_words and minimum_entropy specified.
-        (Some(_number_of_words), Some(_minimum_entropy)) => {
-            panic!("Can't specifiy both number_of_words and minimum_entropy!")
-        }
-        // If user specifed a number_of_words, we trust them! Use that number
-        // of words
-        (Some(number_of_words), None) => number_of_words,
-        // If user specified a minimum_entropy, do a little math to calculate
-        // the number of words to use
-        (None, Some(minimum_entropy)) => {
+    // If a number of words was requested exactly by the user, use that
+    if let Some(number_of_words) = number_of_words {
+        return number_of_words;
+    }
+
+    const DEFAULT_MINIMUM_ENTROPY: usize = 80;
+    // If they used the strength count option, do some math to calculate what minimum_entropy
+    // we should give them, then convert that into number of bits of entropy.
+    if strength_count > 0 {
+        // Use number of Ss to calculate minimum_entropy in bits
+        let minimum_entropy = DEFAULT_MINIMUM_ENTROPY + (strength_count as usize) * 20;
+        // convert this into number of words, using list length
+        return convert_minimum_entropy_to_number_of_words(minimum_entropy, list_length);
+    }
+    // If we made it here, that means either the user requested a specific minimum_entropy in bits,
+    // or they entered no relevant settings. Let's handle both cases with a match statement.
+    match minimum_entropy {
+        // If a minimum_entropy is set by user, use that.
+        Some(minimum_entropy) => {
             convert_minimum_entropy_to_number_of_words(minimum_entropy, list_length)
         }
-        // And if user specified NEITHER number_of_words NOR minimum_entropy,
-        // Default to a minimum_entropy of 80 bits.
-        (None, None) => {
-            const MINIMUM_ENTROPY: usize = 80;
-            convert_minimum_entropy_to_number_of_words(MINIMUM_ENTROPY, list_length)
-        }
+        // If none of these 3 settings were given, use the DEFAULT_MINIMUM_ENTROPY
+        None => convert_minimum_entropy_to_number_of_words(DEFAULT_MINIMUM_ENTROPY, list_length),
     }
 }
 
@@ -77,6 +81,7 @@ pub fn fetch_list(list_choice: List) -> &'static [&'static str] {
 pub fn generate_passphrase(
     number_of_words: Option<usize>,
     minimum_entropy: Option<usize>,
+    strength_count: u8,
     separator: &str,
     title_case: bool,
     list_choice: List,
@@ -87,7 +92,7 @@ pub fn generate_passphrase(
     // Since user can define a minimum entropy, we might have to do a little math to
     // figure out how many words we need to include in this passphrase.
     let number_of_words_to_put_in_passphrase =
-        calculate_number_words_needed(number_of_words, minimum_entropy, list.len());
+        calculate_number_words_needed(number_of_words, minimum_entropy, strength_count, list.len());
 
     let mut rng = thread_rng();
     // Create a blank String to put words into to create our passphrase

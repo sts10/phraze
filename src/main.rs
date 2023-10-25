@@ -7,21 +7,27 @@ use phraze::*;
 struct Args {
     /// Strengthen your passphrase the easy way: Each flag increases minimum entropy by 20 bits (above the default of
     /// 80 bits).
-    #[clap(short = 'S', long = "strong", conflicts_with = "number_of_words", action = clap::ArgAction::Count)]
-    strong_setting: u8,
+    #[clap(short = 'S', long = "strength", conflicts_with = "number_of_words", conflicts_with = "minimum_entropy", action = clap::ArgAction::Count)]
+    strength_count: u8,
 
     /// Set minimum amount of entropy in bits for generated passphrase. If neither minimum_entropy or
     /// number_of_words is specified, Phraze will default to an 80-bit minimum.
     #[clap(
         short = 'e',
         long = "minimum-entropy",
-        conflicts_with = "number_of_words"
+        conflicts_with = "number_of_words",
+        conflicts_with = "strength_count"
     )]
     minimum_entropy: Option<usize>,
 
     /// Set exactly how many words to use in generated passphrase. If neither number_of_words or
     /// minimum_entropy is specified, Phraze will default to an 80-bit minimum.
-    #[clap(short = 'w', long = "words", conflicts_with = "minimum_entropy")]
+    #[clap(
+        short = 'w',
+        long = "words",
+        conflicts_with = "minimum_entropy",
+        conflicts_with = "strength_count"
+    )]
     number_of_words: Option<usize>,
 
     /// Word separator. Can accept single quotes around the separator.
@@ -67,56 +73,18 @@ struct Args {
 fn main() {
     let opt = Args::parse();
 
-    // If user is using 'strong' setting, we need to parse some settings to determine
-    // what minimum_entropy and number_of_words_desired to pass to the
-    // generate_passphrase function.
-    let (minimum_entropy, number_of_words_desired) = if opt.strong_setting > 0 {
-        (
-            determine_minimum_entropy_conservatively(opt.strong_setting, opt.minimum_entropy),
-            None,
-        )
-    } else {
-        (opt.minimum_entropy, opt.number_of_words)
-    };
-
     // Generate and print passphrase
     println!(
         "{}",
         generate_passphrase(
-            number_of_words_desired,
-            minimum_entropy,
+            opt.number_of_words,
+            opt.minimum_entropy,
+            opt.strength_count,
             &opt.separator,
             opt.title_case,
             opt.list_choice,
         )
     );
-}
-
-/// If user is using Ss to request a stronger passphrase, we need to do a little math to convert
-/// that into a number of bits.
-/// If user inputs a number of Ss _and_ a specific minimum entropy in bits, using `-e`, we'll take
-/// which ever is HIGHER.
-fn determine_minimum_entropy_conservatively(
-    number_of_s_s: u8,
-    requested_minimum_entropy: Option<usize>,
-) -> Option<usize> {
-    // Convert number of Ss into an actual minimum entropy in bits
-    // We start with 80 bits and add 20 bits for every S the user inputs.
-    // Here's how that looks in a formula:
-    let minimum_entropy_from_strength_s_s: usize = (80 + number_of_s_s * 20).into();
-
-    match requested_minimum_entropy {
-        Some(requested_minimum_entropy) => {
-            // Take whichever setting leads to a HIGHER minimum entropy
-            if requested_minimum_entropy > minimum_entropy_from_strength_s_s {
-                Some(requested_minimum_entropy)
-            } else {
-                Some(minimum_entropy_from_strength_s_s)
-            }
-        }
-        // No minimum entropy requested in bits. Just go with what the Ss tell us.
-        None => Some(minimum_entropy_from_strength_s_s),
-    }
 }
 
 /// Convert list_choice string slice into a List enum. Clap calls this function.

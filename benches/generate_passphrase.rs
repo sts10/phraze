@@ -8,6 +8,7 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     let number_of_words = None;
     let minimum_entropy = Some(80);
+    let strength_count = 0;
     let separator = "-";
     let title_case = false;
     let list_choice = List::Medium;
@@ -17,6 +18,7 @@ fn criterion_benchmark(c: &mut Criterion) {
             generate_passphrase(
                 number_of_words,
                 minimum_entropy,
+                strength_count,
                 separator,
                 title_case,
                 list_choice,
