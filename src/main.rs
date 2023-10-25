@@ -58,18 +58,18 @@ struct Args {
     #[clap(short = 't', long = "title-case")]
     title_case: bool,
 
-    /// Enable "Secure" mode. Phraze will never output a passphrase with less than 105 bits of
+    /// Enable "Strong" mode. Phraze will never output a passphrase with less than 105 bits of
     /// entropy.
-    #[clap(short = 'S', long = "secure", conflicts_with = "number_of_words")]
-    secure_mode: bool,
+    #[clap(short = 'S', long = "strong", conflicts_with = "number_of_words")]
+    strong_mode: bool,
 }
 
 fn main() {
     let opt = Args::parse();
 
-    // If user enabled secure mode, edit minimum_entropy and number_of_words as needed
-    let (minimum_entropy, number_of_words_desired) = if opt.secure_mode {
-        find_minimum_entropy_for_secure_mode(opt.minimum_entropy)
+    // If user enabled strong mode, edit minimum_entropy and number_of_words as needed
+    let (minimum_entropy, number_of_words_desired) = if opt.strong_mode {
+        find_minimum_entropy_for_strong_mode(opt.minimum_entropy)
     } else {
         (opt.minimum_entropy, opt.number_of_words)
     };
@@ -87,23 +87,23 @@ fn main() {
     );
 }
 
-/// If running in "Secure Mode", check if requested_minimum_entropy is above or below 105 bits.
+/// If running in "Strong Mode", check if requested_minimum_entropy is above or below 105 bits.
 /// If it's below, bump it to 105. If it's above 105, let it pass through.
-fn find_minimum_entropy_for_secure_mode(
+fn find_minimum_entropy_for_strong_mode(
     requested_minimum_entropy: Option<usize>,
 ) -> (Option<usize>, Option<usize>) {
-    const SECURE_MODE_MINIMUM_ENTROPY: usize = 105;
+    const STRONG_MODE_MINIMUM_ENTROPY: usize = 105;
 
     match requested_minimum_entropy {
         Some(entropy) => {
-            if entropy > SECURE_MODE_MINIMUM_ENTROPY {
+            if entropy > STRONG_MODE_MINIMUM_ENTROPY {
                 (Some(entropy), None)
             } else {
-                (Some(SECURE_MODE_MINIMUM_ENTROPY), None)
+                (Some(STRONG_MODE_MINIMUM_ENTROPY), None)
             }
         }
         // No minimum entropy requested. Return 105.
-        None => (Some(SECURE_MODE_MINIMUM_ENTROPY), None),
+        None => (Some(STRONG_MODE_MINIMUM_ENTROPY), None),
     }
 }
 
