@@ -5,6 +5,11 @@ use phraze::*;
 #[derive(Parser, Debug)]
 #[clap(version, name = "phraze")]
 struct Args {
+    /// Strengthen your passphrase the easy way: Each flag increases minium entropy bit 20 bits above the default of
+    /// 80 bits.
+    #[clap(short = 'S', long = "strong", conflicts_with = "number_of_words", action = clap::ArgAction::Count)]
+    strong_setting: u8,
+
     /// Set minimum amount of entropy for generated passphrase. If neither minimum_entropy or
     /// number_of_words is specified, Phraze will default to an 80-bit minimum.
     #[clap(
@@ -57,19 +62,14 @@ struct Args {
     /// Use Title Case for words in generated usernames
     #[clap(short = 't', long = "title-case")]
     title_case: bool,
-
-    /// Enable "Strong" mode. Each flag increases minium entropy bit 20 bits above the default of
-    /// 80 bits.
-    #[clap(short = 'S', long = "strong", conflicts_with = "number_of_words", action = clap::ArgAction::Count)]
-    strong_mode: u8,
 }
 
 fn main() {
     let opt = Args::parse();
 
-    // If user enabled strong mode, edit minimum_entropy and number_of_words as needed
-    let (minimum_entropy, number_of_words_desired) = if opt.strong_mode > 1 {
-        find_minimum_entropy_for_strong_mode(opt.strong_mode, opt.minimum_entropy)
+    // If user enabled strong setting, edit minimum_entropy and number_of_words as needed
+    let (minimum_entropy, number_of_words_desired) = if opt.strong_setting > 0 {
+        determine_minimum_entropy_conservatively(opt.strong_setting, opt.minimum_entropy)
     } else {
         (opt.minimum_entropy, opt.number_of_words)
     };
@@ -87,29 +87,25 @@ fn main() {
     );
 }
 
-fn find_minimum_entropy_for_strong_mode(
-    strength: u8,
+fn determine_minimum_entropy_conservatively(
+    number_of_s_s: u8,
     requested_minimum_entropy: Option<usize>,
 ) -> (Option<usize>, Option<usize>) {
-    let minimum_entropy = match strength {
-        1 => 100,
-        2 => 120,
-        3 => 140,
-        4 => 160,
-        5 => 180,
-        _ => panic!("Too much strength!"),
-    };
+    // Convert number of Ss into an actual minimum entropy in bits
+    // We start with 80 bits and add 20 bits for every S the user inputs.
+    // Here's how that looks in a formula:
+    let minimum_entropy_from_strength_s_s: usize = (80 + number_of_s_s * 20).into();
 
     match requested_minimum_entropy {
         Some(requested_minimum_entropy) => {
-            if requested_minimum_entropy > minimum_entropy {
+            if requested_minimum_entropy > minimum_entropy_from_strength_s_s {
                 (Some(requested_minimum_entropy), None)
             } else {
-                (Some(minimum_entropy), None)
+                (Some(minimum_entropy_from_strength_s_s), None)
             }
         }
         // No minimum entropy requested.
-        None => (Some(minimum_entropy), None),
+        None => (Some(minimum_entropy_from_strength_s_s), None),
     }
 }
 
