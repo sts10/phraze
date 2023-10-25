@@ -46,9 +46,9 @@ $ phrase --sep _s
 fax/household>validation_replied-upgrade,remind?reasoning
 ```
 
-You can make all the word Title Case by using `-t`:
+You can make all the word Title Case by using `--title-case`:
 ```bash
-$ phraze --sep '' -t
+$ phraze --sep '' --title-case
 GoverningDominateAnswersReceptorsAllocatedClientModify
 ```
 
