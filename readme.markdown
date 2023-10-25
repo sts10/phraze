@@ -4,42 +4,43 @@ Generate random passphrases.
 
 ## How to use Phraze, with examples
 
-Run without arguments, Phraze will generate a 7-word passphrase that has 90.4 bits of entropy.
+Run without arguments, Phraze will generate a 7-word passphrase that has 91 bits of entropy.
 ```
 $ phraze
-listeners-strikeouts-duchess-shrine-platform-advise-fellowship
+curse-argues-valves-unfair-punk-ritual-inlet
 ```
 
-If you want to change the strength of the passphrase, I recommend that you use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. If not specified, Phraze will give 80 bits or more of entropy.
+If you want to change the strength of the passphrase, I recommend that you use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. 
 ```
-$ phraze -e 85
-rugby-legally-sweeping-economist-thirty-achieving-sliding
+$ phraze -e 105
+filmmakers-sands-accounts-spokesman-things-police-victims-winters-griffin
 ```
+(If a minimum entropy amount is not specified, Phraze will generate a passphrase with _at least_ 80 bits of entropy.)
 
 If you want to specify the number words INSTEAD of minimum entropy, you can use `-w` to specify the number of words for Phraze to use. Cannot be used with `-e`/minimum entropy option.
 ```
 $ phraze -w 5
-routines-factory-threats-exact-destroyer
+determines-generated-frozen-excluded-sleeping
 ```
 
 By default, Phraze separates words with a hyphen ("-"). You can change that with `-s`. Can accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
 ```
 $ phraze -s ' '
-marrow responded beauty syndrome compromise cognitive prompted
+optimism daughters figures grim processors became decreasing
 $ phrase -s _s
-marble]outward{party_shuttle*killing\softball}spider
+fax/household>validation_replied-upgrade]remind?reasoning
 ```
 
 You can make all the word Title Case by using `-t`:
 ```
 $ phraze -s '' -t
-ReinforcedMetalProphecyHeavyArtilleryEnoughStaying
+GoverningDominateAnswersReceptorsAllocatedClientModify
 ```
 
 If you need to have a symbol, a number and an uppercase character in your passphrase, you can try:
 ```
 $ phraze -t -s _b
-Segments6Lining{Cubs,Elementary8Exchanges0Fourteen7Slide
+Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ```
 
 Use `-l` to specify which word list to use. For example, `-l l` uses the Orchard Street Long list. (Note that we need only 6 words from this list to meet the default minimum entropy of 80 bits.)
@@ -84,7 +85,7 @@ Options:
 
           Options:
 
-          m: Orchard Street Medium List (7,776 words) [DEFAULT]
+          m: Orchard Street Medium List (8,192 words) [DEFAULT]
 
           l: Orchard Street Long List (17,576 words)
 
@@ -126,11 +127,11 @@ You can also check for [recent releases on GitHub](https://github.com/sts10/phra
 
 ## Available word lists
 
-By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the ["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 7,776 words. That means each word adds 12.93 bits of entropy to a passphrase.
+By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the ["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 8,192 words. That means each word adds 13.0 bits of entropy to a passphrase.
 
 However, other lists are available to Phraze users. You can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
 
-* Orchard Street Medium list: 7,776 words; 12.93 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is specified by the user.
+* Orchard Street Medium list: 8,192 words; 13 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is specified by the user.
 
 * Orchard Street Long list: 17,576 words; 14.1 bits of entropy per word. Use `l`.
 * [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
@@ -166,11 +167,11 @@ This list information was generated using [Word List Auditor](https://github.com
 
 ### Orchard Street Medium
 ```txt
-Lines found               : 7776
+Lines found               : 8192
 Free of exact duplicates  : true
 Free of fuzzy duplicates  : true
 Free of blank lines       : true
-Unique words found        : 7776
+Unique words found        : 8192
 No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
@@ -179,12 +180,12 @@ Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (add)
 Length of longest word    : 10 characters (worthwhile)
-Mean word length          : 7.05 characters
-Entropy per word          : 12.925 bits
-Efficiency per character  : 1.832 bits
-Assumed entropy per char  : 4.308 bits
+Mean word length          : 7.07 characters
+Entropy per word          : 13.000 bits
+Efficiency per character  : 1.839 bits
+Assumed entropy per char  : 4.333 bits
 Shortest edit distance    : 1
-Mean edit distance        : 6.954
+Mean edit distance        : 6.966
 Longest shared prefix     : 9
 Unique character prefix   : 10
 ```
@@ -339,12 +340,13 @@ Longest shared prefix     : 6
 Unique character prefix   : 7
 ```
 
-
 ## Source of randomness
 
 Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose).
 
-## Benchmarking Phraze
+## Testing or Benchmarking Phraze
+
+Run `cargo test` to run the handful of tests that Phraze has.
 
 Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarking. You can run the benchmarks for yourself with `cargo bench`.
 
@@ -369,4 +371,4 @@ The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemoni
 
 The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
 
-The Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+All Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).

@@ -36,7 +36,7 @@ fn main() {
         &f,
         "WL_MEDIUM",
         "word-lists/orchard-street-medium.txt",
-        7776,
+        8192,
     );
     words(
         &f,

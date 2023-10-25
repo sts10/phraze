@@ -35,7 +35,7 @@ struct Args {
     ///
     /// Options:
     ///
-    /// m: Orchard Street Medium List (7,776 words) [DEFAULT]
+    /// m: Orchard Street Medium List (8,192 words) [DEFAULT]
     ///
     /// l: Orchard Street Long List (17,576 words)
     ///

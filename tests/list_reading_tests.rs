@@ -3,6 +3,9 @@ mod minimum_entropy_tests {
 
     #[test]
     fn can_read_in_lists_and_find_appropriate_number_of_words() {
+        let list = fetch_list(List::Medium);
+        assert!(list.len() == 8192);
+
         let list = fetch_list(List::Long);
         assert!(list.len() == 17576);
 
