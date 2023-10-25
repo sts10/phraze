@@ -13,7 +13,7 @@ curse-argues-valves-unfair-punk-ritual-inlet
 ### Changing the strength of the passphrase
 By default, Phraze will generate a passphrase with at least 80 bits of entropy. But you can change that.
 
-If you want to change the strength of the passphrase, I recommend that you use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have. 
+If you want to change the strength of the passphrase, I recommend that you use `-e` to specify the minimum amount of entropy, in bits, that your passphrase must have.
 ```
 $ phraze -e 105
 filmmakers-sands-accounts-spokesman-things-police-victims-winters-griffin
