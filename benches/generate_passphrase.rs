@@ -6,24 +6,19 @@ fn criterion_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("Generate a passphrase");
     group.sample_size(1200).significance_level(0.1);
 
-    let number_of_words = None;
-    let minimum_entropy = Some(80);
-    let strength_count = 0;
+    let number_of_words_to_put_in_passphrase = 7;
     let separator = "-";
     let title_case = false;
-    let verbose = false;
+    // Leaving this outside of the benchmark for now
     let wordlist = fetch_list(List::Medium);
 
     group.bench_function("as is", |b| {
         b.iter(|| {
             generate_passphrase(
-                number_of_words,
-                minimum_entropy,
-                strength_count,
+                number_of_words_to_put_in_passphrase,
                 separator,
                 title_case,
                 wordlist,
-                verbose,
             )
         })
     });

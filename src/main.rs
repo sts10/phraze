@@ -81,20 +81,37 @@ struct Args {
 fn main() {
     let opt = Args::parse();
 
+    // Fetch requested word list
     let list = fetch_list(opt.list_choice);
+
+    // Since user can define a minimum entropy, we might have to do a little math to
+    // figure out how many words we need to include in this passphrase.
+    let number_of_words_to_put_in_passphrase = calculate_number_words_needed(
+        opt.number_of_words,
+        opt.minimum_entropy,
+        opt.strength_count,
+        list.len(),
+    );
+
+    // If user enabled verbose option
+    if opt.verbose {
+        // print entropy information, but use eprint to only print it
+        // to the terminal
+        eprintln!(
+            "{:.2} bits of entropy in passphrase(s)",
+            (list.len() as f64).log2() * number_of_words_to_put_in_passphrase as f64
+        );
+    }
 
     for _ in 0..opt.n_passphrases {
         // Generate and print passphrase
         println!(
             "{}",
             generate_passphrase(
-                opt.number_of_words,
-                opt.minimum_entropy,
-                opt.strength_count,
+                number_of_words_to_put_in_passphrase,
                 &opt.separator,
                 opt.title_case,
                 list,
-                opt.verbose,
             )
         );
     }
