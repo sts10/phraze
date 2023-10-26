@@ -92,18 +92,18 @@ struct Args {
 fn main() {
     let opt = Args::parse();
 
-    if opt.custom_list_file_path.is_some() && opt.separator == "" && !opt.title_case {
+    if opt.custom_list_file_path.is_some() && opt.separator.is_empty() && !opt.title_case {
         panic!("Must use a separator or title case when using a custom word list");
     }
 
-    // Fetch requested word list
-    let custom_list = match opt.custom_list_file_path {
-        Some(custom_list_file_path) => Some(read_in_custom_list(&custom_list_file_path)),
-        None => None,
-    };
+    // I'd like to have this be one variable (one `let`), but I can't figure out what to type to
+    // make it?
+    let custom_list = opt
+        .custom_list_file_path
+        .map(|custom_list_file_path| read_in_custom_list(&custom_list_file_path));
     let built_in_list = fetch_list(opt.list_choice);
 
-    // Unfortunately, since I can't have just one list variable yet,
+    // Since I can't have just one list variable yet,
     // I need to do this to get the legnth of the list
     let list_length = match custom_list {
         Some(ref custom_list) => custom_list.len(),
@@ -132,6 +132,7 @@ fn main() {
 
     for _ in 0..opt.n_passphrases {
         // Generate and print passphrase
+        // Again, we have more code than we should because of this pesky list type situation...
         let passphrase = match custom_list {
             Some(ref custom_list) => generate_passphrase(
                 number_of_words_to_put_in_passphrase,
