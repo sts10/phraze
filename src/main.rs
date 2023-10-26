@@ -97,9 +97,10 @@ fn main() {
     if opt.verbose {
         // print entropy information, but use eprint to only print it
         // to the terminal
-        eprintln!(
-            "{:.2} bits of entropy in passphrase(s)",
-            (list.len() as f64).log2() * number_of_words_to_put_in_passphrase as f64
+        print_entropy(
+            number_of_words_to_put_in_passphrase,
+            list.len(),
+            opt.n_passphrases,
         );
     }
 
@@ -113,6 +114,21 @@ fn main() {
                 opt.title_case,
                 list,
             )
+        );
+    }
+}
+
+fn print_entropy(number_of_words: usize, list_length: usize, n_passphrases: usize) {
+    let passphrase_entropy = (list_length as f64).log2() * number_of_words as f64;
+    if n_passphrases == 1 {
+        eprintln!(
+            "Passphrase has an estimated {:.2} bits of entropy.",
+            passphrase_entropy
+        );
+    } else {
+        eprintln!(
+            "Each passphrase has an estimated {:.2} bits of entropy.",
+            passphrase_entropy
         );
     }
 }
