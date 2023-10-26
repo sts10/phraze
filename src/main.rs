@@ -1,6 +1,5 @@
 use clap::Parser;
 use phraze::*;
-use std::borrow::Cow;
 use std::fs::File;
 use std::io;
 use std::io::BufRead;
@@ -98,9 +97,17 @@ fn main() {
     }
 
     // Fetch requested word list
-    let list = match opt.custom_list_file_path {
-        Some(custom_list_file_path) => read_in_custom_list(&custom_list_file_path)),
-        None => fetch_list(opt.list_choice),
+    let custom_list = match opt.custom_list_file_path {
+        Some(custom_list_file_path) => Some(read_in_custom_list(&custom_list_file_path)),
+        None => None,
+    };
+    let built_in_list = fetch_list(opt.list_choice);
+
+    // Unfortunately, since I can't have just one list variable yet,
+    // I need to do this to get the legnth of the list
+    let list_length = match custom_list {
+        Some(ref custom_list) => custom_list.len(),
+        None => built_in_list.len(),
     };
 
     // Since user can define a minimum entropy, we might have to do a little math to
@@ -109,7 +116,7 @@ fn main() {
         opt.number_of_words,
         opt.minimum_entropy,
         opt.strength_count,
-        list.len(),
+        list_length,
     );
 
     // If user enabled verbose option
@@ -118,22 +125,28 @@ fn main() {
         // to the terminal
         print_entropy(
             number_of_words_to_put_in_passphrase,
-            list.len(),
+            list_length,
             opt.n_passphrases,
         );
     }
 
     for _ in 0..opt.n_passphrases {
         // Generate and print passphrase
-        println!(
-            "{}",
-            generate_passphrase(
+        let passphrase = match custom_list {
+            Some(ref custom_list) => generate_passphrase(
                 number_of_words_to_put_in_passphrase,
                 &opt.separator,
                 opt.title_case,
-                list,
-            )
-        );
+                custom_list,
+            ),
+            None => generate_passphrase(
+                number_of_words_to_put_in_passphrase,
+                &opt.separator,
+                opt.title_case,
+                built_in_list,
+            ),
+        };
+        println!("{}", passphrase);
     }
 }
 
@@ -177,7 +190,7 @@ fn read_in_custom_list(file_path: &Path) -> Vec<String> {
     let mut word_list: Vec<String> = vec![];
     for line in file_input {
         if line.to_string().trim() != "" {
-            word_list.push(line.to_string().trim());
+            word_list.push(line.to_string().trim().to_string());
         }
     }
     word_list

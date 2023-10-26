@@ -65,7 +65,7 @@ pub fn convert_minimum_entropy_to_number_of_words(
 
 /// Take enum of list_choice and find the constant that is the corresponding word list (with the
 /// actual words). These are defined in the build script (build.rs)
-pub fn fetch_list(list_choice: List) -> Vec<String> {
+pub fn fetch_list(list_choice: List) -> &'static [&'static str] {
     match list_choice {
         List::Long => WL_LONG,
         List::Medium => WL_MEDIUM,
@@ -78,11 +78,11 @@ pub fn fetch_list(list_choice: List) -> Vec<String> {
 }
 
 /// Actually generate the passphrase, given a couple neccessary parameters.
-pub fn generate_passphrase(
+pub fn generate_passphrase<T: AsRef<str> + std::fmt::Display>(
     number_of_words_to_put_in_passphrase: usize,
     separator: &str,
     title_case: bool,
-    list: &'static [&'static str],
+    list: &[T],
 ) -> String {
     let mut rng = thread_rng();
     // Create a blank String to put words into to create our passphrase
@@ -139,7 +139,10 @@ fn get_random_number(rng: &mut impl Rng) -> String {
 
 /// Give an array of words, pick a random element and make it a String for
 /// simplicity's sake.
-fn get_random_element(rng: &mut impl Rng, word_list: &[&str]) -> String {
+fn get_random_element<T: AsRef<str>>(rng: &mut impl Rng, word_list: &[T]) -> String
+where
+    T: std::fmt::Display,
+{
     match word_list.choose(rng) {
         Some(word) => word.to_string(),
         None => panic!("Couldn't pick a random word"),
