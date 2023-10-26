@@ -30,6 +30,10 @@ struct Args {
     )]
     number_of_words: Option<usize>,
 
+    /// Number of passphrases to generate
+    #[clap(short = 'n', long = "passphrases", default_value = "1")]
+    n_passphrases: usize,
+
     /// Word separator. Can accept single quotes around the separator.
     ///
     /// There are special values that will trigger generated separators:
@@ -73,18 +77,20 @@ struct Args {
 fn main() {
     let opt = Args::parse();
 
-    // Generate and print passphrase
-    println!(
-        "{}",
-        generate_passphrase(
-            opt.number_of_words,
-            opt.minimum_entropy,
-            opt.strength_count,
-            &opt.separator,
-            opt.title_case,
-            opt.list_choice,
-        )
-    );
+    for _ in 0..opt.n_passphrases {
+        // Generate and print passphrase
+        println!(
+            "{}",
+            generate_passphrase(
+                opt.number_of_words,
+                opt.minimum_entropy,
+                opt.strength_count,
+                &opt.separator,
+                opt.title_case,
+                opt.list_choice,
+            )
+        );
+    }
 }
 
 /// Convert list_choice string slice into a List enum. Clap calls this function.
