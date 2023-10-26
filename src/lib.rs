@@ -1,3 +1,4 @@
+pub mod unicode_normalization_check;
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
 // Pull in the wordlists as constants for us to use later.
@@ -156,31 +157,4 @@ fn make_title_case(s: &str) -> String {
         None => String::new(),
         Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
     }
-}
-
-// I should move this all in to its own file/module...
-use std::collections::HashSet;
-use unicode_normalization::is_nfc_quick;
-use unicode_normalization::is_nfd_quick;
-use unicode_normalization::is_nfkc_quick;
-use unicode_normalization::is_nfkd_quick;
-use unicode_normalization::IsNormalized;
-
-pub fn uniform_unicode_normalization(list: &[String]) -> bool {
-    let mut types_of_normalizations_discovered = HashSet::new();
-    for word in list {
-        if is_nfc_quick(word.chars()) == IsNormalized::Yes {
-            types_of_normalizations_discovered.insert("NFC");
-        } else if is_nfd_quick(word.chars()) == IsNormalized::Yes {
-            types_of_normalizations_discovered.insert("NFD");
-        } else if is_nfkc_quick(word.chars()) == IsNormalized::Yes {
-            types_of_normalizations_discovered.insert("NFKC");
-        } else if is_nfkd_quick(word.chars()) == IsNormalized::Yes {
-            types_of_normalizations_discovered.insert("NFKD");
-        }
-        if types_of_normalizations_discovered.len() > 1 {
-            return false;
-        }
-    }
-    types_of_normalizations_discovered.len() == 1
 }

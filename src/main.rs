@@ -1,3 +1,4 @@
+use crate::unicode_normalization_check::uniform_unicode_normalization;
 use clap::Parser;
 use phraze::*;
 use std::fs::File;
