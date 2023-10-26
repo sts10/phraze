@@ -72,10 +72,16 @@ struct Args {
     /// Use Title Case for words in generated usernames
     #[clap(short = 't', long = "title-case")]
     title_case: bool,
+
+    /// Print estimated entropy of generated passphrase, in bits, along with the passphrase itself
+    #[clap(short = 'v', long = "verbose")]
+    verbose: bool,
 }
 
 fn main() {
     let opt = Args::parse();
+
+    let list = fetch_list(opt.list_choice);
 
     for _ in 0..opt.n_passphrases {
         // Generate and print passphrase
@@ -87,7 +93,8 @@ fn main() {
                 opt.strength_count,
                 &opt.separator,
                 opt.title_case,
-                opt.list_choice,
+                list,
+                opt.verbose,
             )
         );
     }

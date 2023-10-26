@@ -142,6 +142,9 @@ Options:
   -t, --title-case
           Use Title Case for words in generated usernames
 
+  -v, --verbose
+          Print estimated entropy of generated passphrase, in bits, along with the passphrase itself
+
   -h, --help
           Print help (see a summary with '-h')
 

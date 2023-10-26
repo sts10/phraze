@@ -84,15 +84,23 @@ pub fn generate_passphrase(
     strength_count: u8,
     separator: &str,
     title_case: bool,
-    list_choice: List,
+    list: &'static [&'static str],
+    verbose: bool,
 ) -> String {
-    // Go get the actual words (see fetch_list function comment for more info)
-    let list = fetch_list(list_choice);
-
     // Since user can define a minimum entropy, we might have to do a little math to
     // figure out how many words we need to include in this passphrase.
     let number_of_words_to_put_in_passphrase =
         calculate_number_words_needed(number_of_words, minimum_entropy, strength_count, list.len());
+
+    // If user enabled verbose option
+    if verbose {
+        // print entropy information, but use eprint to only print it
+        // to the terminal
+        eprintln!(
+            "{:.2} bits of entropy in passphrase",
+            (list.len() as f64).log2() * number_of_words_to_put_in_passphrase as f64
+        );
+    }
 
     let mut rng = thread_rng();
     // Create a blank String to put words into to create our passphrase

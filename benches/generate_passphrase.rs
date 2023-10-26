@@ -11,7 +11,8 @@ fn criterion_benchmark(c: &mut Criterion) {
     let strength_count = 0;
     let separator = "-";
     let title_case = false;
-    let list_choice = List::Medium;
+    let verbose = false;
+    let wordlist = fetch_list(List::Medium);
 
     group.bench_function("as is", |b| {
         b.iter(|| {
@@ -21,7 +22,8 @@ fn criterion_benchmark(c: &mut Criterion) {
                 strength_count,
                 separator,
                 title_case,
-                list_choice,
+                wordlist,
+                verbose,
             )
         })
     });
