@@ -1,5 +1,13 @@
 use clap::Parser;
 use phraze::*;
+use std::borrow::Cow;
+use std::fs::File;
+use std::io;
+use std::io::BufRead;
+use std::io::BufReader;
+use std::path::Path;
+use std::path::PathBuf;
+use std::str::FromStr;
 
 /// Generate random passphrases
 #[derive(Parser, Debug)]
@@ -69,6 +77,10 @@ struct Args {
     #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
     list_choice: List,
 
+    /// Provide a text file with a list of words to randomly generate passphrase from
+    #[clap(short = 'c', long = "custom-list", conflicts_with = "list_choice")]
+    custom_list_file_path: Option<PathBuf>,
+
     /// Use Title Case for words in generated usernames
     #[clap(short = 't', long = "title-case")]
     title_case: bool,
@@ -81,8 +93,15 @@ struct Args {
 fn main() {
     let opt = Args::parse();
 
+    if opt.custom_list_file_path.is_some() && opt.separator == "" && !opt.title_case {
+        panic!("Must use a separator or title case when using a custom word list");
+    }
+
     // Fetch requested word list
-    let list = fetch_list(opt.list_choice);
+    let list = match opt.custom_list_file_path {
+        Some(custom_list_file_path) => read_in_custom_list(&custom_list_file_path)),
+        None => fetch_list(opt.list_choice),
+    };
 
     // Since user can define a minimum entropy, we might have to do a little math to
     // figure out how many words we need to include in this passphrase.
@@ -148,4 +167,37 @@ fn parse_list_choice(list_choice: &str) -> Result<List, String> {
             list_choice
         )),
     }
+}
+
+fn read_in_custom_list(file_path: &Path) -> Vec<String> {
+    let file_input: Vec<String> = match read_by_line(file_path.to_path_buf()) {
+        Ok(r) => r,
+        Err(e) => panic!("Error reading word list file: {}", e),
+    };
+    let mut word_list: Vec<String> = vec![];
+    for line in file_input {
+        if line.to_string().trim() != "" {
+            word_list.push(line.to_string().trim());
+        }
+    }
+    word_list
+}
+
+fn read_by_line<T: FromStr>(file_path: PathBuf) -> io::Result<Vec<T>>
+where
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    let mut vec = Vec::new();
+    let f = match File::open(file_path) {
+        Ok(res) => res,
+        Err(e) => return Err(e),
+    };
+    let file = BufReader::new(&f);
+    for line in file.lines() {
+        match line?.parse() {
+            Ok(l) => vec.push(l),
+            Err(e) => panic!("Error parsing line from file: {:?}", e),
+        }
+    }
+    Ok(vec)
 }

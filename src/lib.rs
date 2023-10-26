@@ -65,7 +65,7 @@ pub fn convert_minimum_entropy_to_number_of_words(
 
 /// Take enum of list_choice and find the constant that is the corresponding word list (with the
 /// actual words). These are defined in the build script (build.rs)
-pub fn fetch_list(list_choice: List) -> &'static [&'static str] {
+pub fn fetch_list(list_choice: List) -> Vec<String> {
     match list_choice {
         List::Long => WL_LONG,
         List::Medium => WL_MEDIUM,
