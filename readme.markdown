@@ -97,6 +97,11 @@ Options:
           Set how many words in generated passphrase. If neither number_of_words or
           minimum_entropy is specified, Phraze will default to an 80-bit minimum
 
+  -n, --passphrases <N_PASSPHRASES>
+          Number of passphrases to generate
+        
+          [default: 1]
+
   -s, --sep <SEPARATOR>
           Word separator. Can accept single quotes around the separator.
 
@@ -218,6 +223,13 @@ Shortest edit distance    : 1
 Mean edit distance        : 6.966
 Longest shared prefix     : 9
 Unique character prefix   : 10
+
+Sample passphrases:
+popular-claiming-sailing-spiritual-homeland-pay-keyboard
+provided-plant-summarized-therapy-married-involves-rocks
+worked-athlete-caucus-slight-discretion-tightly-occasional
+medal-ranks-habit-labor-genre-saved-remainder
+spectator-municipal-longest-colleagues-demolition-enzyme-widespread
 ```
 
 ### Orchard Street Long list
@@ -243,6 +255,13 @@ Shortest edit distance    : 1
 Mean edit distance        : 7.915
 Longest shared prefix     : 14
 Unique character prefix   : 15
+
+Sample passphrases:
+exponent-sync-memorandum-vaulted-stiffened-reverted
+camps-interdependence-worsening-choral-somebody-obey
+immensely-casinos-plundered-warns-vinegar-event
+bottled-charge-linkage-husbands-cuisine-weave
+gospel-graders-relegated-exits-determine-ducked
 ```
 
 ### EFF long list
@@ -268,6 +287,13 @@ Shortest edit distance    : 1
 Mean edit distance        : 6.858
 Longest shared prefix     : 8
 Unique character prefix   : 9
+
+Sample passphrases:
+audible-encounter-defection-democracy-canister-pencil-comma
+dwindling-gangway-driving-grumbly-stoke-scanning-stimulant
+overpay-dial-manlike-purposely-demeanor-unified-likeness
+edition-fernlike-synthetic-aloe-filing-wrangle-spiny
+tattle-reapply-borough-stature-cuddle-crummiest-flatten
 ```
 
 ### Mnemonicode list
@@ -293,6 +319,13 @@ Shortest edit distance    : 1
 Mean edit distance        : 5.552
 Longest shared prefix     : 6
 Unique character prefix   : 7
+
+Sample passphrases:
+bodies-novelist-poor-feminine-plates-ideology-emeritus
+specific-lighting-orbit-math-weakness-embarked-rang
+session-somebody-sector-keyboards-ambassador-circle-contrasts
+strand-mankind-punished-woke-deities-keyboard-camping
+glass-homeless-feature-fee-preparing-interfaces-nations
 ```
 
 ### EFF short list
@@ -318,6 +351,13 @@ Shortest edit distance    : 1
 Mean edit distance        : 4.367
 Longest shared prefix     : 4
 Unique character prefix   : 5
+
+Sample passphrases:
+trade-shut-couch-coast-cramp-growl-cadet-book
+ship-edge-cold-wispy-lazy-those-shaft-start
+donor-game-wasp-poppy-shop-duke-blend-spill
+quake-showy-dawn-breed-puma-armed-yield-polar
+foam-lens-kept-habit-lid-fetal-lint-crave
 ```
 
 ### Orchard Street QWERTY list
@@ -343,6 +383,13 @@ Shortest edit distance    : 1
 Mean edit distance        : 4.170
 Longest shared prefix     : 6
 Unique character prefix   : 7
+
+Sample passphrases:
+think-watt-bad-unity-strip-troop-three-crab
+graded-mast-mom-semi-chop-dash-far-view
+dam-fare-root-quite-pill-hitter-guide-muse
+man-tomb-jar-trim-tip-bits-faded-dig
+young-ten-threw-shy-zero-grew-ready-dead
 ```
 
 ### Orchard Street Alpha list
@@ -368,6 +415,13 @@ Shortest edit distance    : 1
 Mean edit distance        : 4.043
 Longest shared prefix     : 6
 Unique character prefix   : 7
+
+Sample passphrases:
+pigs-sue-stay-week-woke-sued-pass-mayo
+month-guns-half-lists-seek-pony-pine-foe
+jet-troop-hung-fond-wind-lit-long-dams
+loops-peer-quit-push-hank-over-doing-pain
+gave-model-coil-lent-deep-lam-chin-tall
 ```
 
 ## Source of randomness
