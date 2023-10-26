@@ -190,10 +190,15 @@ fn read_in_custom_list(file_path: &Path) -> Vec<String> {
     };
     let mut word_list: Vec<String> = vec![];
     for line in file_input {
-        if line.to_string().trim() != "" {
-            word_list.push(line.to_string().trim().to_string());
+        // Don't add blank lines or lines made up purely of whitespace
+        if line.trim() != "" {
+            // Remove any starting or trailing whitespace before adding word to list
+            word_list.push(line.trim().to_string());
         }
     }
+    // Remove any duplicate words, since that screws up entropy estimates
+    word_list.sort();
+    word_list.dedup();
     word_list
 }
 
