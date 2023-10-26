@@ -10,6 +10,7 @@ authors = ["sts10 <sschlinkert@gmail.com>"]
 [dependencies]
 rand = "0.8.5"
 clap = { version = "4.4.7", features = ["derive"] }
+unicode-normalization = "0.1.22"
 
 [dev-dependencies]
 criterion = "0.5.1"

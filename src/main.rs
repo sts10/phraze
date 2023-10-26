@@ -196,9 +196,12 @@ fn read_in_custom_list(file_path: &Path) -> Vec<String> {
             word_list.push(line.trim().to_string());
         }
     }
-    // Remove any duplicate words, since that screws up entropy estimates
+    // Remove any duplicate words, since duplicate words would undermine entropy estimates.
     word_list.sort();
     word_list.dedup();
+    if !uniform_unicode_normalization(&word_list) {
+        eprintln!("WARNING: Custom word list has multiple Unicode normalizations.");
+    }
     word_list
 }
 
