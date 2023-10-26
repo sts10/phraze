@@ -426,7 +426,7 @@ gave-model-coil-lent-deep-lam-chin-tall
 
 ## Source of randomness
 
-Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose).
+Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose), which I generally trust as much as any tool for generating randomness with a computer. Though I welcome PRs/issues/ideas on any improvements I could make in this area.
 
 ## Testing or Benchmarking Phraze
 
