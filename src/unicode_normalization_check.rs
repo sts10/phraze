@@ -23,3 +23,18 @@ pub fn uniform_unicode_normalization(list: &[String]) -> bool {
     }
     types_of_normalizations_discovered.len() == 1
 }
+
+#[test]
+fn can_detect_non_uniform_unicode_normalization_in_a_given_list() {
+    let version1 = "sécréter";
+    let version2 = "sécréter";
+    let test_list = vec![version1.to_string(), version2.to_string()];
+    assert!(!uniform_unicode_normalization(&test_list));
+
+    let uniform_list = vec![
+        "alpha".to_string(),
+        "beta".to_string(),
+        "charlie".to_string(),
+    ];
+    assert!(uniform_unicode_normalization(&uniform_list));
+}
