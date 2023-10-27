@@ -332,6 +332,7 @@ glass-homeless-feature-fee-preparing-interfaces-nations
 ```
 
 ### EFF short list
+Note: I swapped out the word "yo-yo" for "zen".
 ```txt
 Lines found               : 1296
 Free of exact duplicates  : true
@@ -342,25 +343,20 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : true
+Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (aim)
 Length of longest word    : 5 characters (zippy)
 Mean word length          : 4.54 characters
 Entropy per word          : 10.340 bits
-Efficiency per character  : 2.277 bits
+Efficiency per character  : 2.278 bits
 Assumed entropy per char  : 3.447 bits
 Shortest edit distance    : 1
-Mean edit distance        : 4.367
+Mean edit distance        : 4.366
 Longest shared prefix     : 4
 Unique character prefix   : 5
-
-Sample passphrases:
-trade-shut-couch-coast-cramp-growl-cadet-book
-ship-edge-cold-wispy-lazy-those-shaft-start
-donor-game-wasp-poppy-shop-duke-blend-spill
-quake-showy-dawn-breed-puma-armed-yield-polar
-foam-lens-kept-habit-lid-fetal-lint-crave
+Kraft-McMillan inequality : satisfied
 ```
 
 ### Orchard Street QWERTY list
