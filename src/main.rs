@@ -100,11 +100,13 @@ fn main() {
     }
 
     // We need two different variables here, one for a user-inputted list
-    let custom_list: Option<Vec<String>> = opt
-        .custom_list_file_path
-        .map(|custom_list_file_path| read_in_custom_list(&custom_list_file_path));
-    // And another for if the user wants to use a built-in word list
-    let built_in_list: &'static [&'static str] = fetch_list(opt.list_choice);
+    let (custom_list, built_in_list) = match (opt.custom_list_file_path, opt.list_choice) {
+        (Some(custom_list_file_path), _) => (
+            Some(read_in_custom_list(&custom_list_file_path)),
+            fetch_list(List::Medium),
+        ),
+        (None, built_in_list) => (None, fetch_list(built_in_list)),
+    };
 
     // If a "custom_list" was given by the user, we're going to use that list.
     // Otherwise we use the built-in list (a default list if the user didn't choose one).
