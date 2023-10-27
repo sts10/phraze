@@ -35,9 +35,12 @@ pub fn uniform_unicode_normalization(list: &[String]) -> bool {
 
 #[test]
 fn can_detect_non_uniform_unicode_normalization_in_a_given_list() {
-    let version1 = "sécréter";
-    let version2 = "sécréter";
-    let non_uniform_list = vec![version1.to_string(), version2.to_string()];
+    let normalization_type_1 = "sécréter";
+    let normalization_type_2 = "sécréter";
+    let non_uniform_list = vec![
+        normalization_type_1.to_string(),
+        normalization_type_2.to_string(),
+    ];
     assert!(!uniform_unicode_normalization(&non_uniform_list));
 
     let uniform_list = vec![
@@ -50,9 +53,9 @@ fn can_detect_non_uniform_unicode_normalization_in_a_given_list() {
     let uniform_list2 = vec![
         "alpha".to_string(),
         "beta".to_string(),
-        version1.to_string(), // add one word with an accented character
+        normalization_type_1.to_string(), // add one word with an accented character
         "charlie".to_string(),
-        version1.to_string(), // twice
+        normalization_type_1.to_string(), // twice
     ];
     // Should still be detected as uniform
     assert!(uniform_unicode_normalization(&uniform_list2));
