@@ -99,13 +99,12 @@ fn main() {
         panic!("Must use a separator or title case when using a custom word list");
     }
 
-    // We need two different variables here, one for a user-inputted list
-    let (custom_list, built_in_list) = match (opt.custom_list_file_path, opt.list_choice) {
-        (Some(custom_list_file_path), _) => (
-            Some(read_in_custom_list(&custom_list_file_path)),
-            fetch_list(List::Medium),
-        ),
-        (None, built_in_list) => (None, fetch_list(built_in_list)),
+    // We need two different variables here, one for a user-inputted list and another for
+    // the built-in list (whether chosen or the default). This is because we use different
+    // variable types for each case.
+    let (custom_list, built_in_list) = match opt.custom_list_file_path {
+        Some(custom_list_file_path) => (Some(read_in_custom_list(&custom_list_file_path)), None),
+        None => (None, Some(fetch_list(opt.list_choice))),
     };
 
     // If a "custom_list" was given by the user, we're going to use that list.
@@ -115,7 +114,7 @@ fn main() {
     // custom_list was given.
     let list_length = match custom_list {
         Some(ref custom_list) => custom_list.len(),
-        None => built_in_list.len(),
+        None => built_in_list.unwrap().len(), // pretty sure we're safe to unwrap here...
     };
 
     // Since user can define a minimum entropy, we might have to do a little math to
@@ -141,19 +140,20 @@ fn main() {
     // Now we can (finally) generate and print some number of passphrases
     for _ in 0..opt.n_passphrases {
         // Again, we have more code than we should because of this pesky list type situation...
-        let passphrase = match custom_list {
-            Some(ref custom_list) => generate_passphrase(
+        let passphrase = match (&custom_list, built_in_list) {
+            (Some(ref custom_list), _) => generate_passphrase(
                 number_of_words_to_put_in_passphrase,
                 &opt.separator,
                 opt.title_case,
                 custom_list,
             ),
-            None => generate_passphrase(
+            (None, Some(built_in_list)) => generate_passphrase(
                 number_of_words_to_put_in_passphrase,
                 &opt.separator,
                 opt.title_case,
                 built_in_list,
             ),
+            (None, None) => panic!("List selection error!"),
         };
         println!("{}", passphrase);
     }
