@@ -92,11 +92,13 @@ struct Args {
     verbose: bool,
 }
 
-fn main() {
+fn main() -> Result<(), &'static str> {
     let opt = Args::parse();
 
+    // Check for a rare but potentially dangerous combination of settings
     if opt.custom_list_file_path.is_some() && opt.separator.is_empty() && !opt.title_case {
-        panic!("Must use a separator or title case when using a custom word list");
+        let error_msg = "Must use a separator or Title Case when using a custom word list";
+        return Err(error_msg);
     }
 
     // We need two different variables here, one for a user-inputted list and another for
@@ -153,10 +155,12 @@ fn main() {
                 opt.title_case,
                 built_in_list,
             ),
-            (None, None) => panic!("List selection error!"),
+            (None, None) => return Err("List selection error!"),
         };
         println!("{}", passphrase);
     }
+
+    Ok(())
 }
 
 /// Print the calculated (estimated) entropy of a passphrase, based on three variables
