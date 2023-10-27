@@ -312,6 +312,7 @@ tattle-reapply-borough-stature-cuddle-crummiest-flatten
 ```
 
 ### Mnemonicode list
+Note: I swapped the word "beatles" for "beetle", so this isn't exactly the same as the canonical Mnemonicode word list.
 ```txt
 Lines found               : 1633
 Free of exact duplicates  : true
