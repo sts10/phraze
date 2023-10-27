@@ -92,20 +92,20 @@ struct Args {
     verbose: bool,
 }
 
-fn main() -> Result<(), &'static str> {
+fn main() -> Result<(), String> {
     let opt = Args::parse();
 
     // Check for a rare but potentially dangerous combination of settings
     if opt.custom_list_file_path.is_some() && opt.separator.is_empty() && !opt.title_case {
         let error_msg = "Must use a separator or Title Case when using a custom word list";
-        return Err(error_msg);
+        return Err(error_msg.to_string());
     }
 
     // We need two different variables here, one for a user-inputted list and another for
     // the built-in list (whether chosen or the default). This is because we use different
     // variable types for each case.
     let (custom_list, built_in_list) = match opt.custom_list_file_path {
-        Some(custom_list_file_path) => (Some(read_in_custom_list(&custom_list_file_path)), None),
+        Some(custom_list_file_path) => (Some(read_in_custom_list(&custom_list_file_path)?), None),
         None => (None, Some(fetch_list(opt.list_choice))),
     };
 
@@ -155,7 +155,7 @@ fn main() -> Result<(), &'static str> {
                 opt.title_case,
                 built_in_list,
             ),
-            (None, None) => return Err("List selection error!"),
+            (None, None) => return Err("List selection error!".to_string()),
         };
         println!("{}", passphrase);
     }
@@ -200,10 +200,10 @@ fn parse_list_choice(list_choice: &str) -> Result<List, String> {
 
 /// Read text file into a Vec<String>. Also trims whitespace, avoids adding blank strings,
 /// sorts, de-duplicates, and checks for uniform Unicode normalization.
-fn read_in_custom_list(file_path: &Path) -> Vec<String> {
+fn read_in_custom_list(file_path: &Path) -> Result<Vec<String>, String> {
     let file_input: Vec<String> = match read_by_line(file_path.to_path_buf()) {
         Ok(r) => r,
-        Err(e) => panic!("Error reading word list file: {}", e),
+        Err(e) => return Err(format!("Error reading word list file: {}", e)),
     };
     let mut word_list: Vec<String> = vec![];
     for line in file_input {
@@ -219,7 +219,7 @@ fn read_in_custom_list(file_path: &Path) -> Vec<String> {
     if !uniform_unicode_normalization(&word_list) {
         eprintln!("WARNING: Custom word list has multiple Unicode normalizations. Consider normalizing the Unicode of all words on the list before making a passphrase.");
     }
-    word_list
+    Ok(word_list)
 }
 
 /// Generatic function that reads a file in, line by line.
