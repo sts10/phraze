@@ -1,5 +1,13 @@
+use crate::unicode_normalization_check::uniform_unicode_normalization;
 use clap::Parser;
 use phraze::*;
+use std::fs::File;
+use std::io;
+use std::io::BufRead;
+use std::io::BufReader;
+use std::path::Path;
+use std::path::PathBuf;
+use std::str::FromStr;
 
 /// Generate random passphrases
 #[derive(Parser, Debug)]
@@ -69,6 +77,12 @@ struct Args {
     #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
     list_choice: List,
 
+    /// Provide a text file with a list of words to randomly generate passphrase from.
+    ///
+    /// Should be a text file with one per line.
+    #[clap(short = 'c', long = "custom-list", conflicts_with = "list_choice")]
+    custom_list_file_path: Option<PathBuf>,
+
     /// Use Title Case for words in generated usernames
     #[clap(short = 't', long = "title-case")]
     title_case: bool,
@@ -81,8 +95,27 @@ struct Args {
 fn main() {
     let opt = Args::parse();
 
-    // Fetch requested word list
-    let list = fetch_list(opt.list_choice);
+    if opt.custom_list_file_path.is_some() && opt.separator.is_empty() && !opt.title_case {
+        panic!("Must use a separator or title case when using a custom word list");
+    }
+
+    // We need two different variables here, one for a user-inputted list and another for
+    // the built-in list (whether chosen or the default). This is because we use different
+    // variable types for each case.
+    let (custom_list, built_in_list) = match opt.custom_list_file_path {
+        Some(custom_list_file_path) => (Some(read_in_custom_list(&custom_list_file_path)), None),
+        None => (None, Some(fetch_list(opt.list_choice))),
+    };
+
+    // If a "custom_list" was given by the user, we're going to use that list.
+    // Otherwise we use the built-in list (a default list if the user didn't choose one).
+
+    // To get the length of the list we're going to use, we need to check if a
+    // custom_list was given.
+    let list_length = match custom_list {
+        Some(ref custom_list) => custom_list.len(),
+        None => built_in_list.unwrap().len(), // pretty sure we're safe to unwrap here...
+    };
 
     // Since user can define a minimum entropy, we might have to do a little math to
     // figure out how many words we need to include in this passphrase.
@@ -90,7 +123,7 @@ fn main() {
         opt.number_of_words,
         opt.minimum_entropy,
         opt.strength_count,
-        list.len(),
+        list_length,
     );
 
     // If user enabled verbose option
@@ -99,27 +132,38 @@ fn main() {
         // to the terminal
         print_entropy(
             number_of_words_to_put_in_passphrase,
-            list.len(),
+            list_length,
             opt.n_passphrases,
         );
     }
 
+    // Now we can (finally) generate and print some number of passphrases
     for _ in 0..opt.n_passphrases {
-        // Generate and print passphrase
-        println!(
-            "{}",
-            generate_passphrase(
+        // Again, we have more code than we should because of this pesky list type situation...
+        let passphrase = match (&custom_list, built_in_list) {
+            (Some(ref custom_list), _) => generate_passphrase(
                 number_of_words_to_put_in_passphrase,
                 &opt.separator,
                 opt.title_case,
-                list,
-            )
-        );
+                custom_list,
+            ),
+            (None, Some(built_in_list)) => generate_passphrase(
+                number_of_words_to_put_in_passphrase,
+                &opt.separator,
+                opt.title_case,
+                built_in_list,
+            ),
+            (None, None) => panic!("List selection error!"),
+        };
+        println!("{}", passphrase);
     }
 }
 
+/// Print the calculated (estimated) entropy of a passphrase, based on three variables
 fn print_entropy(number_of_words: usize, list_length: usize, n_passphrases: usize) {
     let passphrase_entropy = (list_length as f64).log2() * number_of_words as f64;
+    // Depending on how many different passphrases the user wants printed, change the printed text
+    // accordingly
     if n_passphrases == 1 {
         eprintln!(
             "Passphrase has an estimated {:.2} bits of entropy.",
@@ -148,4 +192,49 @@ fn parse_list_choice(list_choice: &str) -> Result<List, String> {
             list_choice
         )),
     }
+}
+
+/// Read text file into a Vec<String>. Also trims whitespace, avoids adding blank strings,
+/// sorts, de-duplicates, and checks for uniform Unicode normalization.
+fn read_in_custom_list(file_path: &Path) -> Vec<String> {
+    let file_input: Vec<String> = match read_by_line(file_path.to_path_buf()) {
+        Ok(r) => r,
+        Err(e) => panic!("Error reading word list file: {}", e),
+    };
+    let mut word_list: Vec<String> = vec![];
+    for line in file_input {
+        // Don't add blank lines or lines made up purely of whitespace
+        if line.trim() != "" {
+            // Remove any starting or trailing whitespace before adding word to list
+            word_list.push(line.trim().to_string());
+        }
+    }
+    // Remove any duplicate words, since duplicate words would undermine entropy estimates.
+    word_list.sort();
+    word_list.dedup();
+    if !uniform_unicode_normalization(&word_list) {
+        eprintln!("WARNING: Custom word list has multiple Unicode normalizations. Consider normalizing the Unicode of all words on the list before making a passphrase.");
+    }
+    word_list
+}
+
+/// Generatic function that reads a file in, line by line.
+/// Not sure if all of this is necessary, but it gets the job done.
+fn read_by_line<T: FromStr>(file_path: PathBuf) -> io::Result<Vec<T>>
+where
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    let mut vec = Vec::new();
+    let f = match File::open(file_path) {
+        Ok(res) => res,
+        Err(e) => return Err(e),
+    };
+    let file = BufReader::new(&f);
+    for line in file.lines() {
+        match line?.parse() {
+            Ok(l) => vec.push(l),
+            Err(e) => panic!("Error parsing line from file: {:?}", e),
+        }
+    }
+    Ok(vec)
 }

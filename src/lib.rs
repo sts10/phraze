@@ -1,3 +1,4 @@
+pub mod unicode_normalization_check;
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
 // Pull in the wordlists as constants for us to use later.
@@ -78,11 +79,14 @@ pub fn fetch_list(list_choice: List) -> &'static [&'static str] {
 }
 
 /// Actually generate the passphrase, given a couple neccessary parameters.
-pub fn generate_passphrase(
+/// This function uses some Rust magic to be able to accept a word list as
+/// either a &[&str] (built-in word lists) or as a &[String] if user provides a file
+/// as word list.
+pub fn generate_passphrase<T: AsRef<str> + std::fmt::Display>(
     number_of_words_to_put_in_passphrase: usize,
     separator: &str,
     title_case: bool,
-    list: &'static [&'static str],
+    list: &[T], // Either type!
 ) -> String {
     let mut rng = thread_rng();
     // Create a blank String to put words into to create our passphrase
@@ -139,7 +143,10 @@ fn get_random_number(rng: &mut impl Rng) -> String {
 
 /// Give an array of words, pick a random element and make it a String for
 /// simplicity's sake.
-fn get_random_element(rng: &mut impl Rng, word_list: &[&str]) -> String {
+fn get_random_element<T: AsRef<str>>(rng: &mut impl Rng, word_list: &[T]) -> String
+where
+    T: std::fmt::Display,
+{
     match word_list.choose(rng) {
         Some(word) => word.to_string(),
         None => panic!("Couldn't pick a random word"),
