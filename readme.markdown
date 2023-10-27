@@ -13,7 +13,8 @@ curse-argues-valves-unfair-punk-ritual-inlet
 * 🎯 Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates are accurate, even if no separator is used
 * 🚀 Fast: Takes about 2 milliseconds to generate a passphrase
 * 🛁 Default word list is (hopefully) free of profane words
-* 🔣 Numbers, symbols, and capital letters can be used if a service requires that in a password (`-s _b -t` flags)
+* 🔣 Can insert numbers, symbols, and/or capital letters if necessary (`-s _b -t` flags)
+* 🧺 Option to provide your own word list
 * 🛠️  Written in [Rust](https://www.rust-lang.org/)
 
 ## How to use
