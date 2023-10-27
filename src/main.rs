@@ -104,6 +104,8 @@ fn main() {
         .custom_list_file_path
         .map(|custom_list_file_path| read_in_custom_list(&custom_list_file_path));
     // And another for if the user wants to use a built-in word list
+    // Kind of a bummer, re: perforamnce, that we need to run this even if we're
+    // going to be using the inputted custom list...
     let built_in_list: &'static [&'static str] = fetch_list(opt.list_choice);
 
     // If a "custom_list" was given by the user, we're going to use that list.
