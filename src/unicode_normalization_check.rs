@@ -46,4 +46,14 @@ fn can_detect_non_uniform_unicode_normalization_in_a_given_list() {
         "charlie".to_string(),
     ];
     assert!(uniform_unicode_normalization(&uniform_list));
+
+    let uniform_list2 = vec![
+        "alpha".to_string(),
+        "beta".to_string(),
+        version1.to_string(), // add one word with an accented character
+        "charlie".to_string(),
+        version1.to_string(), // twice
+    ];
+    // Should still be detected as uniform
+    assert!(uniform_unicode_normalization(&uniform_list2));
 }
