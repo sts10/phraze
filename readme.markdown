@@ -12,7 +12,7 @@ curse-argues-valves-unfair-punk-ritual-inlet
 * 🖩 Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
 * 🎯 Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates are accurate, even if no separator is used
 * 🚀 Fast: Takes about 2 milliseconds to generate a passphrase
-* 🛁 Word lists are (hopefully) free of profane words
+* 🛁 Default word list is (hopefully) free of profane words
 * 🔣 Numbers, symbols, and capital letters can be used if a service requires that in a password (`-s _b -t` flags)
 * 🛠️  Written in [Rust](https://www.rust-lang.org/)
 
