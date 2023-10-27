@@ -78,6 +78,13 @@ duck-slip-swoop-stray-wink-stump-whiff-slot
 ```
 (Note that we need 8 words from the EFF short list to meet the default minimum entropy of 80 bits.)
 
+### Using your own list
+If you prefer, you can have Phraze generate a passphrase using your own word list -- to do this, use the `--custom-list` option.
+```bash
+$ phraze --custom-list path/to/word/list
+```
+Phraze will remove any and all trailing whitespace, duplicate words, and blank words in the inputted list. Phraze will also check for Unicode normalization.
+
 ### Copying passphrase to clipboard
 You can pipe Phraze's outputted passphrase to other tools. For example, you can copy generated passphrase to xclip (a common Linux clipboard tool):
 ```bash
@@ -138,6 +145,11 @@ Options:
              an alphabetical keyboard layout
 
           [default: m]
+
+  -c, --custom-list <CUSTOM_LIST_FILE_PATH>
+          Provide a text file with a list of words to randomly generate passphrase from.
+        
+          Should be a text file with one word per line.
 
   -t, --title-case
           Use Title Case for words in generated usernames
@@ -332,7 +344,7 @@ glass-homeless-feature-fee-preparing-interfaces-nations
 ```
 
 ### EFF short list
-Note: I swapped out the word "yo-yo" for "zen".
+Note: I swapped out the word "yo-yo" for the word "zen".
 ```txt
 Lines found               : 1296
 Free of exact duplicates  : true
@@ -357,6 +369,13 @@ Mean edit distance        : 4.366
 Longest shared prefix     : 4
 Unique character prefix   : 5
 Kraft-McMillan inequality : satisfied
+
+Sample passphrases:
+flame-chump-stood-slurp-saint-spent-path-putt
+sax-sweep-guide-snore-knee-pod-cadet-twist
+reset-mouse-track-taco-movie-oak-recap-purse
+hump-dug-wifi-skid-panty-rake-vocal-stoop
+silo-utter-pest-snap-zoom-crate-suds-batch
 ```
 
 ### Orchard Street QWERTY list

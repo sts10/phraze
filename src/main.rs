@@ -79,7 +79,7 @@ struct Args {
 
     /// Provide a text file with a list of words to randomly generate passphrase from.
     ///
-    /// Should be a text file with one per line.
+    /// Should be a text file with one word per line.
     #[clap(short = 'c', long = "custom-list", conflicts_with = "list_choice")]
     custom_list_file_path: Option<PathBuf>,
 
