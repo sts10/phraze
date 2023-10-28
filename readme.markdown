@@ -25,19 +25,19 @@ By default, Phraze will generate a passphrase with at least 80 bits of entropy (
 You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
 
 **1. Enter a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
-```bash
+```text
 $ phraze -SS
 determined-pervasive-entirety-incumbent-trophy-emergence-spatial-wondering-destroyed-gamma
 ```
 
 **2. Set a specific minimum entropy.** Use `--minimum-entropy` to specify your own minimum amount of entropy, in bits, that your passphrase must have.
-```bash
+```text
 $ phraze --minimum-entropy 100
 toured-warrior-skeleton-shear-hosts-injuries-relied-sadness
 ```
 
 **3. Set number words.** Use `--words` to specify the exact number of words for Phraze to use.
-```bash
+```text
 $ phraze ---words 5 # passphrase will have 5 words, overriding the default minimum entropy setting of 80 bits
 determines-generated-frozen-excluded-sleeping
 ```
@@ -55,7 +55,7 @@ seventy-cost-freight-suspended-misery-objections-represents-buying
 By default, Phraze separates words with a hyphen ("-"). You can change that with the `--sep` (or `-s`) option.
 
 `--sep` accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
-```bash
+```text
 $ phraze --sep ' '
 optimism daughters figures grim processors became decreasing
 $ phrase --sep _s
@@ -63,13 +63,13 @@ fax/household>validation_replied-upgrade,remind?reasoning
 ```
 
 You can make all the word Title Case by using `--title-case`:
-```bash
+```text
 $ phraze --sep '' --title-case
 GoverningDominateAnswersReceptorsAllocatedClientModify
 ```
 
 If you need to have a symbol, a number and an uppercase character in your passphrase, you can try:
-```bash
+```text
 $ phraze -t -s _b
 Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ```
@@ -80,7 +80,7 @@ By default, Phraze uses a 8192-word list called the Orchard Street Medium List (
 You can specify a different list with `--list`/`-l`, with a choice of a handful of lists built in to Phraze.
 
 Each built-in list has a corresponding one-letter code (see below or run `phrase --help` for a full list). For example, `--list s` uses the [EFF **s**hort list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
-```bash
+```text
 $ phraze --list s
 duck-slip-swoop-stray-wink-stump-whiff-slot
 ```
@@ -88,7 +88,7 @@ duck-slip-swoop-stray-wink-stump-whiff-slot
 
 ### Using your own list
 If you prefer, you can have Phraze generate a passphrase using your own word list. Use the `--custom-list` option.
-```bash
+```text
 $ phraze --custom-list path/to/word/list
 ```
 Phraze will remove any and all trailing white space, duplicate words, and blank words in the inputted list. Phraze will also check for uniform [Unicode normalization](https://www.unicode.org/faq/normalization.html).
