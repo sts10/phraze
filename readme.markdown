@@ -181,7 +181,7 @@ Options:
 Uninstall Phraze by running `cargo uninstall phraze`.
 
 ### Releases on GitHub
-You can also check for [recent releases on GitHub](https://github.com/sts10/phraze/releases).
+You can also check for [recent releases on GitHub](https://github.com/sts10/phraze/releases). Download the `phraze` executable and move it to somewhere in your `$PATH`, like `$HOME/.local/bin` (you can do this on the command line with something like `mv ~/Downloads/phraze ~/.local/bin/`).
 
 ## Available word lists
 
