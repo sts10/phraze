@@ -10,7 +10,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     let separator = "-";
     let title_case = false;
     // Leaving this outside of the benchmark for now
-    let wordlist = fetch_list(List::Medium);
+    let wordlist = fetch_list(ListChoice::Medium);
 
     group.bench_function("as is", |b| {
         b.iter(|| {

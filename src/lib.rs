@@ -8,7 +8,7 @@ include!(concat!(env!("OUT_DIR"), "/wordlists.rs"));
 
 /// The possible word lists that Phraze can use.
 #[derive(Clone, Debug, Copy)]
-pub enum List {
+pub enum ListChoice {
     Long,
     Medium,
     Eff,
@@ -66,15 +66,15 @@ pub fn convert_minimum_entropy_to_number_of_words(
 
 /// Take enum of list_choice and find the constant that is the corresponding word list (with the
 /// actual words). These are defined in the build script (build.rs)
-pub fn fetch_list(list_choice: List) -> &'static [&'static str] {
+pub fn fetch_list(list_choice: ListChoice) -> &'static [&'static str] {
     match list_choice {
-        List::Long => WL_LONG,
-        List::Medium => WL_MEDIUM,
-        List::Qwerty => WL_QWERTY,
-        List::Alpha => WL_ALPHA,
-        List::Eff => WL_EFF,
-        List::Effshort => WL_EFFSHORT,
-        List::Mnemonicode => WL_MNEMONICODE,
+        ListChoice::Long => WL_LONG,
+        ListChoice::Medium => WL_MEDIUM,
+        ListChoice::Qwerty => WL_QWERTY,
+        ListChoice::Alpha => WL_ALPHA,
+        ListChoice::Eff => WL_EFF,
+        ListChoice::Effshort => WL_EFFSHORT,
+        ListChoice::Mnemonicode => WL_MNEMONICODE,
     }
 }
 

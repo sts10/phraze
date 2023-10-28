@@ -75,7 +75,7 @@ struct Args {
     /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an
     /// alphabetical keyboard layout
     #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
-    list_choice: List,
+    list_choice: ListChoice,
 
     /// Provide a text file with a list of words to randomly generate passphrase from.
     ///
@@ -181,16 +181,16 @@ fn print_entropy(number_of_words: usize, list_length: usize, n_passphrases: usiz
     }
 }
 
-/// Convert list_choice string slice into a List enum. Clap calls this function.
-fn parse_list_choice(list_choice: &str) -> Result<List, String> {
+/// Convert list_choice string slice into a ListChoice enum. Clap calls this function.
+fn parse_list_choice(list_choice: &str) -> Result<ListChoice, String> {
     match list_choice.to_lowercase().as_ref() {
-        "l" => Ok(List::Long),
-        "m" => Ok(List::Medium),
-        "e" => Ok(List::Eff),
-        "n" => Ok(List::Mnemonicode),
-        "s" => Ok(List::Effshort),
-        "q" => Ok(List::Qwerty),
-        "a" => Ok(List::Alpha),
+        "l" => Ok(ListChoice::Long),
+        "m" => Ok(ListChoice::Medium),
+        "e" => Ok(ListChoice::Eff),
+        "n" => Ok(ListChoice::Mnemonicode),
+        "s" => Ok(ListChoice::Effshort),
+        "q" => Ok(ListChoice::Qwerty),
+        "a" => Ok(ListChoice::Alpha),
         _ => Err(format!(
             "Inputted list choice '{}' doesn't correspond to an available word list",
             list_choice
