@@ -1,4 +1,11 @@
+use rand::prelude::SliceRandom;
 use rand::Rng;
+
+#[derive(PartialEq)]
+enum SeparatorType {
+    Number,
+    Symbol,
+}
 
 /// Parse user's separator choice. The only reason we need this as its own function is to check if
 /// they chose a "special" separator
@@ -13,8 +20,11 @@ pub fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
 
 /// Get either a random number or symbol. 50/50 chance!
 fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
-    let x: f64 = rng.gen();
-    if x > 0.5 {
+    // Randomly choose which separator type to use
+    let separator_type_to_use: &SeparatorType = [SeparatorType::Number, SeparatorType::Symbol]
+        .choose(rng)
+        .unwrap();
+    if separator_type_to_use == &SeparatorType::Symbol {
         get_random_symbol(rng)
     } else {
         get_random_number(rng)
