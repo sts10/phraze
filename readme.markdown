@@ -14,7 +14,7 @@ curse-argues-valves-unfair-punk-ritual-inlet
 * 🚀 Fast: Takes about 2 milliseconds to generate a passphrase
 * 🛁 Default word list is (hopefully) free of profane words
 * 🔣 Can insert numbers, symbols, and/or capital letters if necessary (`-s _b -t` flags)
-* 🧺 Option to provide your own word list
+* 🧺 Use a built-in word list or provide your own
 * 🛠️  Written in [Rust](https://www.rust-lang.org/)
 
 ## How to use
@@ -114,7 +114,7 @@ Options:
 
   -n, --passphrases <N_PASSPHRASES>
           Number of passphrases to generate
-        
+
           [default: 1]
 
   -s, --sep <SEPARATOR>
@@ -156,7 +156,7 @@ Options:
 
   -c, --custom-list <CUSTOM_LIST_FILE_PATH>
           Provide a text file with a list of words to randomly generate passphrase from.
-        
+
           Should be a text file with one word per line.
 
   -t, --title-case
