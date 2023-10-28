@@ -156,9 +156,19 @@ where
 
 /// Make first character of a given &str uppercase
 fn make_title_case(s: &str) -> String {
+    // First, make entire word lowercase
+    let s = s.to_lowercase();
     let mut c = s.chars();
     match c.next() {
         None => String::new(),
         Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
     }
+}
+
+#[test]
+fn can_make_title_case() {
+    let test_word = "alpha";
+    assert_eq!(make_title_case(test_word), "Alpha".to_string());
+    let test_word = "ALPHA";
+    assert_eq!(make_title_case(test_word), "Alpha".to_string());
 }
