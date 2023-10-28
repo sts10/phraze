@@ -467,7 +467,11 @@ There are already a few good passphrase generators, including [passphraseme](htt
 
 Admittedly, part of my motivation to create Phraze was to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which I think are pretty good!
 
-## Word list Licensing
+## Licensing 
+
+Phraze's code is licensed under the Mozilla Public License v2.0 (see LICENSE.txt or [this online version of the license](https://www.mozilla.org/en-US/MPL/2.0/)).
+
+### Word list licensing
 
 The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
 
