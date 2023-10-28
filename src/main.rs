@@ -170,12 +170,12 @@ fn print_entropy(number_of_words: usize, list_length: usize, n_passphrases: usiz
     // accordingly
     if n_passphrases == 1 {
         eprintln!(
-            "Passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words).",
+            "Passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words)",
             passphrase_entropy, number_of_words, list_length,
         );
     } else {
         eprintln!(
-            "Each passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words).",
+            "Each passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words)",
             passphrase_entropy, number_of_words, list_length
         );
     }

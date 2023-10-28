@@ -42,7 +42,14 @@ $ phraze ---words 5 # passphrase will have 5 words, overriding the default minim
 determines-generated-frozen-excluded-sleeping
 ```
 
-Note that you can only use one of these methods at a time.
+Note that you can only use one of these strength-changing methods at a time.
+
+If you want to know how much entropy your generated passphrase has, add the `-v`/`--verbose` flag.
+```text
+$ phraze -v -S
+Passphrase has an estimated 104.00 bits of entropy (8 words from a list of 8192 words)
+seventy-cost-freight-suspended-misery-objections-represents-buying
+```
 
 ### Changing the separator between words
 By default, Phraze separates words with a hyphen ("-"). You can change that with the `--sep` (or `-s`) option.
