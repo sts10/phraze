@@ -1,3 +1,4 @@
+pub mod file_reader;
 pub mod unicode_normalization_check;
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
