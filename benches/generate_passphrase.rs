@@ -9,11 +9,12 @@ fn criterion_benchmark(c: &mut Criterion) {
     let number_of_words_to_put_in_passphrase = 7;
     let separator = "-";
     let title_case = false;
-    // Leaving this outside of the benchmark for now
-    let wordlist = fetch_list(ListChoice::Medium);
 
     group.bench_function("as is", |b| {
         b.iter(|| {
+            // include the fetching of the (built-in) list
+            // in the benchmark
+            let wordlist = fetch_list(ListChoice::Medium);
             generate_passphrase(
                 number_of_words_to_put_in_passphrase,
                 separator,
