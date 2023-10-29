@@ -11,7 +11,7 @@ curse-argues-valves-unfair-punk-ritual-inlet
 
 * 🎚️  Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
 * 🎯 Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates remain accurate when no separator is used
-* 🚀 Fast: Takes about 2 milliseconds to generate a passphrase
+* ⚡ Fast: Takes about 2 milliseconds to generate a passphrase
 * 🔣 Can insert numbers, symbols, and/or capital letters if necessary (`-s _b -t` flags)
 * 🛁 Default word list is (hopefully) free of profane words
 * 🧺 Choose from a number of built-in word lists or provide your own
