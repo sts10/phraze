@@ -14,7 +14,7 @@ curse-argues-valves-unfair-punk-ritual-inlet
 * ⚡ Fast: Takes about 2 milliseconds to generate a passphrase
 * 🔣 Can insert numbers, symbols, and/or capital letters if necessary (`-s _b -t` flags)
 * 🛁 Default word list is (hopefully) free of profane words
-* 🧺 Choose from a number of built-in word lists or provide your own
+* 🧺 Choose from a number of built-in, included word lists or provide your own
 * 🛠️  Written in [Rust](https://www.rust-lang.org/)
 
 ## How to use
@@ -77,9 +77,9 @@ Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ### Changing the word list that Phraze uses
 By default, Phraze uses a 8192-word list called the Orchard Street Medium List (which gives 13 bits of entropy per word).
 
-You can specify a different list with `--list`/`-l`, with a choice of a handful of lists built in to Phraze.
+You can specify a different list with `--list`/`-l`, with a choice of a handful of lists included with Phraze.
 
-Each built-in list has a corresponding one-letter code (see below or run `phrase --help` for a full list). For example, `--list s` uses the [EFF **s**hort list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
+Each included list has a corresponding one-letter code (see below or run `phrase --help` for a full list). For example, `--list s` uses the [EFF **s**hort list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
 ```text
 $ phraze --list s
 duck-slip-swoop-stray-wink-stump-whiff-slot
@@ -183,7 +183,7 @@ Uninstall Phraze by running `cargo uninstall phraze`.
 ### Releases on GitHub
 You can also check for [recent releases on GitHub](https://github.com/sts10/phraze/releases). Download the `phraze` executable and move it to somewhere in your `$PATH`, like `$HOME/.local/bin` (you can do this on the command line with something like `mv ~/Downloads/phraze ~/.local/bin/`).
 
-## Available word lists
+## Included word lists
 
 By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the ["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 8,192 words. That means each word adds 13.0 bits of entropy to a passphrase.
 
@@ -219,11 +219,11 @@ stuvwx
 yz
 ```
 
-## Details about each word list
+### Technical details of all included word lists
 
 This list information was generated using [Word List Auditor](https://github.com/sts10/wla).
 
-### Orchard Street Medium
+#### Orchard Street Medium
 ```txt
 Lines found               : 8192
 Free of exact duplicates  : true
@@ -255,7 +255,7 @@ medal-ranks-habit-labor-genre-saved-remainder
 spectator-municipal-longest-colleagues-demolition-enzyme-widespread
 ```
 
-### Orchard Street Long list
+#### Orchard Street Long list
 ```txt
 Lines found               : 17576
 Free of exact duplicates  : true
@@ -287,7 +287,7 @@ bottled-charge-linkage-husbands-cuisine-weave
 gospel-graders-relegated-exits-determine-ducked
 ```
 
-### EFF long list
+#### EFF long list
 ```txt
 Lines found               : 7776
 Free of exact duplicates  : true
@@ -319,7 +319,7 @@ edition-fernlike-synthetic-aloe-filing-wrangle-spiny
 tattle-reapply-borough-stature-cuddle-crummiest-flatten
 ```
 
-### Mnemonicode list
+#### Mnemonicode list
 Note: I swapped the word "beatles" for "beetle", so this isn't exactly the same as the canonical Mnemonicode word list.
 ```txt
 Lines found               : 1633
@@ -352,7 +352,7 @@ strand-mankind-punished-woke-deities-keyboard-camping
 glass-homeless-feature-fee-preparing-interfaces-nations
 ```
 
-### EFF short list
+#### EFF short list
 Note: I swapped out the word "yo-yo" for the word "zen".
 ```txt
 Lines found               : 1296
@@ -364,7 +364,6 @@ No start/end whitespace   : true
 No non-ASCII characters   : true
 Unicode normalized        : true
 Free of prefix words      : true
-Free of suffix words      : false
 Uniquely decodable        : true
 Above brute force line    : true
 Length of shortest word   : 3 characters (aim)
@@ -377,7 +376,6 @@ Shortest edit distance    : 1
 Mean edit distance        : 4.366
 Longest shared prefix     : 4
 Unique character prefix   : 5
-Kraft-McMillan inequality : satisfied
 
 Sample passphrases:
 flame-chump-stood-slurp-saint-spent-path-putt
@@ -387,7 +385,7 @@ hump-dug-wifi-skid-panty-rake-vocal-stoop
 silo-utter-pest-snap-zoom-crate-suds-batch
 ```
 
-### Orchard Street QWERTY list
+#### Orchard Street QWERTY list
 ```txt
 Lines found               : 1296
 Free of exact duplicates  : true
@@ -419,7 +417,7 @@ man-tomb-jar-trim-tip-bits-faded-dig
 young-ten-threw-shy-zero-grew-ready-dead
 ```
 
-### Orchard Street Alpha list
+#### Orchard Street Alpha list
 ```txt
 Lines found               : 1296
 Free of exact duplicates  : true
