@@ -132,7 +132,8 @@ fn generate_passphrases<T: AsRef<str> + std::fmt::Display>(opt: &Args, word_list
             number_of_words_to_put_in_passphrase,
             &opt.separator,
             opt.title_case,
-            word_list);
+            word_list,
+        );
         println!("{}", passphrase);
     };
 }
