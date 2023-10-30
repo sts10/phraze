@@ -15,7 +15,7 @@ fn criterion_benchmark(c: &mut Criterion) {
             // include the fetching of the (built-in) list
             // in the benchmark
             let wordlist = fetch_list(ListChoice::Medium);
-            generate_passphrase(
+            generate_a_passphrase(
                 number_of_words_to_put_in_passphrase,
                 separator,
                 title_case,

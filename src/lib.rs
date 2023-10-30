@@ -85,7 +85,7 @@ pub fn fetch_list(list_choice: ListChoice) -> &'static [&'static str] {
 /// This function uses some Rust magic to be able to accept a word list as
 /// either a &[&str] (built-in word lists) or as a &[String] if user provides a file
 /// as word list.
-pub fn generate_passphrase<T: AsRef<str> + std::fmt::Display>(
+pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
     number_of_words_to_put_in_passphrase: usize,
     separator: &str,
     title_case: bool,
@@ -140,4 +140,24 @@ fn can_make_title_case() {
     assert_eq!(make_title_case(test_word), "Alpha".to_string());
     let test_word = "ALPHA";
     assert_eq!(make_title_case(test_word), "Alpha".to_string());
+    let test_word = "aLPHA";
+    assert_eq!(make_title_case(test_word), "Alpha".to_string());
+}
+
+/// Print the calculated (estimated) entropy of a passphrase, based on three variables
+pub fn print_entropy(number_of_words: usize, list_length: usize, n_passphrases: usize) {
+    let passphrase_entropy = (list_length as f64).log2() * number_of_words as f64;
+    // Depending on how many different passphrases the user wants printed, change the printed text
+    // accordingly
+    if n_passphrases == 1 {
+        eprintln!(
+            "Passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words)",
+            passphrase_entropy, number_of_words, list_length,
+        );
+    } else {
+        eprintln!(
+            "Each passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words)",
+            passphrase_entropy, number_of_words, list_length
+        );
+    }
 }

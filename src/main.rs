@@ -105,16 +105,15 @@ fn main() -> Result<(), String> {
     Ok(())
 }
 
+/// This does the real work of the program: generating the passphrases
 fn generate_passphrases<T: AsRef<str> + std::fmt::Display>(opt: &Args, word_list: &[T]) {
-    let list_length = word_list.len();
-
     // Since user can define a minimum entropy, we might have to do a little math to
     // figure out how many words we need to include in this passphrase.
     let number_of_words_to_put_in_passphrase = calculate_number_words_needed(
         opt.number_of_words,
         opt.minimum_entropy,
         opt.strength_count,
-        list_length,
+        word_list.len(),
     );
 
     // If user enabled verbose option
@@ -123,38 +122,20 @@ fn generate_passphrases<T: AsRef<str> + std::fmt::Display>(opt: &Args, word_list
         // to the terminal
         print_entropy(
             number_of_words_to_put_in_passphrase,
-            list_length,
+            word_list.len(),
             opt.n_passphrases,
         );
     }
 
     // Now we can (finally) generate and print some number of passphrases
     for _ in 0..opt.n_passphrases {
-        let passphrase = generate_passphrase(
+        let passphrase = generate_a_passphrase(
             number_of_words_to_put_in_passphrase,
             &opt.separator,
             opt.title_case,
             word_list,
         );
         println!("{}", passphrase);
-    }
-}
-
-/// Print the calculated (estimated) entropy of a passphrase, based on three variables
-fn print_entropy(number_of_words: usize, list_length: usize, n_passphrases: usize) {
-    let passphrase_entropy = (list_length as f64).log2() * number_of_words as f64;
-    // Depending on how many different passphrases the user wants printed, change the printed text
-    // accordingly
-    if n_passphrases == 1 {
-        eprintln!(
-            "Passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words)",
-            passphrase_entropy, number_of_words, list_length,
-        );
-    } else {
-        eprintln!(
-            "Each passphrase has an estimated {:.2} bits of entropy ({} words from a list of {} words)",
-            passphrase_entropy, number_of_words, list_length
-        );
     }
 }
 
