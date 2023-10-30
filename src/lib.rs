@@ -120,7 +120,7 @@ where
     }
 }
 
-/// Make first character of a given &str uppercase
+/// Make given string slice all lowercase, then make first character uppercase
 fn make_title_case(s: &str) -> String {
     // First, make entire word lowercase
     let s = s.to_lowercase();
@@ -132,7 +132,7 @@ fn make_title_case(s: &str) -> String {
 }
 
 #[test]
-fn can_make_title_case() {
+fn can_make_word_title_case() {
     let test_word = "alpha";
     assert_eq!(make_title_case(test_word), "Alpha".to_string());
     let test_word = "ALPHA";
