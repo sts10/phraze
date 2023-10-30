@@ -1,13 +1,10 @@
 pub mod file_reader;
 pub mod separators;
 pub mod unicode_normalization_check;
+
+use include_lines::include_lines;
 use crate::separators::make_separator;
 use rand::{seq::SliceRandom, thread_rng, Rng};
-
-// Pull in the wordlists as constants for us to use later.
-// This is thanks to the build.rs build script. Learn more:
-// https://doc.rust-lang.org/cargo/reference/build-scripts.html#case-study-code-generation
-include!(concat!(env!("OUT_DIR"), "/wordlists.rs"));
 
 /// The possible word lists that Phraze can use.
 #[derive(Clone, Debug, Copy)]
@@ -68,16 +65,16 @@ pub fn convert_minimum_entropy_to_number_of_words(
 }
 
 /// Take enum of list_choice and find the constant that is the corresponding word list (with the
-/// actual words). These are defined in the build script (build.rs)
+/// actual words).
 pub fn fetch_list(list_choice: ListChoice) -> &'static [&'static str] {
     match list_choice {
-        ListChoice::Long => WL_LONG,
-        ListChoice::Medium => WL_MEDIUM,
-        ListChoice::Qwerty => WL_QWERTY,
-        ListChoice::Alpha => WL_ALPHA,
-        ListChoice::Eff => WL_EFF,
-        ListChoice::Effshort => WL_EFFSHORT,
-        ListChoice::Mnemonicode => WL_MNEMONICODE,
+        ListChoice::Long => &include_lines!("word-lists/orchard-street-long.txt"),
+        ListChoice::Medium => &include_lines!("word-lists/orchard-street-medium.txt"),
+        ListChoice::Qwerty => &include_lines!("word-lists/orchard-street-qwerty.txt"),
+        ListChoice::Alpha => &include_lines!("word-lists/orchard-street-alpha.txt"),
+        ListChoice::Eff => &include_lines!("word-lists/eff-long.txt"),
+        ListChoice::Effshort => &include_lines!("word-lists/eff-short-1.txt"),
+        ListChoice::Mnemonicode => &include_lines!("word-lists/mnemonicode.txt"),
     }
 }
 
