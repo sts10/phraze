@@ -2,8 +2,8 @@ pub mod file_reader;
 pub mod separators;
 pub mod unicode_normalization_check;
 
-use include_lines::include_lines;
 use crate::separators::make_separator;
+use include_lines::include_lines;
 use rand::{seq::SliceRandom, thread_rng, Rng};
 
 /// The possible word lists that Phraze can use.
@@ -64,8 +64,8 @@ pub fn convert_minimum_entropy_to_number_of_words(
     (minimum_entropy as f64 / entropy_per_word_from_this_list).ceil() as usize
 }
 
-/// Take enum of list_choice and find the constant that is the corresponding word list (with the
-/// actual words).
+/// Take enum of list_choice and use the `include_lines!` macro from crate
+/// to read-in the appropriate word list in.
 pub fn fetch_list(list_choice: ListChoice) -> &'static [&'static str] {
     match list_choice {
         ListChoice::Long => &include_lines!("word-lists/orchard-street-long.txt"),
