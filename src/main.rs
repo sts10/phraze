@@ -96,7 +96,9 @@ fn main() -> Result<(), String> {
     }
 
     match &opt.custom_list_file_path {
-        Some(custom_list_file_path) => generate_passphrases(&opt, &read_in_custom_list(custom_list_file_path)?),
+        Some(custom_list_file_path) => {
+            generate_passphrases(&opt, &read_in_custom_list(custom_list_file_path)?)
+        }
         None => generate_passphrases(&opt, fetch_list(opt.list_choice)),
     };
 
@@ -135,7 +137,7 @@ fn generate_passphrases<T: AsRef<str> + std::fmt::Display>(opt: &Args, word_list
             word_list,
         );
         println!("{}", passphrase);
-    };
+    }
 }
 
 /// Print the calculated (estimated) entropy of a passphrase, based on three variables
