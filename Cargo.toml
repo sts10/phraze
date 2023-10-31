@@ -3,9 +3,10 @@ name = "phraze"
 description = "Random passphrase generator"
 version = "0.3.2"
 edition = "2021"
+authors = ["sts10 <sschlinkert@gmail.com>"]
 license = "MPL-2.0"
 readme = "readme.markdown"
-authors = ["sts10 <sschlinkert@gmail.com>"]
+repository = "https://github.com/sts10/phraze"
 
 [dependencies]
 rand = "0.8.5"
