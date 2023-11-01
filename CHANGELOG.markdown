@@ -1,3 +1,12 @@
+# v0.3.3
+
+Big thanks to @westonal for some nice code improvements in this release!
+
+* Unify the types of built-in and custom word lists; by @westonal  #[16](https://github.com/sts10/phraze/pull/16)
+* Use include_lines! macro rather than code generation; by @westonal [#17](https://github.com/sts10/phraze/pull/17)
+* First release to use [cargo-dist](https://opensource.axo.dev/cargo-dist/). 
+* Adds some more metadata to Cargo.toml 3bbeee6bfba42b9c65250c2c960ba25835c828f9 
+
 # v0.3.1
 
 **New in this release:** Mostly small stuff I wanted to improve after the large changes in the v0.3.0 release.
