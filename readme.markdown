@@ -174,14 +174,14 @@ Options:
 
 ## Installation
 
-### Using Rust and cargo (suggested method)
+### Latest release
+Check [the GitHub releases page](https://github.com/sts10/phraze/releases) for instructions on how to install the latest released version of Phraze.
+
+### Using Rust and cargo
 1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
 2. Run: `cargo install --git https://github.com/sts10/phraze --branch main` (Run this same command to upgrade Phraze.)
 
 Uninstall Phraze by running `cargo uninstall phraze`.
-
-### Releases on GitHub
-You can also check for [recent releases on GitHub](https://github.com/sts10/phraze/releases). Download the `phraze` executable and move it to somewhere in your `$PATH`, like `$HOME/.local/bin` (you can do this on the command line with something like `mv ~/Downloads/phraze ~/.local/bin/`).
 
 ## Included word lists
 
@@ -458,6 +458,12 @@ Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically 
 Run `cargo test` to run the handful of tests that Phraze has.
 
 Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarking. You can run the benchmarks for yourself with `cargo bench`.
+
+## For developers: How to create a release
+
+This project uses [cargo-dist](https://opensource.axo.dev/cargo-dist/) to create releases. 
+
+Some of [my personal docs are here](https://sts10.github.io/docs/cargo-dist-tips.html); but basically, `cargo install cargo-dist`. When you're ready to cut a new release, test the current state of the project with `cargo dist build` and `cargo dist plan`. If that went well, create a new git tag that matches the current project version in `Cargo.toml` with `git tag vX.X.X`. Finally, run `git push --tags` to kick off the release process. GitHub will handle it from here -- check your project's GitHub Releases page in about 5 to 10 minutes.
 
 ## Why another random passphrase generator?
 
