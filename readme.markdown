@@ -14,7 +14,7 @@ curse-argues-valves-unfair-punk-ritual-inlet
 * ⚡ Fast: Takes about 2 milliseconds to generate a passphrase
 * 🔣 Can insert numbers, symbols, and/or capital letters if necessary (`-s _b -t` flags)
 * 🛁 Default word list is (hopefully) free of profane words
-* 🧺 Choose from a number of built-in, included word lists or provide your own
+* 🧺 Choose from a number of included word lists or provide your own
 * 🛠️  Written in [Rust](https://www.rust-lang.org/)
 
 ## How to use
