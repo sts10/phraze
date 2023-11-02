@@ -129,45 +129,10 @@ jobs:
             ${{ steps.cargo-dist.outputs.paths }}
             ${{ env.BUILD_MANIFEST_NAME }}
 
-  # Build and package all the platform-agnostic(ish) things
-  upload-global-artifacts:
-    needs: [plan, upload-local-artifacts]
-    runs-on: "ubuntu-20.04"
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - name: Install cargo-dist
-        run: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/v0.4.2/cargo-dist-installer.sh | sh"
-      # Get all the local artifacts for the global tasks to use (for e.g. checksums)
-      - name: Fetch local artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: artifacts
-          path: target/distrib/
-      - id: cargo-dist
-        shell: bash
-        run: |
-          cargo dist build ${{ needs.plan.outputs.tag-flag }} --output-format=json "--artifacts=global" > dist-manifest.json
-          echo "cargo dist ran successfully"
-
-          # Parse out what we just built and upload it to the Github Release™
-          echo "paths<<EOF" >> "$GITHUB_OUTPUT"
-          jq --raw-output ".artifacts[]?.path | select( . != null )" dist-manifest.json >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
-      - name: "Upload artifacts"
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifacts
-          path: ${{ steps.cargo-dist.outputs.paths }}
-
   should-publish:
     needs:
       - plan
       - upload-local-artifacts
-      - upload-global-artifacts
     if: ${{ needs.plan.outputs.publishing == 'true' }}
     runs-on: ubuntu-latest
     steps:
