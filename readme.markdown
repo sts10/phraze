@@ -3,7 +3,7 @@
 Generate random passphrases.
 
 ```bash
-$ phraze #=> 7-word passphrase; 91 bits of entropy
+$ phraze
 curse-argues-valves-unfair-punk-ritual-inlet
 ```
 
@@ -163,7 +163,8 @@ Options:
           Use Title Case for words in generated usernames
 
   -v, --verbose
-          Print estimated entropy of generated passphrase, in bits, along with the passphrase itself
+          Print estimated entropy of generated passphrase, in bits, along with the
+          passphrase itself
 
   -h, --help
           Print help (see a summary with '-h')
@@ -174,24 +175,23 @@ Options:
 
 ## Installation
 
-### Latest release
-Check [the GitHub releases page](https://github.com/sts10/phraze/releases) for instructions on how to install the latest released version of Phraze.
-
 ### Using Rust and cargo
 1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
 2. Run: `cargo install --git https://github.com/sts10/phraze --branch main` (Run this same command to upgrade Phraze.)
 
 Uninstall Phraze by running `cargo uninstall phraze`.
 
+### Latest release
+Check [the GitHub releases page](https://github.com/sts10/phraze/releases) for binaries.
+
 ## Included word lists
 
-By default, Phraze uses a word list from the [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), specifically the ["Medium" list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 8,192 words. That means each word adds 13.0 bits of entropy to a passphrase.
+By default, Phraze uses [the Orchard Street Medium wordlist](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-medium.txt), which has 8,192 words. This means each word adds 13.0 bits of entropy to a passphrase.
 
-However, other lists are available to Phraze users. You can select a different word list by using the `-l`/`--list` option. All of these lists are uniquely decodable, which means they're safe to use without a separator between words.
+However, Phraze comes with other word lists built-in. Run `phraze --help` to view word list options. You can choose a different word list by using the `-l`/`--list` option. All of the word lists included with Phraze are uniquely decodable, which means they're safe to use without a separator between words.
 
 * Orchard Street Medium list: 8,192 words; 13 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is specified by the user.
-
-* Orchard Street Long list: 17,576 words; 14.1 bits of entropy per word. Use `l`.
+* [Orchard Street Long list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-long.txt): 17,576 words; 14.1 bits of entropy per word. Use `l`.
 * [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
 * [Mnemonicode](https://github.com/singpolyma/mnemonicode) list: 1,633 words; 10.67 bits of entropy per word. Words are easy to pronounce out loud. Use `n`.
 * [EFF short list 1](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 1,296 words; 10.3 bits of entropy per word. Use `s`.
@@ -453,32 +453,32 @@ gave-model-coil-lent-deep-lam-chin-tall
 
 Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose), which I generally trust as much as any tool for generating randomness with a computer. Though I welcome PRs/issues/ideas on any improvements I could make in this area.
 
-## Testing or Benchmarking Phraze
-
-Run `cargo test` to run the handful of tests that Phraze has.
-
-Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarking. You can run the benchmarks for yourself with `cargo bench`.
-
-## For developers: How to create a release
-
-This project uses [cargo-dist](https://opensource.axo.dev/cargo-dist/) to create releases. 
-
-Some of [my personal docs are here](https://sts10.github.io/docs/cargo-dist-tips.html); but basically, `cargo install cargo-dist`. When you're ready to cut a new release, test the current state of the project with `cargo dist build` and `cargo dist plan`. If that went well, create a new git tag that matches the current project version in `Cargo.toml` with `git tag vX.X.X`. Finally, run `git push --tags` to kick off the release process. GitHub will handle it from here -- check your project's GitHub Releases page in about 5 to 10 minutes.
-
 ## Why another random passphrase generator?
-
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [Pgen](https://github.com/ctsrc/Pgen).
 
 Admittedly, part of my motivation to create Phraze was to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which I think are pretty good!
 
-## Licensing 
+## For developers
+I welcome both pull requests and issues.
 
-Phraze's code is licensed under the Mozilla Public License v2.0 (see LICENSE.txt or [this online version of the license](https://www.mozilla.org/en-US/MPL/2.0/)).
+### Testing and benchmarking Phraze
+Run `cargo test` to run Phraze's tests.
+
+Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarking. You can run the benchmarks for yourself with `cargo bench`.
+
+### How to create a release
+This project uses [cargo-dist](https://opensource.axo.dev/cargo-dist/) to create releases.
+
+You're welcome to consult [my personal notes on using cargo-dist](https://sts10.github.io/docs/cargo-dist-tips.html); but basically: First, install cargo-dist with`cargo install cargo-dist`.
+
+When you're ready to cut a new release, test the current state of the project with `cargo dist build` and `cargo dist plan`. If that went well, create a new git tag that matches the current project version in `Cargo.toml` with `git tag vX.X.X`. Finally, run `git push --tags` to kick off the release process. GitHub will handle it from here -- check your project's GitHub Releases page in about 5 to 10 minutes.
+
+## Licensing
+
+Phraze's code is licensed under the Mozilla Public License v2.0 (see included LICENSE.txt file or [this online version of the license](https://www.mozilla.org/en-US/MPL/2.0/)).
 
 ### Word list licensing
 
-The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
-
-The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
-
-All Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+* The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
+* The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
+* All Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
