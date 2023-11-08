@@ -7,7 +7,7 @@ use std::path::Path;
 use std::path::PathBuf;
 use std::str::FromStr;
 
-/// Read text file into a Vec<String>. Also trims whitespace, avoids adding blank strings,
+/// Read text file into a `Vec<String>`. Also trims whitespace, avoids adding blank strings,
 /// sorts, de-duplicates, and checks for uniform Unicode normalization.
 pub fn read_in_custom_list(file_path: &Path) -> Result<Vec<String>, String> {
     let file_input: Vec<String> = match read_by_line(file_path.to_path_buf()) {

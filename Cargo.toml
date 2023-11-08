@@ -7,6 +7,8 @@ authors = ["sts10 <sschlinkert@gmail.com>"]
 license = "MPL-2.0"
 readme = "readme.markdown"
 repository = "https://github.com/sts10/phraze"
+keywords = ["passphrase", "passwords"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 rand = "0.8.5"
