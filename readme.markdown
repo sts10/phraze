@@ -177,7 +177,7 @@ Options:
 
 ### Using Rust and cargo
 1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
-2. Run: `cargo install --git https://github.com/sts10/phraze --locked --branch main` (Run this same command to upgrade Phraze.)
+2. Run: `cargo install phraze --locked` (Run this same command to upgrade Phraze to latest available version.)
 
 Uninstall Phraze by running `cargo uninstall phraze`.
 
