@@ -1,4 +1,5 @@
 # Phraze
+![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze) ![Crates.io](https://img.shields.io/crates/l/phraze)
 
 Generate random passphrases.
 
