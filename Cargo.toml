@@ -12,6 +12,7 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 rand = "0.8.5"
+rand_chacha = "0.3.1"
 clap = { version = "4.4.7", features = ["derive"] }
 unicode-normalization = "0.1.22"
 include-lines = "1.1.2"
