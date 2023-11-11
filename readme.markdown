@@ -453,7 +453,7 @@ gave-model-coil-lent-deep-lam-chin-tall
 
 ## Source of randomness
 
-Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose), which I generally trust as much as any tool for generating randomness with a computer. Though I welcome PRs/issues/ideas on any improvements I could make in this area.
+Phraze uses the [rand crate](https://github.com/rust-random/rand)'s [standard ThreadRng](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html) as its cryptographically secure pseudo-random number generator (CSPRNG). According to [the rand crate documentation at the time of this writing, "ThreadRng uses the same CSPRNG as StdRng, ChaCha12."](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html) (See [this issue](https://github.com/rust-random/rand/issues/932) for justification for setting 12 rounds as a sane default.) 
 
 ## Why another random passphrase generator?
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [Pgen](https://github.com/ctsrc/Pgen).
