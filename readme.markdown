@@ -1,5 +1,6 @@
 # Phraze
-![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze) ![Crates.io](https://img.shields.io/crates/l/phraze)
+[![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze)](https://crates.io/crates/phraze) 
+[![Crates.io](https://img.shields.io/crates/l/phraze)](./LICENSE.txt)
 
 Generate random passphrases.
 
