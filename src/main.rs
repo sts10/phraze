@@ -1,6 +1,7 @@
 use crate::file_reader::read_in_custom_list;
 use clap::Parser;
 use phraze::*;
+use rand::thread_rng;
 use std::path::PathBuf;
 
 /// Generate random passphrases
@@ -126,6 +127,10 @@ fn generate_passphrases<T: AsRef<str> + std::fmt::Display>(opt: &Args, word_list
             opt.n_passphrases,
         );
     }
+    // Create one random number generator for Phraze to use for ALL
+    // generated passphrases. I believe this is more
+    // cryptographically secure/responsible.
+    let mut rng = thread_rng();
 
     // Now we can (finally) generate and print some number of passphrases
     for _ in 0..opt.n_passphrases {
@@ -134,6 +139,7 @@ fn generate_passphrases<T: AsRef<str> + std::fmt::Display>(opt: &Args, word_list
             &opt.separator,
             opt.title_case,
             word_list,
+            &mut rng,
         );
         println!("{}", passphrase);
     }

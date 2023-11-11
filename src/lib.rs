@@ -4,7 +4,7 @@ pub mod unicode_normalization_check;
 
 use crate::separators::make_separator;
 use include_lines::include_lines;
-use rand::{seq::SliceRandom, thread_rng, Rng};
+use rand::{seq::SliceRandom, Rng};
 
 /// The possible word lists that Phraze can use.
 #[derive(Clone, Debug, Copy)]
@@ -87,22 +87,22 @@ pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
     separator: &str,
     title_case: bool,
     list: &[T], // Either type!
+    rng: &mut impl Rng,
 ) -> String {
-    let mut rng = thread_rng();
     // Create a blank String to put words into to create our passphrase
     let mut passphrase = String::new();
     for i in 0..number_of_words_to_put_in_passphrase {
         // Check if we're doing title_case
         let random_word = if title_case {
-            make_title_case(&get_random_element(&mut rng, list))
+            make_title_case(&get_random_element(rng, list))
         } else {
-            get_random_element(&mut rng, list)
+            get_random_element(rng, list)
         };
         // Add this word to our passphrase
         passphrase += &random_word;
         // Add a separator
         if i != number_of_words_to_put_in_passphrase - 1 {
-            passphrase += &make_separator(&mut rng, separator);
+            passphrase += &make_separator(rng, separator);
         }
     }
     passphrase.to_string()
