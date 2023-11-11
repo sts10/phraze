@@ -453,7 +453,9 @@ gave-model-coil-lent-deep-lam-chin-tall
 
 ## Source of randomness
 
-Phraze uses the [rand crate](https://github.com/rust-random/rand), specifically the [SliceRandom's `choose` method](https://docs.rs/rand/latest/rand/seq/trait.SliceRandom.html#tymethod.choose), which I generally trust as much as any tool for generating randomness with a computer. Though I welcome PRs/issues/ideas on any improvements I could make in this area.
+Phraze uses [ChaCha20](https://docs.rs/rand_chacha/latest/rand_chacha/struct.ChaCha20Rng.html) for its pseudo-random number generator. As the documentation notes: 
+
+> With the ChaCha algorithm it is possible to choose the number of rounds the core algorithm should run. The number of rounds is a tradeoff between performance and security, where 8 rounds is the minimum potentially secure configuration, and 20 rounds is widely used as a conservative choice.
 
 ## Why another random passphrase generator?
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [Pgen](https://github.com/ctsrc/Pgen).
