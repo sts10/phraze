@@ -21,8 +21,11 @@ curse-argues-valves-unfair-punk-ritual-inlet
 
 ## How to use
 
+Running `phraze` (without options) will generate a passphrase with at least 80 bits of entropy.
+
+Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
+
 ### Changing the strength of the passphrase
-By default, Phraze will generate a passphrase with at least 80 bits of entropy (minimum entropy). Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
 
 You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
 
