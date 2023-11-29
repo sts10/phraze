@@ -19,6 +19,17 @@ curse-argues-valves-unfair-punk-ritual-inlet
 * 🧺 Choose from a number of included word lists or provide your own
 * 🛠️  Written in [Rust](https://www.rust-lang.org/)
 
+## Installing
+
+### Using Rust and Cargo
+1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
+2. Run: `cargo install phraze --locked` (Run this same command to upgrade Phraze to latest available version.)
+
+Uninstall Phraze by running `cargo uninstall phraze`.
+
+### Latest release
+Alternatively, you can get binaries from [the GitHub releases page](https://github.com/sts10/phraze/releases).
+
 ## How to use
 
 Running `phraze` (without options) will generate a passphrase with at least 80 bits of entropy.
@@ -177,17 +188,6 @@ Options:
   -V, --version
           Print version
 ```
-
-## Installation
-
-### Using Rust and cargo
-1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
-2. Run: `cargo install phraze --locked` (Run this same command to upgrade Phraze to latest available version.)
-
-Uninstall Phraze by running `cargo uninstall phraze`.
-
-### Latest release
-Check [the GitHub releases page](https://github.com/sts10/phraze/releases) for binaries.
 
 ## Included word lists
 
