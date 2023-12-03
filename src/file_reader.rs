@@ -1,3 +1,5 @@
+//! A couple functions for reading in custom word list files
+
 use crate::unicode_normalization_check::uniform_unicode_normalization;
 use std::fs::File;
 use std::io;

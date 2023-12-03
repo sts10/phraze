@@ -1,3 +1,8 @@
+//! One thing we definitely want to check user-inputted word lists for is _uniform_ Unicode Normalization.
+//! This is because, if the Unicode Normalization is _not_ uniform, that means we two words that
+//! look very similar can get through Phraze's de-duplication check. Having duplicate words in a
+//! word list will cause Phraze to OVER-estimate passphrase entropy strength, exactly what we do
+//! not want to happen.
 use std::collections::HashSet;
 use unicode_normalization::is_nfc_quick;
 use unicode_normalization::is_nfd_quick;
