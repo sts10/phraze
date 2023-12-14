@@ -1,3 +1,7 @@
+# V 0.3.5 
+
+* Some improvements to help text and Readme.
+
 # v0.3.4
 
 * Re-organizes README
