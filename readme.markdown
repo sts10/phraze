@@ -78,6 +78,12 @@ $ phrase --sep _s
 fax/household>validation_replied-upgrade,remind?reasoning
 ```
 
+If you don't want a separator at all, use `-s ''`:
+```text
+phraze -s ''
+theftinversiondebtsquietlysuspensionannualchocolate
+```
+
 You can make all the word Title Case by using `--title-case`:
 ```text
 $ phraze --sep '' --title-case
@@ -134,7 +140,8 @@ Options:
           [default: 1]
 
   -s, --sep <SEPARATOR>
-          Word separator. Can accept single quotes around the separator.
+          Word separator. Can accept single quotes around the separator. For no separator,
+          use empty single quotes ''.
 
           There are special values that will trigger generated separators:
 

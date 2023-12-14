@@ -36,7 +36,8 @@ struct Args {
     #[clap(short = 'n', long = "passphrases", default_value = "1")]
     n_passphrases: usize,
 
-    /// Word separator. Can accept single quotes around the separator.
+    /// Word separator. Can accept single quotes around the separator. For no separator, use empty
+    /// single quotes ''.
     ///
     /// There are special values that will trigger generated separators:
     ///
