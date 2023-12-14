@@ -1,4 +1,4 @@
-# V 0.3.5 
+# v0.3.5 
 
 * Some improvements to help text and Readme.
 
