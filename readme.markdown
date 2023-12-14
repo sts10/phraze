@@ -126,67 +126,74 @@ $ phraze | xclip -selection clipboard
 Usage: phraze [OPTIONS]
 
 Options:
+  -S, --strength...
+          Strengthen your passphrase the easy way: Each -S flag increases minimum 
+          entropy by 20 bits (above the default of 80 bits)
+
   -e, --minimum-entropy <MINIMUM_ENTROPY>
-          Set minimum amount of entropy for generated passphrase. If neither minimum_entropy
-          or number_of_words is specified, Phraze will default to an 80-bit minimum
+          Set minimum amount of entropy in bits for generated passphrase. If 
+          neither minimum_entropy or number_of_words is specified, Phraze will 
+          default to an 80-bit minimum
 
   -w, --words <NUMBER_OF_WORDS>
-          Set how many words in generated passphrase. If neither number_of_words or
-          minimum_entropy is specified, Phraze will default to an 80-bit minimum
+          Set exactly how many words to use in generated passphrase. If neither 
+          number_of_words or minimum_entropy is specified, Phraze will default to 
+          an 80-bit minimum
 
   -n, --passphrases <N_PASSPHRASES>
           Number of passphrases to generate
-
+          
           [default: 1]
 
   -s, --sep <SEPARATOR>
-          Word separator. Can accept single quotes around the separator. For no separator,
-          use empty single quotes ''.
-
+          Word separator. Can accept single quotes around the separator. For no 
+          separator, use empty single quotes ''.
+          
           There are special values that will trigger generated separators:
-
+          
           _n: separators will be random numbers
-
+          
           _s: separators will be random symbols
-
+          
           _b: separators will be a mix of random numbers and symbols
-
+          
           [default: -]
 
   -l, --list <LIST_CHOICE>
           Choose a word list to use.
-
+          
           Options:
-
+          
           m: Orchard Street Medium List (8,192 words) [DEFAULT]
-
+          
           l: Orchard Street Long List (17,576 words)
-
+          
           e: EFF long list (7,776 words)
-
-          n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
-             passphrases out loud.
-
+          
+          n: Mnemonicode list (1,633 words). Good if you know you're going to be 
+          speaking passphrases out loud.
+          
           s: EFF short list (1,296 words)
-
-          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance
-             on QWERTY keyboard layouts.
-
-          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on
-             an alphabetical keyboard layout
-
+          
+          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel 
+          distance on QWERTY keyboard layouts.
+          
+          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel 
+          distance on an alphabetical keyboard layout
+          
           [default: m]
 
   -c, --custom-list <CUSTOM_LIST_FILE_PATH>
-          Provide a text file with a list of words to randomly generate passphrase from.
-
+          Provide a text file with a list of words to randomly generate passphrase 
+          from.
+          
           Should be a text file with one word per line.
 
   -t, --title-case
           Use Title Case for words in generated usernames
 
   -v, --verbose
-          Print estimated entropy of generated passphrase, in bits, along with the
+          Print estimated entropy of generated passphrase, in bits, along with the 
           passphrase itself
 
   -h, --help
