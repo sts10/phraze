@@ -1,3 +1,8 @@
+# v0.3.6
+
+* Pull latest versions of Orchard Street Word Lists
+* Use cargo-dist v 0.8.0 to cut release
+
 # v0.3.5 
 
 * Some improvements to help text and Readme.
