@@ -33,7 +33,7 @@ Alternatively, you can get binaries from [the GitHub releases page](https://gith
 
 ## How to use
 
-Running `phraze` (without options) will generate a passphrase with at least 80 bits of entropy.
+Running `phraze`, without specifying options, will generate a passphrase with at least 80 bits of entropy.
 
 Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
 
@@ -41,7 +41,7 @@ Entropy is an estimate of the "strength" of the passphrase. Higher entropy means
 
 You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
 
-**1. Enter a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
+**1. Set a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
 ```text
 $ phraze -SS
 determined-pervasive-entirety-incumbent-trophy-emergence-spatial-wondering-destroyed-gamma
@@ -98,11 +98,11 @@ Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ```
 
 ### Changing the word list that Phraze uses
-By default, Phraze uses a 8192-word list called the Orchard Street Medium List (which gives 13 bits of entropy per word).
+By default, Phraze uses [a 8192-word list](https://github.com/sts10/phraze/blob/main/word-lists/orchard-street-medium.txt) called the Orchard Street Medium List (which gives 13 bits of entropy per word).
 
 You can specify a different list with `--list`/`-l`, with a choice of a handful of lists included with Phraze.
 
-Each included list has a corresponding one-letter code (see below or run `phrase --help` for a full list). For example, `--list s` uses the [EFF **s**hort list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
+Each included list has a corresponding one-letter code (see below or run `phrase --help` for a full list). For example, `--list s` causes Phraze to use the [EFF **s**hort list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
 ```text
 $ phraze --list s
 duck-slip-swoop-stray-wink-stump-whiff-slot
@@ -473,7 +473,7 @@ gave-model-coil-lent-deep-lam-chin-tall
 
 Phraze uses the [rand crate](https://github.com/rust-random/rand)'s [ThreadRng](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html) as its cryptographically secure pseudo-random number generator (CSPRNG) for generating passphrases.
 
-According to [the rand crate documentation at the time of this writing, "ThreadRng uses the same CSPRNG as StdRng, ChaCha12."](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html), meaning it uses 12 rounds of the ChaCha stream cipher. That `StdRng` uses ChaCha12 is [relatively clear in the source code](https://docs.rs/rand/latest/src/rand/rngs/std.rs.html#9-15). (See [this issue](https://github.com/rust-random/rand/issues/932) for arguments in favor of using 12 rounds rather than 20.)
+According to [the rand crate documentation at the time of this writing, "ThreadRng uses the same CSPRNG as StdRng, ChaCha12"](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html), meaning it uses 12 rounds of the ChaCha stream cipher. That `StdRng` uses ChaCha12 is [relatively clear in the source code](https://docs.rs/rand/latest/src/rand/rngs/std.rs.html#9-15). (See [this issue](https://github.com/rust-random/rand/issues/932) for arguments in favor of using 12 rounds rather than 20.)
 
 ## Why another random passphrase generator?
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [Pgen](https://github.com/ctsrc/Pgen).
@@ -481,7 +481,7 @@ There are already a few good passphrase generators, including [passphraseme](htt
 Admittedly, part of my motivation to create Phraze was to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which I think are pretty good!
 
 ## For developers
-I welcome both pull requests and issues.
+I welcome both pull requests and issues. See included [LICENSE.txt](./LICENSE.txt) file.
 
 ### Testing and benchmarking Phraze
 Run `cargo test` to run Phraze's tests.
