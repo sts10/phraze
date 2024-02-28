@@ -491,7 +491,7 @@ Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarki
 ### How to create a release
 This project uses [cargo-dist](https://opensource.axo.dev/cargo-dist/) to create releases.
 
-You're welcome to consult [my personal notes on using cargo-dist](https://sts10.github.io/docs/cargo-dist-tips.html); but basically: First, install cargo-dist with`cargo install cargo-dist`.
+You're welcome to consult [my personal notes on using cargo-dist](https://sts10.github.io/docs/cargo-dist-tips.html), but basically: First, install cargo-dist with`cargo install cargo-dist`.
 
 When you're ready to cut a new release, test the current state of the project with `cargo dist build` and `cargo dist plan`. If that went well, create a new git tag that matches the current project version in `Cargo.toml` with `git tag vX.X.X`. Finally, run `git push --tags` to kick off the release process. GitHub will handle it from here -- check your project's GitHub Releases page in about 5 to 10 minutes.
 
@@ -501,6 +501,6 @@ Phraze's code is licensed under the Mozilla Public License v2.0. See included [L
 
 ### Word list licensing
 
-* The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
+* The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh under [the MIT License](https://mit-license.org/).
 * The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
 * All Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
