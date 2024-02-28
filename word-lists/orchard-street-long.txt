@@ -28,6 +28,9 @@ abolitionist
 abolitionists
 aboriginal
 aborigines
+aborted
+abortion
+abortions
 abound
 above
 abrasive
@@ -57,6 +60,7 @@ absurdity
 abundance
 abundant
 abundantly
+abuse
 abused
 abuses
 abusing
@@ -216,6 +220,7 @@ adapter
 adapting
 adaptive
 add
+addict
 addicted
 addiction
 addictive
@@ -588,7 +593,6 @@ ambulance
 ambulatory
 ambush
 ambushed
-amen
 amenable
 amend
 amended
@@ -886,7 +890,6 @@ aquarium
 aquatic
 aquatics
 aqueduct
-aqueous
 aquifer
 arbitrarily
 arbitrary
@@ -1840,6 +1843,8 @@ bombardier
 bombardment
 bombed
 bomber
+bombers
+bombing
 bombings
 bombs
 bond
@@ -1902,6 +1907,7 @@ bounced
 bouncing
 boundaries
 boundary
+bounded
 bounding
 boundless
 bounty
@@ -2137,7 +2143,6 @@ bunk
 bunker
 bunkers
 bunny
-buoyancy
 burden
 burdened
 burdens
@@ -4073,6 +4078,7 @@ customize
 customized
 customs
 cutoff
+cuts
 cutter
 cutting
 cuttings
@@ -4299,7 +4305,6 @@ deflection
 deforestation
 deformation
 deformed
-deformities
 deformity
 defunct
 defy
@@ -4395,7 +4400,6 @@ denial
 denied
 denies
 denomination
-denominational
 denominations
 denominator
 denote
@@ -4882,7 +4886,6 @@ dismal
 dismantled
 dismantling
 dismay
-dismayed
 dismiss
 dismissal
 dismissed
@@ -5405,6 +5408,7 @@ elders
 eldest
 electoral
 electorate
+electors
 electric
 electrical
 electrically
@@ -5786,9 +5790,11 @@ eradicate
 eradication
 erase
 erased
+erect
 erected
 eroded
 erosion
+erotic
 err
 errand
 erratic
@@ -5808,6 +5814,7 @@ escaped
 escapes
 escaping
 escarpment
+escort
 escorted
 escorting
 escorts
@@ -5848,6 +5855,7 @@ ether
 ethic
 ethically
 ethics
+ethnic
 ethnically
 ethnicity
 ethnology
@@ -6735,7 +6743,6 @@ forgotten
 forks
 formaldehyde
 formalism
-formalities
 formality
 formalized
 format
@@ -6935,6 +6942,7 @@ funeral
 funerals
 fungal
 fungi
+fungus
 funk
 funky
 funnel
@@ -7390,6 +7398,7 @@ growing
 growled
 grown
 grows
+growth
 grunted
 guarantee
 guaranteed
@@ -7888,7 +7897,6 @@ hub
 hubs
 huddled
 hue
-hues
 hug
 huge
 hugely
@@ -8003,6 +8011,7 @@ ideologies
 ideology
 idiom
 idiosyncratic
+idiot
 idle
 idleness
 idol
@@ -8202,6 +8211,7 @@ incapacity
 incarcerated
 incarceration
 incarnate
+incarnation
 incarnations
 incense
 incentive
@@ -8451,7 +8461,6 @@ initiative
 initiatives
 inject
 injected
-injecting
 injection
 injections
 injunction
@@ -8489,6 +8498,7 @@ inquiries
 inquiring
 inquiry
 inquisition
+insane
 insanity
 inscribed
 inscription
@@ -9118,7 +9128,6 @@ lambda
 lambs
 lament
 lamented
-laminated
 lamps
 lancers
 lancet
@@ -9683,7 +9692,6 @@ mapping
 maps
 marathon
 marble
-marbles
 march
 marched
 marches
@@ -10114,7 +10122,6 @@ mixes
 mixing
 mixture
 mixtures
-moan
 moaned
 moat
 mob
@@ -10905,7 +10912,6 @@ outfielder
 outfit
 outfits
 outgoing
-outgrowth
 outlaw
 outlawed
 outlaws
@@ -11088,7 +11094,6 @@ paperwork
 papyrus
 par
 parables
-parabolic
 parachute
 parade
 parades
@@ -11662,6 +11667,7 @@ playing
 playlist
 playoff
 playoffs
+plays
 playwright
 playwrights
 plaza
@@ -11731,7 +11737,6 @@ poetical
 poetry
 poets
 poignant
-pointedly
 pointer
 pointers
 pointless
@@ -12408,7 +12413,6 @@ provincial
 provision
 provisional
 provisions
-proviso
 provocation
 provocative
 provoke
@@ -12557,7 +12561,6 @@ quantities
 quantity
 quantum
 quarantine
-quark
 quarrel
 quarrels
 quarries
@@ -12754,7 +12757,6 @@ rebels
 rebirth
 reborn
 rebound
-rebounded
 rebounds
 rebuild
 rebuilding
@@ -12957,7 +12959,6 @@ refuses
 refusing
 refutation
 refute
-refuted
 regain
 regained
 regaining
@@ -13018,7 +13019,6 @@ reigned
 reigning
 reigns
 reimbursement
-reincarnation
 reindeer
 reinforce
 reinforced
@@ -13246,7 +13246,6 @@ reproductive
 reptiles
 republic
 republican
-republicanism
 republicans
 republics
 republished
@@ -13755,7 +13754,6 @@ sandstone
 sandwich
 sandwiches
 sandy
-sane
 sang
 sanitary
 sanitation
@@ -13899,7 +13897,6 @@ screened
 screening
 screenings
 screenplay
-screenplays
 screens
 screenwriter
 screw
@@ -13928,6 +13925,8 @@ sealed
 sealing
 seals
 seam
+seaman
+seamen
 seams
 seaplane
 seaport
@@ -14018,7 +14017,6 @@ selective
 selectively
 selectivity
 selector
-selectors
 selects
 selenium
 selfish
@@ -14274,7 +14272,6 @@ shortage
 shortages
 shortcomings
 shortcut
-shortcuts
 shorten
 shortened
 shortening
@@ -14606,6 +14603,7 @@ snapshot
 snatched
 sneak
 sniffed
+sniper
 snooker
 snorted
 snout
@@ -15280,6 +15278,7 @@ stunned
 stunning
 stunt
 stunts
+stupid
 stupidity
 sturdy
 sturgeon
@@ -15393,7 +15392,6 @@ sudden
 suddenly
 suffer
 suffered
-sufferers
 suffering
 sufferings
 suffers
@@ -16127,6 +16125,7 @@ torso
 tort
 tortoise
 torts
+torture
 tortured
 toss
 tossed
@@ -16483,7 +16482,6 @@ twofold
 tycoon
 typeface
 typewriter
-typhoid
 typhoon
 typically
 tyranny
@@ -16802,6 +16800,7 @@ urged
 urgently
 urges
 urging
+urine
 usability
 usable
 usages
@@ -16814,6 +16813,7 @@ usher
 ushered
 utensils
 uterine
+uterus
 utilitarian
 utilitarianism
 utilities

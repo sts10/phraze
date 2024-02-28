@@ -1,3 +1,19 @@
+# v0.3.6
+
+* Pull latest versions of Orchard Street Word Lists
+* Use cargo-dist v 0.8.0 to cut release
+
+# v0.3.5 
+
+* Some improvements to help text and Readme.
+
+# v0.3.4
+
+* Re-organizes README
+* Clarifies README section about the PRNG method Phraze uses
+* Adds some module-level documentation comments.
+* Uses cargo-dist v0.5.0 to create releases, including this one.
+
 # v0.3.3
 
 Big thanks to @westonal for some nice code improvements in this release!

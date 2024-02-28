@@ -1,3 +1,6 @@
+//! This module contains some functions that help deal with the separating punction between words
+//! in a passphrase. Most of it handles cases where the user requests a random symbol or number or
+//! either.
 use rand::prelude::SliceRandom;
 use rand::Rng;
 
@@ -18,7 +21,7 @@ pub fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
     }
 }
 
-/// Get either a random number or symbol. 50/50 chance!
+/// Return either a random number or symbol. 50/50 chance!
 fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
     // Randomly choose which separator type to use
     let separator_type_to_use: &SeparatorType = [SeparatorType::Number, SeparatorType::Symbol]

@@ -10,6 +10,7 @@ aboard
 abolished
 abolition
 aboriginal
+abortion
 above
 abroad
 abruptly
@@ -24,6 +25,7 @@ abstract
 absurd
 abundance
 abundant
+abuse
 abused
 academia
 academic
@@ -50,7 +52,6 @@ accompany
 accomplish
 accord
 accordance
-accorded
 according
 account
 accounted
@@ -831,6 +832,8 @@ bold
 bolt
 bomb
 bomber
+bombers
+bombing
 bombs
 bond
 bonding
@@ -1051,7 +1054,6 @@ captured
 capturing
 car
 carbon
-carbonate
 card
 cardiac
 cardinal
@@ -1082,7 +1084,6 @@ carved
 cases
 cash
 casino
-cassette
 casting
 castle
 castles
@@ -1483,7 +1484,6 @@ computed
 computer
 computers
 computing
-comrades
 conceal
 concealed
 conceive
@@ -1587,7 +1587,6 @@ containers
 containing
 contains
 contempt
-contend
 content
 contention
 contents
@@ -1783,7 +1782,6 @@ cruelty
 cruise
 cruiser
 crusade
-crush
 crushed
 crust
 cry
@@ -2616,12 +2614,15 @@ equipped
 equitable
 equity
 equivalent
+erect
 erected
 erosion
+erotic
 errors
 escape
 escaped
 escapes
+escort
 escorted
 especially
 essay
@@ -2643,6 +2644,7 @@ eternity
 ethic
 ethical
 ethics
+ethnic
 ethnicity
 etymology
 euro
@@ -2872,6 +2874,7 @@ faster
 fastest
 fat
 fatal
+fate
 father
 fathers
 fatigue
@@ -3052,7 +3055,6 @@ fluids
 flute
 flux
 flying
-foam
 focal
 focus
 focused
@@ -3201,6 +3203,7 @@ funding
 funds
 funeral
 fungi
+fungus
 funk
 funny
 furious
@@ -3246,7 +3249,6 @@ gauge
 gave
 gay
 gaze
-gazed
 gazette
 gear
 gender
@@ -3342,7 +3344,6 @@ governing
 government
 governor
 governors
-gown
 grab
 grabbed
 grace
@@ -3716,7 +3717,6 @@ immense
 immigrant
 immigrants
 immigrated
-imminent
 immune
 immunity
 impact
@@ -5852,7 +5852,6 @@ rare
 rarely
 rat
 rather
-ratified
 ratings
 ratio
 rationale
@@ -5950,7 +5949,6 @@ referee
 referenced
 references
 referendum
-referral
 referring
 refers
 refined
@@ -7117,6 +7115,7 @@ study
 studying
 stuff
 stuffed
+stupid
 styles
 sub
 subdivided
@@ -7175,7 +7174,6 @@ suitable
 suite
 suited
 suits
-sulfate
 sulfur
 sultan
 sum
@@ -7529,6 +7527,7 @@ topics
 torn
 tornado
 torpedo
+torture
 tossed
 total
 totally
@@ -7785,6 +7784,7 @@ urged
 urgency
 urgent
 urging
+urine
 usage
 useful
 usefulness

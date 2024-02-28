@@ -78,7 +78,6 @@ bees
 beg
 bell
 bent
-berg
 berry
 berth
 best
@@ -326,6 +325,7 @@ envy
 era
 eras
 erase
+erect
 error
 essay
 ether

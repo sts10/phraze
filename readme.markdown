@@ -1,5 +1,6 @@
 # Phraze
-[![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze)](https://crates.io/crates/phraze) 
+[![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze)](https://crates.io/crates/phraze)
+[![](https://deps.rs/repo/github/sts10/phraze/status.svg)](https://deps.rs/repo/github/sts10/phraze)
 [![Crates.io](https://img.shields.io/crates/l/phraze)](./LICENSE.txt)
 
 Generate random passphrases.
@@ -12,21 +13,35 @@ curse-argues-valves-unfair-punk-ritual-inlet
 ## Features
 
 * 🎚️  Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
-* 🎯 Only uses uniquely decodable word lists, ensuring that passphrase entropy estimates remain accurate when no separator is used
+* 🎯 All built-in word lists are uniquely decodable, ensuring that passphrase entropy estimates remain accurate when no separator is used
 * ⚡ Fast: Takes about 2 milliseconds to generate a passphrase
 * 🔣 Can insert numbers, symbols, and/or capital letters if necessary (e.g. `phraze -s _b -t`)
 * 🛁 Default word list is (hopefully) free of profane words
 * 🧺 Choose from a number of included word lists or provide your own
 * 🛠️  Written in [Rust](https://www.rust-lang.org/)
 
+## Installing
+
+### Using Rust and Cargo
+1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
+2. Run: `cargo install phraze --locked` (Run this same command to upgrade Phraze to latest available version.)
+
+Uninstall Phraze by running `cargo uninstall phraze`.
+
+### Latest release
+Alternatively, you can get binaries from [the GitHub releases page](https://github.com/sts10/phraze/releases).
+
 ## How to use
 
+Running `phraze`, without specifying options, will generate a passphrase with at least 80 bits of entropy.
+
+Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
+
 ### Changing the strength of the passphrase
-By default, Phraze will generate a passphrase with at least 80 bits of entropy (minimum entropy). Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
 
 You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
 
-**1. Enter a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
+**1. Set a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
 ```text
 $ phraze -SS
 determined-pervasive-entirety-incumbent-trophy-emergence-spatial-wondering-destroyed-gamma
@@ -64,6 +79,12 @@ $ phrase --sep _s
 fax/household>validation_replied-upgrade,remind?reasoning
 ```
 
+If you don't want a separator at all, use `-s ''`:
+```text
+phraze -s ''
+theftinversiondebtsquietlysuspensionannualchocolate
+```
+
 You can make all the word Title Case by using `--title-case`:
 ```text
 $ phraze --sep '' --title-case
@@ -77,11 +98,11 @@ Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
 ```
 
 ### Changing the word list that Phraze uses
-By default, Phraze uses a 8192-word list called the Orchard Street Medium List (which gives 13 bits of entropy per word).
+By default, Phraze uses [a 8192-word list](https://github.com/sts10/phraze/blob/main/word-lists/orchard-street-medium.txt) called the Orchard Street Medium List (which gives 13 bits of entropy per word).
 
 You can specify a different list with `--list`/`-l`, with a choice of a handful of lists included with Phraze.
 
-Each included list has a corresponding one-letter code (see below or run `phrase --help` for a full list). For example, `--list s` uses the [EFF **s**hort list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
+Each included list has a corresponding one-letter code (see below or run `phrase --help` for a full list). For example, `--list s` causes Phraze to use the [EFF **s**hort list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
 ```text
 $ phraze --list s
 duck-slip-swoop-stray-wink-stump-whiff-slot
@@ -106,66 +127,74 @@ $ phraze | xclip -selection clipboard
 Usage: phraze [OPTIONS]
 
 Options:
+  -S, --strength...
+          Strengthen your passphrase the easy way: Each -S flag increases minimum 
+          entropy by 20 bits (above the default of 80 bits)
+
   -e, --minimum-entropy <MINIMUM_ENTROPY>
-          Set minimum amount of entropy for generated passphrase. If neither minimum_entropy
-          or number_of_words is specified, Phraze will default to an 80-bit minimum
+          Set minimum amount of entropy in bits for generated passphrase. If 
+          neither minimum_entropy or number_of_words is specified, Phraze will 
+          default to an 80-bit minimum
 
   -w, --words <NUMBER_OF_WORDS>
-          Set how many words in generated passphrase. If neither number_of_words or
-          minimum_entropy is specified, Phraze will default to an 80-bit minimum
+          Set exactly how many words to use in generated passphrase. If neither 
+          number_of_words or minimum_entropy is specified, Phraze will default to 
+          an 80-bit minimum
 
   -n, --passphrases <N_PASSPHRASES>
           Number of passphrases to generate
-
+          
           [default: 1]
 
   -s, --sep <SEPARATOR>
-          Word separator. Can accept single quotes around the separator.
-
+          Word separator. Can accept single quotes around the separator. For no 
+          separator, use empty single quotes ''.
+          
           There are special values that will trigger generated separators:
-
+          
           _n: separators will be random numbers
-
+          
           _s: separators will be random symbols
-
+          
           _b: separators will be a mix of random numbers and symbols
-
+          
           [default: -]
 
   -l, --list <LIST_CHOICE>
           Choose a word list to use.
-
+          
           Options:
-
+          
           m: Orchard Street Medium List (8,192 words) [DEFAULT]
-
+          
           l: Orchard Street Long List (17,576 words)
-
+          
           e: EFF long list (7,776 words)
-
-          n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
-             passphrases out loud.
-
+          
+          n: Mnemonicode list (1,633 words). Good if you know you're going to be 
+          speaking passphrases out loud.
+          
           s: EFF short list (1,296 words)
-
-          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel distance
-             on QWERTY keyboard layouts.
-
-          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on
-             an alphabetical keyboard layout
-
+          
+          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel 
+          distance on QWERTY keyboard layouts.
+          
+          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel 
+          distance on an alphabetical keyboard layout
+          
           [default: m]
 
   -c, --custom-list <CUSTOM_LIST_FILE_PATH>
-          Provide a text file with a list of words to randomly generate passphrase from.
-
+          Provide a text file with a list of words to randomly generate passphrase 
+          from.
+          
           Should be a text file with one word per line.
 
   -t, --title-case
           Use Title Case for words in generated usernames
 
   -v, --verbose
-          Print estimated entropy of generated passphrase, in bits, along with the
+          Print estimated entropy of generated passphrase, in bits, along with the 
           passphrase itself
 
   -h, --help
@@ -174,17 +203,6 @@ Options:
   -V, --version
           Print version
 ```
-
-## Installation
-
-### Using Rust and cargo
-1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
-2. Run: `cargo install phraze --locked` (Run this same command to upgrade Phraze to latest available version.)
-
-Uninstall Phraze by running `cargo uninstall phraze`.
-
-### Latest release
-Check [the GitHub releases page](https://github.com/sts10/phraze/releases) for binaries.
 
 ## Included word lists
 
@@ -463,7 +481,7 @@ There are already a few good passphrase generators, including [passphraseme](htt
 Admittedly, part of my motivation to create Phraze was to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which I think are pretty good!
 
 ## For developers
-I welcome both pull requests and issues.
+I welcome both pull requests and issues. See included [LICENSE.txt](./LICENSE.txt) file.
 
 ### Testing and benchmarking Phraze
 Run `cargo test` to run Phraze's tests.

@@ -7,7 +7,7 @@ use std::path::PathBuf;
 #[derive(Parser, Debug)]
 #[clap(version, name = "phraze")]
 struct Args {
-    /// Strengthen your passphrase the easy way: Each flag increases minimum entropy by 20 bits (above the default of
+    /// Strengthen your passphrase the easy way: Each -S flag increases minimum entropy by 20 bits (above the default of
     /// 80 bits).
     #[clap(short = 'S', long = "strength", conflicts_with = "number_of_words", conflicts_with = "minimum_entropy", action = clap::ArgAction::Count)]
     strength_count: u8,
@@ -36,7 +36,8 @@ struct Args {
     #[clap(short = 'n', long = "passphrases", default_value = "1")]
     n_passphrases: usize,
 
-    /// Word separator. Can accept single quotes around the separator.
+    /// Word separator. Can accept single quotes around the separator. For no separator, use empty
+    /// single quotes ''.
     ///
     /// There are special values that will trigger generated separators:
     ///
