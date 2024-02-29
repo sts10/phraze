@@ -4,7 +4,9 @@ pub mod unicode_normalization_check;
 
 use crate::separators::make_separator;
 use include_lines::include_lines;
-use rand::{seq::SliceRandom, thread_rng, Rng};
+use rand::SeedableRng;
+use rand::{seq::SliceRandom, Rng};
+use rand_chacha::ChaCha20Rng;
 
 /// The possible word lists that Phraze can use.
 #[derive(Clone, Debug, Copy)]
@@ -88,7 +90,7 @@ pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
     title_case: bool,
     list: &[T], // Either type!
 ) -> String {
-    let mut rng = thread_rng();
+    let mut rng = ChaCha20Rng::from_entropy();
     // Create a blank String to put words into to create our passphrase
     let mut passphrase = String::new();
     for i in 0..number_of_words_to_put_in_passphrase {

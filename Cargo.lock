@@ -398,6 +398,7 @@ dependencies = [
  "criterion",
  "include-lines",
  "rand",
+ "rand_chacha",
  "unicode-normalization",
 ]
 
