@@ -55,7 +55,7 @@ toured-warrior-skeleton-shear-hosts-injuries-relied-sadness
 
 **3. Set number words.** Use `--words` to specify the exact number of words for Phraze to use.
 ```text
-$ phraze ---words 5 # passphrase will have 5 words, overriding the default minimum entropy setting of 80 bits
+$ phraze --words 5 # passphrase will have 5 words, overriding the default minimum entropy setting of 80 bits
 determines-generated-frozen-excluded-sleeping
 ```
 
