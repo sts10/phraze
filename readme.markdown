@@ -33,13 +33,13 @@ Alternatively, you can get binaries from [the GitHub releases page](https://gith
 
 ## How to use
 
-Running `phraze`, without specifying options, will generate a passphrase with at least 80 bits of entropy.
-
-Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
+Running `phraze`, without specifying options, will generate a passphrase with at least 80 bits of entropy with a hyphen separating each word.
 
 ### Changing the strength of the passphrase
 
-You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
+By default, Phraze generates a passphrase with at least 80 bits of entropy. Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
+
+You can change this "strength" of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
 
 **1. Set a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
 ```text
