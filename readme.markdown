@@ -114,7 +114,7 @@ If you prefer, you can have Phraze generate a passphrase using your own word lis
 ```text
 $ phraze --custom-list path/to/word/list
 ```
-Phraze will remove any and all trailing white space, duplicate words, and blank words in the inputted list. Phraze will also check for uniform [Unicode normalization](https://www.unicode.org/faq/normalization.html).
+Before generating a passphrase from a given custom list, Phraze will remove any and all trailing white space, duplicate words, and blank words in the inputted list. Phraze will also check for uniform [Unicode normalization](https://www.unicode.org/faq/normalization.html).
 
 ### Copying passphrase to clipboard
 You can pipe Phraze's outputted passphrase to other tools. For example, you can copy generated passphrase to xclip (a common Linux clipboard tool):
