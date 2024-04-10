@@ -91,7 +91,7 @@ $ phraze --sep '' --title-case
 GoverningDominateAnswersReceptorsAllocatedClientModify
 ```
 
-If you need to have a symbol, a number and an uppercase character in your passphrase, you can try:
+If your passphrase needs to have a symbol, a number and an uppercase character in your passphrase, you can use Title Case (`-t`) and use random symbols and numbers as word separators (`-s _b`):
 ```text
 $ phraze -t -s _b
 Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
