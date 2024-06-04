@@ -33,8 +33,8 @@ pub fn read_in_custom_list(file_path: &Path) -> Result<Vec<String>, String> {
     Ok(word_list)
 }
 
-/// Generatic function that reads a file in, line by line.
-/// Not sure if all of this is necessary, but it gets the job done.
+/// Generic function that reads a text file in as a Vector, line by line.
+/// Not sure if all of the code in this function is necessary, but it gets the job done.
 fn read_by_line<T: FromStr>(file_path: PathBuf) -> io::Result<Vec<T>>
 where
     <T as std::str::FromStr>::Err: std::fmt::Debug,
