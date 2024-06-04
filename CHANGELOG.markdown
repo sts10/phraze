@@ -1,3 +1,10 @@
+# v0.3.8
+
+* Updates Orchard Street Alpha wordlist (swaps "berg" for "baby")
+* Upgrades `clap` and `unicode-normalization` dependency versions
+* Uses cargo-dist v0.15.0 to create binaries for releases 
+* Various of tweaks to README and documentation
+
 # v0.3.6
 
 * Pull latest versions of Orchard Street Word Lists
