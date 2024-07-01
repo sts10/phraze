@@ -1,6 +1,7 @@
 # v0.3.11
 
 * Remove abbreviation "comm" from all included Orchard Street Wordlists.
+* Fix some grammatical inconsistencies and a typo in help text.
 
 # v0.3.10
 
