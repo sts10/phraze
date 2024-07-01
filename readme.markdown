@@ -147,7 +147,7 @@ Options:
           [default: 1]
 
   -s, --sep <SEPARATOR>
-          Word separator. Can accept single quotes around the separator. For no 
+          Word separator. Can accept single quotes around the separator. To not use a 
           separator, use empty single quotes ''.
           
           There are special values that will trigger generated separators:
@@ -177,10 +177,10 @@ Options:
           s: EFF short list (1,296 words)
           
           q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel 
-          distance on QWERTY keyboard layouts.
+          distance on QWERTY keyboard layout.
           
           a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel 
-          distance on an alphabetical keyboard layout
+          distance on alphabetical keyboard layout
           
           [default: m]
 
@@ -191,7 +191,7 @@ Options:
           Should be a text file with one word per line.
 
   -t, --title-case
-          Use Title Case for words in generated usernames
+          Use Title Case for words in generated passphrases
 
   -v, --verbose
           Print estimated entropy of generated passphrase, in bits, along with the 

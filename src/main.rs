@@ -36,8 +36,8 @@ struct Args {
     #[clap(short = 'n', long = "passphrases", default_value = "1")]
     n_passphrases: usize,
 
-    /// Word separator. Can accept single quotes around the separator. For no separator, use empty
-    /// single quotes ''.
+    /// Word separator. Can accept single quotes around the separator. To not use a separator,
+    /// use empty single quotes: ''.
     ///
     /// There are special values that will trigger generated separators:
     ///
@@ -65,10 +65,10 @@ struct Args {
     /// s: EFF short list (1,296 words)
     ///
     /// q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel
-    /// distance on QWERTY keyboard layouts.
+    /// distance on QWERTY keyboard layout.
     ///
-    /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel distance on an
-    /// alphabetical keyboard layout
+    /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel
+    /// distance on alphabetical keyboard layout.
     #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
     list_choice: ListChoice,
 
@@ -78,11 +78,12 @@ struct Args {
     #[clap(short = 'c', long = "custom-list", conflicts_with = "list_choice")]
     custom_list_file_path: Option<PathBuf>,
 
-    /// Use Title Case for words in generated usernames
+    /// Use Title Case for words in generated passphrase
     #[clap(short = 't', long = "title-case")]
     title_case: bool,
 
-    /// Print estimated entropy of generated passphrase, in bits, along with the passphrase itself
+    /// Print estimated entropy of generated passphrase, in bits, along with
+    /// the passphrase itself
     #[clap(short = 'v', long = "verbose")]
     verbose: bool,
 }
