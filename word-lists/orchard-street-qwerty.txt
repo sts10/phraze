@@ -51,6 +51,7 @@ baby
 bad
 bag
 bags
+ball
 ban
 bar
 bare
@@ -423,6 +424,7 @@ full
 fully
 fun
 fund
+funds
 funk
 funny
 fur
@@ -796,7 +798,6 @@ peered
 peers
 peg
 pet
-peter
 petty
 pie
 piece
@@ -1024,7 +1025,6 @@ silk
 sin
 sip
 sir
-sire
 sit
 site
 ski

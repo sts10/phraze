@@ -33,13 +33,13 @@ Alternatively, you can get binaries from [the GitHub releases page](https://gith
 
 ## How to use
 
-Running `phraze`, without specifying options, will generate a passphrase with at least 80 bits of entropy.
-
-Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
+Running `phraze`, without specifying options, will generate a passphrase with at least 80 bits of entropy with a hyphen separating each word.
 
 ### Changing the strength of the passphrase
 
-You can change the strength of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
+By default, Phraze generates a passphrase with at least 80 bits of entropy. Entropy is an estimate of the "strength" of the passphrase. Higher entropy means a stronger passphrase.
+
+You can change this "strength" of the passphrase Phraze generates, making it either weaker or stronger, **3 different ways**:
 
 **1. Set a Strength Count.** Use `-S` to increase minimum entropy from 80 bits to 100 bits. Each additional `S` adds another 20 bits of minimum entropy (e.g. `-SS` => 120 bit minimum; `-SSS` => 140 bit minimum, etc.).
 ```text
@@ -55,7 +55,7 @@ toured-warrior-skeleton-shear-hosts-injuries-relied-sadness
 
 **3. Set number words.** Use `--words` to specify the exact number of words for Phraze to use.
 ```text
-$ phraze ---words 5 # passphrase will have 5 words, overriding the default minimum entropy setting of 80 bits
+$ phraze --words 5 # passphrase will have 5 words, overriding the default minimum entropy setting of 80 bits
 determines-generated-frozen-excluded-sleeping
 ```
 
@@ -91,7 +91,7 @@ $ phraze --sep '' --title-case
 GoverningDominateAnswersReceptorsAllocatedClientModify
 ```
 
-If you need to have a symbol, a number and an uppercase character in your passphrase, you can try:
+If your passphrase needs to have a symbol, a number and an uppercase character in your passphrase, you can use Title Case (`-t`) and use random symbols and numbers as word separators (`-s _b`):
 ```text
 $ phraze -t -s _b
 Welcome&Song}Barker)Concrete;Commune$Shouted2Ensuing
@@ -114,7 +114,7 @@ If you prefer, you can have Phraze generate a passphrase using your own word lis
 ```text
 $ phraze --custom-list path/to/word/list
 ```
-Phraze will remove any and all trailing white space, duplicate words, and blank words in the inputted list. Phraze will also check for uniform [Unicode normalization](https://www.unicode.org/faq/normalization.html).
+Before generating a passphrase from a given custom list, Phraze will remove any and all trailing white space, duplicate words, and blank words in the inputted list. Phraze will also check for uniform [Unicode normalization](https://www.unicode.org/faq/normalization.html).
 
 ### Copying passphrase to clipboard
 You can pipe Phraze's outputted passphrase to other tools. For example, you can copy generated passphrase to xclip (a common Linux clipboard tool):
@@ -491,7 +491,7 @@ Phraze uses [Criterion](https://github.com/bheisler/criterion.rs) for benchmarki
 ### How to create a release
 This project uses [cargo-dist](https://opensource.axo.dev/cargo-dist/) to create releases.
 
-You're welcome to consult [my personal notes on using cargo-dist](https://sts10.github.io/docs/cargo-dist-tips.html); but basically: First, install cargo-dist with`cargo install cargo-dist`.
+You're welcome to consult [my personal notes on using cargo-dist](https://sts10.github.io/docs/cargo-dist-tips.html), but basically: First, install cargo-dist with`cargo install cargo-dist`.
 
 When you're ready to cut a new release, test the current state of the project with `cargo dist build` and `cargo dist plan`. If that went well, create a new git tag that matches the current project version in `Cargo.toml` with `git tag vX.X.X`. Finally, run `git push --tags` to kick off the release process. GitHub will handle it from here -- check your project's GitHub Releases page in about 5 to 10 minutes.
 
@@ -501,6 +501,6 @@ Phraze's code is licensed under the Mozilla Public License v2.0. See included [L
 
 ### Word list licensing
 
-* The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh <oren@hishome.net> under [the MIT License](https://mit-license.org/).
+* The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh under [the MIT License](https://mit-license.org/).
 * The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
 * All Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).

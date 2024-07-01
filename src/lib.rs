@@ -8,7 +8,7 @@ use rand::SeedableRng;
 use rand::{seq::SliceRandom, Rng};
 use rand_chacha::ChaCha20Rng;
 
-/// The possible word lists that Phraze can use.
+/// This enum, `ListChoice`, represents all of the "built-in" word lists that Phraze can use.
 #[derive(Clone, Debug, Copy)]
 pub enum ListChoice {
     Long,
@@ -21,8 +21,8 @@ pub enum ListChoice {
 }
 
 /// Given user's inputs, figure out how many words the generated passphrase will need. If user
-/// specified an exact number_of_words, just return that number_of_words. If user is using a
-/// strength_count, do the necessary math. If user specified a minimum_entropy, we need to do
+/// specified an exact `number_of_words`, just return that `number_of_words`. If user is using a
+/// strength_count, do the necessary math. If user specified a `minimum_entropy`, we need to do
 /// some math to figure out how many words will clear that minimum.
 pub fn calculate_number_words_needed(
     number_of_words: Option<usize>,
@@ -56,7 +56,7 @@ pub fn calculate_number_words_needed(
     }
 }
 
-/// A little helper function to actually calculate the number of words needed to meet a desired
+/// Calculate the number of words needed to meet a desired
 /// minimum entropy, given the length of the word list we're using.
 pub fn convert_minimum_entropy_to_number_of_words(
     minimum_entropy: usize,
@@ -66,8 +66,8 @@ pub fn convert_minimum_entropy_to_number_of_words(
     (minimum_entropy as f64 / entropy_per_word_from_this_list).ceil() as usize
 }
 
-/// Take enum of list_choice and use the `include_lines!` macro from crate
-/// to read-in the appropriate word list in.
+/// Take enum of `list_choice` and use the `include_lines!` macro (from crate)
+/// to read-in the correct word list.
 pub fn fetch_list(list_choice: ListChoice) -> &'static [&'static str] {
     match list_choice {
         ListChoice::Long => &include_lines!("word-lists/orchard-street-long.txt"),
@@ -82,13 +82,13 @@ pub fn fetch_list(list_choice: ListChoice) -> &'static [&'static str] {
 
 /// Actually generate the passphrase, given a couple neccessary parameters.
 /// This function uses some Rust magic to be able to accept a word list as
-/// either a &[&str] (built-in word lists) or as a &[String] if user provides a file
-/// as word list.
+/// either a `&[&str]` (if the users uses a built-in word lists) or as a
+/// `&[String]` (if user provides a file as word list).
 pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
     number_of_words_to_put_in_passphrase: usize,
     separator: &str,
     title_case: bool,
-    list: &[T], // Either type!
+    list: &[T], // We accept either type by using `T`!
 ) -> String {
     let mut rng = ChaCha20Rng::from_entropy();
     // Create a blank String to put words into to create our passphrase
@@ -110,8 +110,8 @@ pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
     passphrase.to_string()
 }
 
-/// Give an array of words, pick a random element and make it a String for
-/// simplicity's sake.
+/// Given an array of words, pick a random element. Then make  
+/// the selected word a `String` for simplicity's sake.
 fn get_random_element<T: AsRef<str>>(rng: &mut impl Rng, word_list: &[T]) -> String
 where
     T: std::fmt::Display,
@@ -122,7 +122,7 @@ where
     }
 }
 
-/// Make given string slice all lowercase, then make first character uppercase
+/// Make given string slice `s` all lowercase, then make first character uppercase
 fn make_title_case(s: &str) -> String {
     // First, make entire word lowercase
     let s = s.to_lowercase();
@@ -140,6 +140,8 @@ fn can_make_word_title_case() {
     let test_word = "ALPHA";
     assert_eq!(make_title_case(test_word), "Alpha".to_string());
     let test_word = "aLPHA";
+    assert_eq!(make_title_case(test_word), "Alpha".to_string());
+    let test_word = "aLPhA";
     assert_eq!(make_title_case(test_word), "Alpha".to_string());
 }
 
