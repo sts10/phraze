@@ -1,3 +1,7 @@
+# v0.3.11
+
+* Remove abbreviation "comm" from all included Orchard Street Wordlists.
+
 # v0.3.10
 
 * A few word swaps in various Orchard Street Wordlists, removing words like "sire" and "peter". See cbf70a0 and 5bc34d3.
