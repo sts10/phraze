@@ -1,3 +1,8 @@
+# v0.3.10
+
+* A few word swaps in various Orchard Street Wordlists, removing words like "sire" and "peter". See cbf70a0 and 5bc34d3.
+* Use latest version of cargo-dist crate (0.17). 
+
 # v0.3.8
 
 * Updates Orchard Street Alpha wordlist (swaps "berg" for "baby")
