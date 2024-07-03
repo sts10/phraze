@@ -479,7 +479,9 @@ There are already a few good passphrase generators, including [passphraseme](htt
 Admittedly, part of my motivation to create Phraze was to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which I think are pretty good!
 
 ## For developers
-I welcome both pull requests and issues. See included [LICENSE.txt](./LICENSE.txt) file.
+I'm trying to do development work on the `development` git branch, then merge the work into the `main` branch when it feels like time for a new release.
+
+In general I welcome both pull requests and issues. See included [LICENSE.txt](./LICENSE.txt) file. This project doesn't have a formal Code of Conduct yet (it may in the future), but informally just try to be kind to each other.
 
 ### Testing and benchmarking Phraze
 Run `cargo test` to run Phraze's tests.
