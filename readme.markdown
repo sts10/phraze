@@ -186,9 +186,7 @@ Options:
 
   -c, --custom-list <CUSTOM_LIST_FILE_PATH>
           Provide a text file with a list of words to randomly generate passphrase 
-          from.
-          
-          Should be a text file with one word per line.
+          from. Should be a text file with one word per line.
 
   -t, --title-case
           Use Title Case for words in generated passphrases
