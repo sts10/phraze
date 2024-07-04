@@ -119,7 +119,7 @@ Before generating a passphrase from a given custom list, Phraze will remove any 
 ### Copying passphrase to clipboard
 You can pipe Phraze's outputted passphrase to other tools. For example, you can copy generated passphrase to xclip (a common Linux clipboard tool):
 ```bash
-$ phraze | xclip -selection clipboard
+$ phraze | xclip -selection clipboard -rmlastnl
 ```
 
 ## Usage
