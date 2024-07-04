@@ -1,5 +1,6 @@
 # Phraze
 [![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze)](https://crates.io/crates/phraze)
+[![Crates.io number of downloads](https://img.shields.io/crates/d/phraze)](https://crates.io/crates/phraze)
 [![](https://deps.rs/repo/github/sts10/phraze/status.svg)](https://deps.rs/repo/github/sts10/phraze)
 [![Crates.io](https://img.shields.io/crates/l/phraze)](./LICENSE.txt)
 
