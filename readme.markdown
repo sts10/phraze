@@ -2,6 +2,7 @@
 [![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze)](https://crates.io/crates/phraze)
 [![](https://deps.rs/repo/github/sts10/phraze/status.svg)](https://deps.rs/repo/github/sts10/phraze)
 [![Crates.io](https://img.shields.io/crates/l/phraze)](./LICENSE.txt)
+[![Packaging status](https://repology.org/badge/tiny-repos/phraze.svg)](https://repology.org/project/phraze/versions)
 
 Generate random passphrases.
 
@@ -27,6 +28,35 @@ curse-argues-valves-unfair-punk-ritual-inlet
 2. Run: `cargo install phraze --locked` (Run this same command to upgrade Phraze to latest available version.)
 
 Uninstall Phraze by running `cargo uninstall phraze`.
+
+### NixOS/nix
+
+[![nixpkgs unstable package](https://repology.org/badge/version-for-repo/nix_unstable/phraze.svg)](https://repology.org/project/phraze/versions)
+
+Phraze is available within `nixpkgs`, and can be used:
+
+- System-wide on a NixOS system using `environment.systemPackages =
+[pkgs.phraze]`
+- Per-user using home-manager `home.packages = [pkgs.phraze]`
+- One-off with `nix run`
+
+    ```shell
+    # Run one-shot via nix
+    $ nix run nixpkgs#phraze -- -S -s _b -t
+    Commuter=Scripts_Motorway9Battle&Results,Trouble-Policy@Tools
+    ```
+
+- Via a temporary nix shell without installing.
+    
+    ```shell
+    # Drop into a nix shell with phraze available
+    $ nix shell nixpkgs#phraze
+    $ which phraze
+    /nix/store/i1car5jf8w6vxglfi2gdrzsbzmi2vrrh-phraze-0.3.11/bin/phraze
+    $ phraze -S -s _b -t
+    Meditation)Skin0Invalid!Donations6Targeted(Housed8Tossed#Synagogue
+    $ exit
+    ```
 
 ### Latest release
 Alternatively, you can get binaries from [the GitHub releases page](https://github.com/sts10/phraze/releases).
