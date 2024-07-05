@@ -72,9 +72,8 @@ struct Args {
     #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
     list_choice: ListChoice,
 
-    /// Provide a text file with a list of words to randomly generate passphrase from.
-    ///
-    /// Should be a text file with one word per line.
+    /// Provide a text file with a list of words to randomly generate passphrase
+    /// from. Should be a text file with one word per line.
     #[clap(short = 'c', long = "custom-list", conflicts_with = "list_choice")]
     custom_list_file_path: Option<PathBuf>,
 
