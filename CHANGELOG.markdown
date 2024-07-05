@@ -1,3 +1,12 @@
+# v0.3.12
+
+* Adds installation instructions for NixOS/nix (#25). Thanks for @x123!
+* A few more word swaps in the Orchard Street word lists (9702125, 986d4d3, 9cfa359)
+## Other, smaller README changes/fixes
+* 0391f7d - adds a new badge to top of README showing number of downloads from crates.io, now that it's approaching 2,000 (woohoo!)
+* 92574c6 - fix example Bash script n README for copying outputted passphrase to clipboard on Linux 
+* 8d14563 - add note about doing work on the 'develop' git branch between releases to the readme
+
 # v0.3.11
 
 Nothing huge in this small update.
