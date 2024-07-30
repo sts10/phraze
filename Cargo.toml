@@ -1,7 +1,7 @@
 [package]
 name = "phraze"
 description = "Random passphrase generator"
-version = "0.3.12"
+version = "0.3.13"
 edition = "2021"
 authors = ["sts10 <sschlinkert@gmail.com>"]
 license = "MPL-2.0"
@@ -36,7 +36,7 @@ lto = "thin"
 # Config for 'cargo dist'
 [workspace.metadata.dist]
 # The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
-cargo-dist-version = "0.18.0"
+cargo-dist-version = "0.19.1"
 # CI backends to support
 ci = "github"
 # The installers to generate for each app
