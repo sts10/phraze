@@ -1,4 +1,5 @@
 mod minimum_entropy_tests {
+    use phraze::cli::ListChoice;
     use phraze::*;
 
     #[test]

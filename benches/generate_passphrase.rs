@@ -1,4 +1,5 @@
 use criterion::{criterion_group, criterion_main, Criterion};
+use phraze::cli::ListChoice;
 use phraze::*;
 
 fn criterion_benchmark(c: &mut Criterion) {
