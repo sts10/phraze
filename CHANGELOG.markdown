@@ -1,3 +1,8 @@
+# v0.3.13
+
+* Add man pages and shell completions (#27), thanks to @donovanglover.
+* Updates version of cargo-dist
+
 # v0.3.12
 
 * Adds installation instructions for NixOS/nix (#25). Thanks for @x123!
