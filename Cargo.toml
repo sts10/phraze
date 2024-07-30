@@ -16,6 +16,11 @@ clap = { version = "4.5.4", features = ["derive"] }
 unicode-normalization = "0.1.23"
 include-lines = "1.1.2"
 
+[build-dependencies]
+clap = { version = "4.5.4", features = ["derive"] }
+clap_complete = "4.5.2"
+clap_mangen = "0.2.20"
+
 [dev-dependencies]
 criterion = "0.5.1"
 
