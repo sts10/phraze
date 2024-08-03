@@ -1,3 +1,7 @@
+# v0.3.14
+
+* Upgrade clap dependency to version 4.5.13.
+
 # v0.3.13
 
 * Add man pages and shell completions (#27), thanks to @donovanglover.
