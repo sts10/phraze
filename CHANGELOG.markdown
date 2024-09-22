@@ -1,3 +1,7 @@
+# v0.3.15
+
+* Upgrade some dependencies like clap, as well as the version of cargo-dist used to create releases. Sorry it's not more exciting!
+
 # v0.3.14
 
 * Upgrade clap dependency to version 4.5.13.
