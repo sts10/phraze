@@ -1,7 +1,7 @@
 [package]
 name = "phraze"
 description = "Random passphrase generator"
-version = "0.3.14"
+version = "0.3.15"
 edition = "2021"
 authors = ["sts10 <sschlinkert@gmail.com>"]
 license = "MPL-2.0"
@@ -12,14 +12,14 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 rand = "0.8.5"
-clap = { version = "4.5.13", features = ["derive"] }
-unicode-normalization = "0.1.23"
+clap = { version = "4.5.18", features = ["derive"] }
+unicode-normalization = "0.1.24"
 include-lines = "1.1.2"
 
 [build-dependencies]
-clap = { version = "4.5.4", features = ["derive"] }
-clap_complete = "4.5.2"
-clap_mangen = "0.2.20"
+clap = { version = "4.5.18", features = ["derive"] }
+clap_complete = "4.5.29"
+clap_mangen = "0.2.23"
 
 [dev-dependencies]
 criterion = "0.5.1"
@@ -36,12 +36,12 @@ lto = "thin"
 # Config for 'cargo dist'
 [workspace.metadata.dist]
 # The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
-cargo-dist-version = "0.19.1"
+cargo-dist-version = "0.22.1"
 # CI backends to support
 ci = "github"
 # The installers to generate for each app
 installers = []
 # Target platforms to build apps for (Rust target-triple syntax)
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
-# Publish jobs to run in CI
+# Which actions to run on pull requests
 pr-run-mode = "plan"
