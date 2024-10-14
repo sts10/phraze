@@ -514,7 +514,7 @@ I'm trying to do development work on the `development` git branch, then merge th
 
 In general I welcome both pull requests and issues. See included [LICENSE.txt](./LICENSE.txt) file. This project doesn't have a formal Code of Conduct yet (it may in the future), but informally just try to be kind to each other.
 
-Check license compatibility of Phraze's dependencies: `cargo deny check licenses` (requires that you [have cargo-deny installed locally](https://github.com/EmbarkStudios/cargo-deny#install-cargo-deny))
+Check **license compatibility** of Phraze's dependencies: `cargo deny check licenses` (requires that you [have cargo-deny installed locally](https://github.com/EmbarkStudios/cargo-deny#install-cargo-deny)). See below for more on how Phraze is licensed.
 
 ### Testing and benchmarking Phraze
 Run `cargo test` to run Phraze's tests.
