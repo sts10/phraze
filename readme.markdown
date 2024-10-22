@@ -102,7 +102,7 @@ seventy-cost-freight-suspended-misery-objections-represents-buying
 ### Changing the separator between words
 By default, Phraze separates words with a hyphen ("-"). You can change that with the `--sep` (or `-s`) option.
 
-`--sep` accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
+`--sep` accepts special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
 ```text
 $ phraze --sep ' '
 optimism daughters figures grim processors became decreasing
@@ -112,7 +112,7 @@ fax/household>validation_replied-upgrade,remind?reasoning
 
 If you don't want a separator at all, use `-s ''`:
 ```text
-phraze -s ''
+$ phraze -s ''
 theftinversiondebtsquietlysuspensionannualchocolate
 ```
 
