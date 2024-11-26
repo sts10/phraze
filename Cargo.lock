@@ -418,7 +418,7 @@ checksum = "0ab1bc2a289d34bd04a330323ac98a1b4bc82c9d9fcb1e66b63caa84da26b575"
 
 [[package]]
 name = "phraze"
-version = "0.3.16"
+version = "0.3.17"
 dependencies = [
  "clap",
  "clap_complete",

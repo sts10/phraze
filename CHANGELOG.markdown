@@ -1,3 +1,7 @@
+# v0.3.17
+
+* Attempts to use cargo-dist to create a musl binary (see issue: #28)
+
 # v0.3.15
 
 * Upgrade some dependencies like clap, as well as the version of cargo-dist used to create releases. Sorry it's not more exciting!
