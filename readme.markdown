@@ -534,6 +534,8 @@ Phraze's code is licensed under the Mozilla Public License v2.0. See included [L
 
 ### Word list licensing
 
+Phraze includes a number of word lists, which are licensed in a variety of ways.
+
 * The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh under [the MIT License](https://mit-license.org/).
 * The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).
 * All Orchard Street Wordlists are available under [the Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
