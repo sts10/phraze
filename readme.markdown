@@ -530,7 +530,7 @@ When you're ready to cut a new release, test the current state of the project wi
 
 ## Licensing
 
-Phraze's code is licensed under the Mozilla Public License v2.0. See included [LICENSE.txt](./LICENSE.txt) file or [this online version of the license](https://www.mozilla.org/en-US/MPL/2.0/).
+Phraze's source code is licensed under the Mozilla Public License v2.0. See included [LICENSE.txt](./LICENSE.txt) file or [this online version of the license](https://www.mozilla.org/en-US/MPL/2.0/).
 
 ### Word list licensing
 
