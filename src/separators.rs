@@ -3,6 +3,7 @@
 //! either.
 use rand::prelude::*;
 use rand::seq::IndexedRandom;
+use rand::TryCryptoRng;
 
 #[derive(PartialEq)]
 enum SeparatorType {
@@ -12,7 +13,7 @@ enum SeparatorType {
 
 /// Parse user's separator choice. The only reason we need this as its own function is to check if
 /// they chose a "special" separator
-pub fn make_separator(rng: &mut impl Rng, sep: &str) -> String {
+pub fn make_separator(rng: &mut impl TryCryptoRng, sep: &str) -> String {
     match sep {
         "_n" => get_random_number(rng),
         "_s" => get_random_symbol(rng),

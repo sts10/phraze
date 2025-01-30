@@ -8,8 +8,9 @@ use crate::separators::make_separator;
 use include_lines::include_lines;
 use rand::prelude::*;
 use rand::seq::IndexedRandom;
-use rand::SeedableRng;
-use rand_chacha::ChaCha20Rng;
+// use rand::SeedableRng;
+// use rand_chacha::ChaCha20Rng;
+use rand::rngs::OsRng;
 
 /// Given user's inputs, figure out how many words the generated passphrase will need. If user
 /// specified an exact `number_of_words`, just return that `number_of_words`. If user is using a
@@ -83,7 +84,8 @@ pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
 ) -> String {
     // Seed our pseudo-random number generator via `getrandom`
     // https://docs.rs/rand_core/latest/rand_core/trait.SeedableRng.html#method.from_os_rng
-    let mut rng = ChaCha20Rng::from_os_rng();
+    // let mut rng = ChaCha20Rng::from_os_rng();
+    let mut rng = OsRng;
     // Create a blank String to put words into to create our passphrase
     let mut passphrase = String::new();
     for i in 0..number_of_words_to_put_in_passphrase {
@@ -105,7 +107,11 @@ pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
 
 /// Given an array of words, pick a random element. Then make  
 /// the selected word a `String` for simplicity's sake.
-fn get_random_element<T: AsRef<str>>(rng: &mut impl Rng, word_list: &[T]) -> String
+use rand::TryCryptoRng;
+fn get_random_element<T: AsRef<str>, U: TryCryptoRng + std::ops::DerefMut>(
+    rng: &mut U,
+    word_list: &[T],
+) -> String
 where
     T: std::fmt::Display,
 {
