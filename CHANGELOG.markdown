@@ -1,3 +1,35 @@
+# v0.3.17
+
+* Attempts to use cargo-dist to create a musl binary (see issue: #28)
+
+# v0.3.15
+
+* Upgrade some dependencies like clap, as well as the version of cargo-dist used to create releases. Sorry it's not more exciting!
+
+# v0.3.14
+
+* Upgrade clap dependency to version 4.5.13.
+
+# v0.3.13
+
+* Add man pages and shell completions (#27), thanks to @donovanglover.
+* Updates version of cargo-dist
+
+# v0.3.12
+
+* Adds installation instructions for NixOS/nix (#25). Thanks for @x123!
+* A few more word swaps in the Orchard Street word lists (9702125, 986d4d3, 9cfa359)
+## Other, smaller README changes/fixes
+* 0391f7d - adds a new badge to top of README showing number of downloads from crates.io, now that it's approaching 2,000 (woohoo!)
+* 92574c6 - fix example Bash script n README for copying outputted passphrase to clipboard on Linux 
+* 8d14563 - add note about doing work on the 'develop' git branch between releases to the readme
+
+# v0.3.11
+
+Nothing huge in this small update.
+* Remove abbreviation "comm" from all included Orchard Street Wordlists.
+* Fix some grammatical inconsistencies and a typo in help text.
+
 # v0.3.10
 
 * A few word swaps in various Orchard Street Wordlists, removing words like "sire" and "peter". See cbf70a0 and 5bc34d3.

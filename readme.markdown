@@ -1,7 +1,9 @@
 # Phraze
 [![Crates.io](https://img.shields.io/crates/v/phraze?link=https%3A%2F%2Fcrates.io%2Fcrates%2Fphraze)](https://crates.io/crates/phraze)
+[![Crates.io number of downloads](https://img.shields.io/crates/d/phraze)](https://crates.io/crates/phraze)
 [![](https://deps.rs/repo/github/sts10/phraze/status.svg)](https://deps.rs/repo/github/sts10/phraze)
 [![Crates.io](https://img.shields.io/crates/l/phraze)](./LICENSE.txt)
+[![Packaging status](https://repology.org/badge/tiny-repos/phraze.svg)](https://repology.org/project/phraze/versions)
 
 Generate random passphrases.
 
@@ -13,7 +15,7 @@ curse-argues-valves-unfair-punk-ritual-inlet
 ## Features
 
 * 🎚️  Allows user to set a minimum entropy, freeing them from having to figure how many words from a given list they need to create a strong passphrase
-* 🎯 All built-in word lists are uniquely decodable, ensuring that passphrase entropy estimates remain accurate when no separator is used
+* 🎯 Includes a variety of built-in word lists, all of which are uniquely decodable, ensuring that passphrase entropy estimates remain accurate when no separator is used
 * ⚡ Fast: Takes about 2 milliseconds to generate a passphrase
 * 🔣 Can insert numbers, symbols, and/or capital letters if necessary (e.g. `phraze -s _b -t`)
 * 🛁 Default word list is (hopefully) free of profane words
@@ -27,6 +29,35 @@ curse-argues-valves-unfair-punk-ritual-inlet
 2. Run: `cargo install phraze --locked` (Run this same command to upgrade Phraze to latest available version.)
 
 Uninstall Phraze by running `cargo uninstall phraze`.
+
+### NixOS/nix
+
+[![nixpkgs unstable package](https://repology.org/badge/version-for-repo/nix_unstable/phraze.svg)](https://repology.org/project/phraze/versions)
+
+Phraze is available within `nixpkgs`, and can be used:
+
+- System-wide on a NixOS system using `environment.systemPackages =
+[pkgs.phraze]`
+- Per-user using home-manager `home.packages = [pkgs.phraze]`
+- One-off with `nix run`
+
+    ```shell
+    # Run one-shot via nix
+    $ nix run nixpkgs#phraze -- -S -s _b -t
+    Commuter=Scripts_Motorway9Battle&Results,Trouble-Policy@Tools
+    ```
+
+- Via a temporary nix shell without installing.
+    
+    ```shell
+    # Drop into a nix shell with phraze available
+    $ nix shell nixpkgs#phraze
+    $ which phraze
+    /nix/store/i1car5jf8w6vxglfi2gdrzsbzmi2vrrh-phraze-0.3.11/bin/phraze
+    $ phraze -S -s _b -t
+    Meditation)Skin0Invalid!Donations6Targeted(Housed8Tossed#Synagogue
+    $ exit
+    ```
 
 ### Latest release
 Alternatively, you can get binaries from [the GitHub releases page](https://github.com/sts10/phraze/releases).
@@ -71,7 +102,7 @@ seventy-cost-freight-suspended-misery-objections-represents-buying
 ### Changing the separator between words
 By default, Phraze separates words with a hyphen ("-"). You can change that with the `--sep` (or `-s`) option.
 
-`--sep` accept special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
+`--sep` accepts special inputs `_n` (random numbers), `_s` (random symbols), and `_b` (mix of both). Note that separator choice does _not_ effect entropy calculations.
 ```text
 $ phraze --sep ' '
 optimism daughters figures grim processors became decreasing
@@ -81,7 +112,7 @@ fax/household>validation_replied-upgrade,remind?reasoning
 
 If you don't want a separator at all, use `-s ''`:
 ```text
-phraze -s ''
+$ phraze -s ''
 theftinversiondebtsquietlysuspensionannualchocolate
 ```
 
@@ -119,7 +150,7 @@ Before generating a passphrase from a given custom list, Phraze will remove any 
 ### Copying passphrase to clipboard
 You can pipe Phraze's outputted passphrase to other tools. For example, you can copy generated passphrase to xclip (a common Linux clipboard tool):
 ```bash
-$ phraze | xclip -selection clipboard
+$ phraze | xclip -selection clipboard -rmlastnl
 ```
 
 ## Usage
@@ -147,7 +178,7 @@ Options:
           [default: 1]
 
   -s, --sep <SEPARATOR>
-          Word separator. Can accept single quotes around the separator. For no 
+          Word separator. Can accept single quotes around the separator. To not use a 
           separator, use empty single quotes ''.
           
           There are special values that will trigger generated separators:
@@ -177,21 +208,19 @@ Options:
           s: EFF short list (1,296 words)
           
           q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel 
-          distance on QWERTY keyboard layouts.
+          distance on QWERTY keyboard layout.
           
           a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel 
-          distance on an alphabetical keyboard layout
+          distance on alphabetical keyboard layout
           
           [default: m]
 
   -c, --custom-list <CUSTOM_LIST_FILE_PATH>
           Provide a text file with a list of words to randomly generate passphrase 
-          from.
-          
-          Should be a text file with one word per line.
+          from. Should be a text file with one word per line.
 
   -t, --title-case
-          Use Title Case for words in generated usernames
+          Use Title Case for words in generated passphrases
 
   -v, --verbose
           Print estimated entropy of generated passphrase, in bits, along with the 
@@ -481,7 +510,11 @@ There are already a few good passphrase generators, including [passphraseme](htt
 Admittedly, part of my motivation to create Phraze was to highlight my [Orchard Street Wordlists](https://github.com/sts10/orchard-street-wordlists), which I think are pretty good!
 
 ## For developers
-I welcome both pull requests and issues. See included [LICENSE.txt](./LICENSE.txt) file.
+I'm trying to do development work on the `development` git branch, then merge the work into the `main` branch when it feels like time for a new release.
+
+In general I welcome both pull requests and issues. See included [LICENSE.txt](./LICENSE.txt) file. This project doesn't have a formal Code of Conduct yet (it may in the future), but informally just try to be kind to each other.
+
+Check **license compatibility** of Phraze's dependencies: `cargo deny check licenses` (requires that you [have cargo-deny installed locally](https://github.com/EmbarkStudios/cargo-deny#install-cargo-deny)). See below for more on how Phraze is licensed.
 
 ### Testing and benchmarking Phraze
 Run `cargo test` to run Phraze's tests.
@@ -497,9 +530,11 @@ When you're ready to cut a new release, test the current state of the project wi
 
 ## Licensing
 
-Phraze's code is licensed under the Mozilla Public License v2.0. See included [LICENSE.txt](./LICENSE.txt) file or [this online version of the license](https://www.mozilla.org/en-US/MPL/2.0/).
+Phraze's source code is licensed under the Mozilla Public License v2.0. See included [LICENSE.txt](./LICENSE.txt) file or [this online version of the license](https://www.mozilla.org/en-US/MPL/2.0/).
 
 ### Word list licensing
+
+Phraze includes a number of word lists, which are licensed in a variety of ways.
 
 * The Mnemonicode word list is [copyrighted](https://github.com/singpolyma/mnemonicode/blob/master/mn_wordlist.c) by Oren Tirosh under [the MIT License](https://mit-license.org/).
 * The word lists from the Electronic Frontier Foundation (EFF) are [distributed under the Creative Commons Attribution 3.0 License](https://www.eff.org/copyright).

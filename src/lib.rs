@@ -1,25 +1,15 @@
+pub mod cli;
 pub mod file_reader;
 pub mod separators;
 pub mod unicode_normalization_check;
 
+use crate::cli::ListChoice;
 use crate::separators::make_separator;
 use include_lines::include_lines;
 use rand::prelude::*;
 use rand::seq::IndexedRandom;
 use rand::SeedableRng;
 use rand_chacha::ChaCha20Rng;
-
-/// This enum, `ListChoice`, represents all of the "built-in" word lists that Phraze can use.
-#[derive(Clone, Debug, Copy)]
-pub enum ListChoice {
-    Long,
-    Medium,
-    Eff,
-    Mnemonicode,
-    Effshort,
-    Qwerty,
-    Alpha,
-}
 
 /// Given user's inputs, figure out how many words the generated passphrase will need. If user
 /// specified an exact `number_of_words`, just return that `number_of_words`. If user is using a

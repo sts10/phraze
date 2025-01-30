@@ -1759,6 +1759,7 @@ criterion
 critic
 critical
 critically
+criticism
 criticisms
 criticized
 critics
@@ -3055,7 +3056,6 @@ fluids
 flute
 flux
 flying
-foam
 focal
 focus
 focused
@@ -3541,7 +3541,6 @@ helps
 hemisphere
 hemorrhage
 hepatitis
-herald
 herb
 herbs
 herd
@@ -5820,6 +5819,7 @@ radial
 radiation
 radical
 radically
+radicals
 radio
 radius
 raiders
@@ -5948,7 +5948,6 @@ referee
 referenced
 references
 referendum
-referral
 referring
 refers
 refined
@@ -8038,6 +8037,7 @@ weighted
 weights
 welcome
 welcomed
+welfare
 wells
 welsh
 western
