@@ -1,8 +1,8 @@
 //! This module contains some functions that help deal with the separating punction between words
 //! in a passphrase. Most of it handles cases where the user requests a random symbol or number or
 //! either.
-use rand::prelude::SliceRandom;
-use rand::Rng;
+use rand::prelude::*;
+use rand::seq::IndexedRandom;
 
 #[derive(PartialEq)]
 enum SeparatorType {
@@ -36,12 +36,13 @@ fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
 
 /// Pick a random symbol for a separator between words.
 fn get_random_symbol(rng: &mut impl Rng) -> String {
+    // I could probably simplify this with a choose method
     const CHARSET: &[u8] = b"!@#$%&*(){}[]\\:;'<>?,./_-+=";
-    let idx = rng.gen_range(0..CHARSET.len());
+    let idx = rng.random_range(0..CHARSET.len());
     (CHARSET[idx] as char).to_string()
 }
 
 /// Pick a random digit (0 to 9) for a separator between words.
 fn get_random_number(rng: &mut impl Rng) -> String {
-    rng.gen_range(0..=9).to_string()
+    rng.random_range(0..=9).to_string()
 }
