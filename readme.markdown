@@ -500,9 +500,7 @@ gave-model-coil-lent-deep-lam-chin-tall
 
 ## Source of randomness
 
-Phraze uses the [rand crate](https://github.com/rust-random/rand)'s [ThreadRng](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html) as its cryptographically secure pseudo-random number generator (CSPRNG) for generating passphrases.
-
-According to [the rand crate documentation at the time of this writing, "ThreadRng uses the same CSPRNG as StdRng, ChaCha12"](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html), meaning it uses 12 rounds of the ChaCha stream cipher. That `StdRng` uses ChaCha12 is [relatively clear in the source code](https://docs.rs/rand/latest/src/rand/rngs/std.rs.html#9-15). (See [this issue](https://github.com/rust-random/rand/issues/932) for arguments in favor of using 12 rounds rather than 20.)
+Phraze uses [ChaCha20](https://docs.rs/rand_chacha/latest/rand_chacha/struct.ChaCha20Rng.html) for its pseudo-random number generator, via the [rand_chacha crate (library)](https://docs.rs/rand_chacha/latest/rand_chacha), to generate random passphrases. As the crate's documentation notes, "20 rounds is widely used as a conservative choice."
 
 ## Why another random passphrase generator?
 There are already a few good passphrase generators, including [passphraseme](https://github.com/micahflee/passphraseme) and [Pgen](https://github.com/ctsrc/Pgen).

@@ -1,3 +1,8 @@
+# v0.4.0
+
+* Upgrades [`rand`](https://docs.rs/rand/latest/rand/) dependency to v0.9.0.
+* **Changes the algorithm that Phraze's pseudo-random number generator to ChaCha20**. Explicitly choosing a secure algorithm, rather than relying on the `rand` crate's [ThreadRng struct](https://docs.rs/rand/latest/rand/rngs/struct.ThreadRng.html), seems like a good idea, given [some of the changes to the rand crate in v0.9.0](https://rust-random.github.io/book/update-0.9.html#security). See [#21](https://github.com/sts10/phraze/pull/21/).
+
 # v0.3.17
 
 * Attempts to use cargo-dist to create a musl binary (see issue: #28)
