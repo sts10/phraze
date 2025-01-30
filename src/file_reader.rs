@@ -40,11 +40,10 @@ where
     <T as std::str::FromStr>::Err: std::fmt::Debug,
 {
     let mut vec = Vec::new();
-    let f = match File::open(file_path) {
-        Ok(res) => res,
-        Err(e) => return Err(e),
-    };
+
+    let f = File::open(file_path)?;
     let file = BufReader::new(&f);
+
     for line in file.lines() {
         match line?.parse() {
             Ok(l) => vec.push(l),
