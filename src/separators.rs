@@ -37,8 +37,14 @@ fn get_random_number_or_symbol(rng: &mut impl Rng) -> String {
 /// Pick a random symbol for a separator between words.
 fn get_random_symbol(rng: &mut impl Rng) -> String {
     const CHARSET: &[u8] = b"!@#$%&*(){}[]\\:;'<>?,./_-+=";
-    let idx = rng.gen_range(0..CHARSET.len());
-    (CHARSET[idx] as char).to_string()
+    // let idx = rng.gen_range(0..CHARSET.len());
+    // (CHARSET[idx] as char).to_string()
+    char::from(
+        *CHARSET
+            .choose(rng)
+            .expect("Unable to choose a random symbol"),
+    )
+    .to_string()
 }
 
 /// Pick a random digit (0 to 9) for a separator between words.
