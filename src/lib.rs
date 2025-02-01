@@ -6,7 +6,10 @@ pub mod unicode_normalization_check;
 use crate::cli::ListChoice;
 use crate::separators::make_separator;
 use include_lines::include_lines;
-use rand::{seq::SliceRandom, thread_rng, Rng};
+// use rand::{seq::SliceRandom, thread_rng, Rng};
+use rand::prelude::*;
+use rand::rng;
+use rand::seq::IndexedRandom;
 
 /// Given user's inputs, figure out how many words the generated passphrase will need. If user
 /// specified an exact `number_of_words`, just return that `number_of_words`. If user is using a
@@ -78,7 +81,8 @@ pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
     title_case: bool,
     list: &[T], // We accept either type by using `T`!
 ) -> String {
-    let mut rng = thread_rng();
+    let mut rng = rng(); // How we make a RNG using rand v0.9.0
+
     // Create a blank String to put words into to create our passphrase
     let mut passphrase = String::new();
     for i in 0..number_of_words_to_put_in_passphrase {
