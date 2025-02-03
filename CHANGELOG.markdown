@@ -1,3 +1,10 @@
+# v0.3.18
+
+* 49cb652 - upgrades rand crate dependency to v0.9.0, which required some statement changes and some new method names. See [#29](https://github.com/sts10/phraze/pull/29).
+* ab5ed13 - updates two of the built-in word lists, removing the awkward word 'hank' 
+* 6312ad8 - Uses `?` for conciseness in file reader, at suggestion of new version of Clippy 
+* 45758ab - makes a clarification in licensing section of README
+
 # v0.3.17
 
 * Attempts to use cargo-dist to create a musl binary (see issue: #28)
