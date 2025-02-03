@@ -526,7 +526,7 @@ This project uses [cargo-dist](https://opensource.axo.dev/cargo-dist/) to create
 
 You're welcome to consult [my personal notes on using cargo-dist](https://sts10.github.io/docs/cargo-dist-tips.html), but basically: First, install cargo-dist with`cargo install cargo-dist`.
 
-When you're ready to cut a new release, test the current state of the project with `cargo dist build` and `cargo dist plan`. If that went well, create a new git tag that matches the current project version in `Cargo.toml` with `git tag vX.X.X`. Finally, run `git push --tags` to kick off the release process. GitHub will handle it from here -- check your project's GitHub Releases page in about 5 to 10 minutes.
+When you're ready to cut a new release, test the current state of the project with `dist build` and `dist plan`. If that went well, create a new git tag that matches the current project version in `Cargo.toml` with `git tag vX.X.X`. Finally, run `git push --tags` to kick off the release process. GitHub will handle it from here -- check your project's GitHub Releases page in about 5 to 10 minutes.
 
 ## Licensing
 
