@@ -1,3 +1,7 @@
+# v0.3.19
+
+* Upgrade to [Rust edition 2024](https://blog.rust-lang.org/2025/02/20/Rust-1.85.0.html) (mostly minor code reformatting).
+
 # v0.3.18
 
 * 49cb652 - upgrades rand crate dependency to v0.9.0, which required some statement changes and some new method names. See [#29](https://github.com/sts10/phraze/pull/29).
