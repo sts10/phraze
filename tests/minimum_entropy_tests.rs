@@ -2,8 +2,8 @@ mod minimum_entropy_tests {
     use phraze::*;
 
     #[test]
-    fn can_accurately_calculate_the_number_of_words_to_put_in_a_passphrase_given_a_desired_number_of_words(
-    ) {
+    fn can_accurately_calculate_the_number_of_words_to_put_in_a_passphrase_given_a_desired_number_of_words()
+     {
         assert_eq!(calculate_number_words_needed(Some(8), None, 0, 4000), 8);
     }
 
@@ -17,8 +17,8 @@ mod minimum_entropy_tests {
     }
 
     #[test]
-    fn can_accurately_calculate_the_number_of_words_to_put_in_a_passphrase_given_a_desired_minimum_entropy(
-    ) {
+    fn can_accurately_calculate_the_number_of_words_to_put_in_a_passphrase_given_a_desired_minimum_entropy()
+     {
         assert_eq!(calculate_number_words_needed(None, Some(102), 0, 8192), 8);
         assert_eq!(calculate_number_words_needed(None, Some(106), 0, 8192), 9);
     }

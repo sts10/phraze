@@ -28,7 +28,9 @@ pub fn read_in_custom_list(file_path: &Path) -> Result<Vec<String>, String> {
     word_list.sort();
     word_list.dedup();
     if !uniform_unicode_normalization(&word_list) {
-        eprintln!("WARNING: Custom word list has multiple Unicode normalizations. Consider normalizing the Unicode of all words on the list before making a passphrase.");
+        eprintln!(
+            "WARNING: Custom word list has multiple Unicode normalizations. Consider normalizing the Unicode of all words on the list before making a passphrase."
+        );
     }
     Ok(word_list)
 }

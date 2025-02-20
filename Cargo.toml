@@ -1,8 +1,8 @@
 [package]
 name = "phraze"
 description = "Random passphrase generator"
-version = "0.3.18"
-edition = "2021"
+version = "0.3.19"
+edition = "2024"
 authors = ["sts10 <sschlinkert@gmail.com>"]
 license = "MPL-2.0"
 readme = "readme.markdown"

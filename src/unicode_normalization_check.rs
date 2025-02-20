@@ -4,11 +4,11 @@
 //! word list will cause Phraze to OVER-estimate passphrase entropy strength, exactly what we do
 //! not want to happen.
 use std::collections::HashSet;
+use unicode_normalization::IsNormalized;
 use unicode_normalization::is_nfc_quick;
 use unicode_normalization::is_nfd_quick;
 use unicode_normalization::is_nfkc_quick;
 use unicode_normalization::is_nfkd_quick;
-use unicode_normalization::IsNormalized;
 
 /// Given a slice of Strings, this function will attempt to detect the Unicode normalization used
 /// in each String.
