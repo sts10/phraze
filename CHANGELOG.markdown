@@ -1,3 +1,6 @@
+# v0.3.20
+* Some word swaps in two of the built-in word lists
+
 # v0.3.19
 
 * Upgrade to [Rust edition 2024](https://blog.rust-lang.org/2025/02/20/Rust-1.85.0.html) (mostly minor code reformatting).
