@@ -104,9 +104,9 @@ pub fn generate_a_passphrase<T: AsRef<str> + std::fmt::Display>(
 
 /// Given an array of words, pick a random element. Then make  
 /// the selected word a `String` for simplicity's sake.
-fn get_random_element<T: AsRef<str>>(rng: &mut impl Rng, word_list: &[T]) -> String
+fn get_random_element<T>(rng: &mut impl Rng, word_list: &[T]) -> String
 where
-    T: std::fmt::Display,
+    T: std::fmt::Display + AsRef<str>,
 {
     match word_list.choose(rng) {
         Some(word) => word.to_string(),
