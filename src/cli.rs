@@ -67,17 +67,17 @@ pub struct Args {
     ///
     /// l: Orchard Street Long List (17,576 words)
     ///
-    /// e: EFF long list (7,776 words)
+    /// e: EFF Long List (7,776 words)
     ///
     /// n: Mnemonicode list (1,633 words). Good if you know you're going to be speaking
     /// passphrases out loud.
     ///
-    /// s: EFF short list (1,296 words)
+    /// s: EFF Short List (1,296 words)
     ///
-    /// q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel
+    /// q: Orchard Street QWERTY List (1,296 words). Optimized to minimize travel
     /// distance on QWERTY keyboard layout.
     ///
-    /// a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel
+    /// a: Orchard Street Alpha List (1,296 words). Optimized to minimize travel
     /// distance on alphabetical keyboard layout.
     #[clap(short = 'l', long = "list", value_parser=parse_list_choice, default_value="m")]
     pub list_choice: ListChoice,

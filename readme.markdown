@@ -138,7 +138,7 @@ Each included list has a corresponding one-letter code (see below or run `phrase
 $ phraze --list s
 duck-slip-swoop-stray-wink-stump-whiff-slot
 ```
-(Note that we need 8 words from the EFF short list to meet the default minimum entropy of 80 bits.)
+(Note that we need 8 words from the EFF Short List to meet the default minimum entropy of 80 bits.)
 
 ### Using your own list
 If you prefer, you can have Phraze generate a passphrase using your own word list. Use the `--custom-list` option.
@@ -200,17 +200,17 @@ Options:
           
           l: Orchard Street Long List (17,576 words)
           
-          e: EFF long list (7,776 words)
+          e: EFF Long List (7,776 words)
           
           n: Mnemonicode list (1,633 words). Good if you know you're going to be 
           speaking passphrases out loud.
           
-          s: EFF short list (1,296 words)
+          s: EFF Short List (1,296 words)
           
-          q: Orchard Street QWERTY list (1,296 words). Optimized to minimize travel 
+          q: Orchard Street QWERTY List (1,296 words). Optimized to minimize travel 
           distance on QWERTY keyboard layout.
           
-          a: Orchard Street Alpha list (1,296 words). Optimized to minimize travel 
+          a: Orchard Street Alpha List (1,296 words). Optimized to minimize travel 
           distance on alphabetical keyboard layout
           
           [default: m]
@@ -241,16 +241,16 @@ However, Phraze comes with other word lists built-in. Run `phraze --help` to vie
 
 * Orchard Street Medium list: 8,192 words; 13 bits of entropy per word. This is the **DEFAULT** list Phraze will use if no list is specified by the user.
 * [Orchard Street Long list](https://github.com/sts10/orchard-street-wordlists/blob/main/lists/orchard-street-long.txt): 17,576 words; 14.1 bits of entropy per word. Use `l`.
-* [EFF long list](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
+* [EFF Long List](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 7,776 words; 12.93 bits of entropy per word. Use `e`.
 * [Mnemonicode](https://github.com/singpolyma/mnemonicode) list: 1,633 words; 10.67 bits of entropy per word. Words are easy to pronounce out loud. Use `n`.
-* [EFF short list 1](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 1,296 words; 10.3 bits of entropy per word. Use `s`.
-* Orchard Street QWERTY list: 1,296 words; 10.3 bits of entropy per word. Use `q`.
-* Orchard Street Alpha list: 1,296 words; 10.3 bits of entropy per word. Use `a`.
+* [EFF Short List 1](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases): 1,296 words; 10.3 bits of entropy per word. Use `s`.
+* Orchard Street QWERTY List: 1,296 words; 10.3 bits of entropy per word. Use `q`.
+* Orchard Street Alpha List: 1,296 words; 10.3 bits of entropy per word. Use `a`.
 
 ### Notes on the Orchard Street QWERTY and Alpha lists
 These two lists are optimized to minimize travel distance when inputting passphrases into TVs or video game consoles. They both have 1,296 words (10.3 bits per word).
 
-The Orchard Street QWERTY list that is optimized for QWERTY keyboard layouts. Use this list if your keyboard layout looks like this:
+The Orchard Street QWERTY List that is optimized for QWERTY keyboard layouts. Use this list if your keyboard layout looks like this:
 
 ```txt
 qwertyuiop
@@ -258,7 +258,7 @@ asdfghjkl
 zxcvbnm
 ```
 
-The Orchard Street Alpha list that is optimized for alphabetical keyboard layouts. Use this list if your keyboard layout looks like this:
+The Orchard Street Alpha List that is optimized for alphabetical keyboard layouts. Use this list if your keyboard layout looks like this:
 
 ```txt
 abcdef
@@ -272,7 +272,7 @@ yz
 
 This list information was generated using [Word List Auditor](https://github.com/sts10/wla).
 
-#### Orchard Street Medium
+#### Orchard Street Medium List
 ```txt
 Lines found               : 8192
 Free of exact duplicates  : true
@@ -336,7 +336,7 @@ bottled-charge-linkage-husbands-cuisine-weave
 gospel-graders-relegated-exits-determine-ducked
 ```
 
-#### EFF long list
+#### EFF Long List
 ```txt
 Lines found               : 7776
 Free of exact duplicates  : true
@@ -401,7 +401,7 @@ strand-mankind-punished-woke-deities-keyboard-camping
 glass-homeless-feature-fee-preparing-interfaces-nations
 ```
 
-#### EFF short list
+#### EFF Short List
 Note: I swapped out the word "yo-yo" for the word "zen".
 ```txt
 Lines found               : 1296
@@ -434,7 +434,7 @@ hump-dug-wifi-skid-panty-rake-vocal-stoop
 silo-utter-pest-snap-zoom-crate-suds-batch
 ```
 
-#### Orchard Street QWERTY list
+#### Orchard Street QWERTY List
 ```txt
 Lines found               : 1296
 Free of exact duplicates  : true
@@ -466,7 +466,7 @@ man-tomb-jar-trim-tip-bits-faded-dig
 young-ten-threw-shy-zero-grew-ready-dead
 ```
 
-#### Orchard Street Alpha list
+#### Orchard Street Alpha List
 ```txt
 Lines found               : 1296
 Free of exact duplicates  : true
