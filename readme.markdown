@@ -33,6 +33,7 @@ Uninstall Phraze by running `cargo uninstall phraze`.
 ### Homebrew
 
 ```shell
+brew update
 brew tap sts10/phraze
 brew install phraze
 ```
