@@ -30,6 +30,18 @@ curse-argues-valves-unfair-punk-ritual-inlet
 
 Uninstall Phraze by running `cargo uninstall phraze`.
 
+### Homebrew
+
+```shell
+brew update
+brew tap sts10/phraze
+brew install phraze
+```
+
+Uninstall with `brew uninstall phraze && brew untap sts10/phraze`
+
+(Special thanks to [@phoggy](https://github.com/phoggy) for help getting this Homebrew installation working.)
+
 ### NixOS/nix
 
 [![nixpkgs unstable package](https://repology.org/badge/version-for-repo/nix_unstable/phraze.svg)](https://repology.org/project/phraze/versions)
