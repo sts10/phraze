@@ -1,3 +1,18 @@
+# v0.3.23
+Since [the cargo-dist project seems to have paused development due to lack of funding](https://github.com/axodotdev/cargo-dist/issues/1807#issuecomment-2768419143), we're doing this release the old-fashioned way. 
+
+If you **need an OS-specific binary**, [v0.3.18](https://github.com/sts10/phraze/releases/tag/v0.3.18) is not very different from this version (see changelog below).
+
+**CHANGES**
+* 395b94b - cargo update and bump version  
+* 7ba1108 - capitalizes the word 'list' consistently 
+* 210f16c - takes a suggestion from clippy 
+* c685b7a - couple word swaps in the built-in word lists
+* 62fe7a9 - update EFF copyright information
+
+I'm also hoping this simpler release, with fewer files attached to it, will work better with a Homebrew cask (see #30 for more). 
+
+
 # v0.3.20
 * Some word swaps in two of the built-in word lists
 
