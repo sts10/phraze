@@ -1,3 +1,11 @@
+# v0.3.24
+Fresh release using the latest version of cargo-dist.
+
+* 1dbad74 - (HEAD -> main, origin/main) update allowed licenses -- I'm not too concerned about 'Unicode' licenses... 
+* e156195 - dist init with latest version of cargo-dist, preparing for a new release 
+* da2a6a2 - updates CHANGELOG with last release's release notes 
+* 09ae148 - cargo lock 
+
 # v0.3.23
 Since [the cargo-dist project seems to have paused development due to lack of funding](https://github.com/axodotdev/cargo-dist/issues/1807#issuecomment-2768419143), we're doing this release the old-fashioned way. 
 
