@@ -8457,6 +8457,7 @@ initiative
 initiatives
 inject
 injected
+injecting
 injection
 injections
 injunction
@@ -11825,7 +11826,6 @@ porch
 pore
 pork
 pornographic
-porosity
 porous
 portable
 portage
