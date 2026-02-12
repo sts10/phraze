@@ -1,4 +1,7 @@
 # v0.3.24
+* Upgrade rand dependency to latest version (v0.10.0)
+
+# v0.3.24
 Fresh release using the latest version of cargo-dist (v0.28.2).
 
 * 1dbad74 - update allowed licenses -- I'm not too concerned about 'Unicode' licenses... 
