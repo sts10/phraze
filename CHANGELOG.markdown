@@ -1,4 +1,4 @@
-# v0.3.24
+# v0.3.25
 * Upgrade rand dependency to latest version (v0.10.0)
 
 # v0.3.24
