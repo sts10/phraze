@@ -1,4 +1,7 @@
-# v0.3.9
+# v0.3.28 
+* Return to a sane semantic versioning (not sure what I was thinking there!).
+
+# v0.3.9 REVOKED
 * Upgrade rand dependency to latest version (v0.10.1)
 
 # v0.3.25
